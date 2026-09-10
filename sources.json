@@ -14,33 +14,108 @@
     "Kenttä 'verified': päivä, jona päätepiste on viimeksi todettu vastaavaksi.",
     "Yhden lähteen epäonnistuminen ei kaada ajoa: se lokitetaan varoituksena ja muut lähteet käsitellään normaalisti."
   ],
-
   "oletus_aihe_keywords": [
-    "ympäristö", "ympäristön", "ekolog", "ecolog", "environment",
-    "vihreä", "green deal", "green transition", "luontokato", "saastu", "pollut",
-    "kestävä kehitys", "kestävän kehityksen", "kestävyysmurros", "kestävä siirtymä",
-    "sustainable development", "sustainability transition",
-
-    "ilmasto", "ilmaston", "päästö", "hiilineutraali", "hiilinielu", "hiilijalanjälki",
-    "climate", "emission", "carbon", "decarbon", "net zero", "net-zero",
-    "energia", "energy", "uusiutuva", "renewable", "tuulivoima", "aurinkovoima",
-    "aurinkoenergia", "vetytalous", "hydrogen", "energiatehokkuus",
-
-    "luonnon", "luonto", "monimuotoisuus", "biodiversit", "ennallistam", "restoration",
-    "lajisto", "uhanalais", "elinympäristö", "habitat", "ekosysteemi", "ecosystem",
-    "suojelualue", "conservation", "metsä", "forest", "suoluonto", "nature",
-
-    "vesi", "vesien", "vesistö", "vedenlaatu", "water", "itämeri", "baltic sea",
-    "meren", "merensuojelu", "marine", "vesiensuojelu", "ravinnekuormitus",
-    "rehevöity", "eutrophic", "valuma-alue", "catchment", "kalasto", "fisheries",
-
-    "kiertotalous", "circular", "jäte", "waste", "kierrät", "recycl",
-    "materiaalitehokkuus", "resource efficiency", "ravinnekierto", "biotalous",
-    "bioeconomy", "luonnonvarat", "natural resources"
+    "ympäristö",
+    "ympäristön",
+    "ekolog",
+    "ecolog",
+    "environment",
+    "vihreä",
+    "green deal",
+    "green transition",
+    "luontokato",
+    "saastu",
+    "pollut",
+    "kestävä kehitys",
+    "kestävän kehityksen",
+    "kestävyysmurros",
+    "kestävä siirtymä",
+    "sustainable development",
+    "sustainability transition",
+    "ilmasto",
+    "ilmaston",
+    "päästö",
+    "hiilineutraali",
+    "hiilinielu",
+    "hiilijalanjälki",
+    "climate",
+    "emission",
+    "carbon",
+    "decarbon",
+    "net zero",
+    "net-zero",
+    "energia",
+    "energy",
+    "uusiutuva",
+    "renewable",
+    "tuulivoima",
+    "aurinkovoima",
+    "aurinkoenergia",
+    "vetytalous",
+    "hydrogen",
+    "energiatehokkuus",
+    "luonnon",
+    "luonto",
+    "monimuotoisuus",
+    "biodiversit",
+    "ennallistam",
+    "restoration",
+    "lajisto",
+    "uhanalais",
+    "elinympäristö",
+    "habitat",
+    "ekosysteemi",
+    "ecosystem",
+    "suojelualue",
+    "conservation",
+    "metsä",
+    "forest",
+    "suoluonto",
+    "nature",
+    "vesi",
+    "vesien",
+    "vesistö",
+    "vedenlaatu",
+    "water",
+    "itämeri",
+    "baltic sea",
+    "meren",
+    "merensuojelu",
+    "marine",
+    "vesiensuojelu",
+    "ravinnekuormitus",
+    "rehevöity",
+    "eutrophic",
+    "valuma-alue",
+    "catchment",
+    "kalasto",
+    "fisheries",
+    "kiertotalous",
+    "circular",
+    "jäte",
+    "waste",
+    "kierrät",
+    "recycl",
+    "materiaalitehokkuus",
+    "resource efficiency",
+    "ravinnekierto",
+    "biotalous",
+    "bioeconomy",
+    "luonnonvarat",
+    "natural resources",
+    "oikeudenmukainen siirtymä",
+    "oikeudenmukaisen siirtymän",
+    "just transition",
+    "jtf-",
+    "puhdas siirtymä",
+    "puhtaan siirtymän",
+    "clean transition",
+    "cleantech",
+    "puhdas teknologia",
+    "ilmastonmuutos",
+    "climate change"
   ],
-
   "sources": [
-
     {
       "id": "nessling",
       "nimi": "Maj ja Tor Nesslingin säätiö – ajankohtaista",
@@ -54,12 +129,24 @@
       "alue": "Koko Suomi",
       "fallback_link": "https://nessling.fi/apurahat/",
       "aihe_suodatus": false,
-      "include_keywords": ["haku", "apuraha", "hakuaika", "rahoitus", "rahoitushaku", "hakemus"],
-      "exclude_keywords": ["vuosikertomus", "nimitys", "rekrytoi", "etsii", "hallitus"],
+      "include_keywords": [
+        "haku",
+        "apuraha",
+        "hakuaika",
+        "rahoitus",
+        "rahoitushaku",
+        "hakemus"
+      ],
+      "exclude_keywords": [
+        "vuosikertomus",
+        "nimitys",
+        "rekrytoi",
+        "etsii",
+        "hallitus"
+      ],
       "require_dates": true,
       "max_items": 40
     },
-
     {
       "id": "tah_saatio",
       "nimi": "Tiina ja Antti Herlinin säätiö – ajankohtaista",
@@ -73,12 +160,24 @@
       "alue": "Koko Suomi",
       "fallback_link": "https://tahsaatio.fi/saatio/apurahat/",
       "aihe_suodatus": false,
-      "include_keywords": ["haku", "apuraha", "hakuaika", "rahoitus", "avustus", "hakemus"],
-      "exclude_keywords": ["vuosikertomus", "nimitys", "rekrytoi", "etsii asiantuntijaa", "etsii"],
+      "include_keywords": [
+        "haku",
+        "apuraha",
+        "hakuaika",
+        "rahoitus",
+        "avustus",
+        "hakemus"
+      ],
+      "exclude_keywords": [
+        "vuosikertomus",
+        "nimitys",
+        "rekrytoi",
+        "etsii asiantuntijaa",
+        "etsii"
+      ],
       "require_dates": true,
       "max_items": 40
     },
-
     {
       "id": "mvtt",
       "nimi": "Maa- ja vesitekniikan tuki ry – ajankohtaista",
@@ -92,12 +191,21 @@
       "alue": "Koko Suomi",
       "fallback_link": "https://mvtt.fi/apurahat/",
       "aihe_suodatus": false,
-      "include_keywords": ["haku", "apuraha", "hakuaika", "rahoitus", "hakemus"],
-      "exclude_keywords": ["vuosikertomus", "nimitys", "rekrytoi"],
+      "include_keywords": [
+        "haku",
+        "apuraha",
+        "hakuaika",
+        "rahoitus",
+        "hakemus"
+      ],
+      "exclude_keywords": [
+        "vuosikertomus",
+        "nimitys",
+        "rekrytoi"
+      ],
       "require_dates": true,
       "max_items": 40
     },
-
     {
       "id": "koneen_saatio",
       "nimi": "Koneen Säätiö – ajankohtaista",
@@ -110,12 +218,21 @@
       "rahoittajatyyppi": "Säätiöt",
       "alue": "Koko Suomi",
       "fallback_link": "https://koneensaatio.fi/apurahat/",
-      "include_keywords": ["haku", "apuraha", "hakuaika", "rahoitus"],
-      "exclude_keywords": ["vuosikertomus", "nimitys", "myönsi", "apurahansaajat"],
+      "include_keywords": [
+        "haku",
+        "apuraha",
+        "hakuaika",
+        "rahoitus"
+      ],
+      "exclude_keywords": [
+        "vuosikertomus",
+        "nimitys",
+        "myönsi",
+        "apurahansaajat"
+      ],
       "require_dates": true,
       "max_items": 40
     },
-
     {
       "id": "suomen_kulttuurirahasto",
       "nimi": "Suomen Kulttuurirahasto – ajankohtaista",
@@ -128,12 +245,20 @@
       "rahoittajatyyppi": "Säätiöt",
       "alue": "Koko Suomi",
       "fallback_link": "https://skr.fi/apurahat",
-      "include_keywords": ["haku", "apuraha", "hakuaika"],
-      "exclude_keywords": ["vuosikertomus", "nimitys", "myönsi", "apurahansaajat"],
+      "include_keywords": [
+        "haku",
+        "apuraha",
+        "hakuaika"
+      ],
+      "exclude_keywords": [
+        "vuosikertomus",
+        "nimitys",
+        "myönsi",
+        "apurahansaajat"
+      ],
       "require_dates": true,
       "max_items": 40
     },
-
     {
       "id": "suomen_akatemia",
       "nimi": "Suomen Akatemia – tiedotteet",
@@ -146,12 +271,24 @@
       "rahoittajatyyppi": "Julkinen",
       "alue": "Koko Suomi",
       "fallback_link": "https://www.aka.fi/tutkimusrahoitus/hae-rahoitusta/haut/",
-      "include_keywords": ["haku", "rahoitus", "hakuaika", "hakemus", "apuraha", "rahoitushaku"],
-      "exclude_keywords": ["nimitys", "rekrytointi", "vuosikertomus", "myönsi", "rahoituspäätökset"],
+      "include_keywords": [
+        "haku",
+        "rahoitus",
+        "hakuaika",
+        "hakemus",
+        "apuraha",
+        "rahoitushaku"
+      ],
+      "exclude_keywords": [
+        "nimitys",
+        "rekrytointi",
+        "vuosikertomus",
+        "myönsi",
+        "rahoituspäätökset"
+      ],
       "require_dates": true,
       "max_items": 50
     },
-
     {
       "id": "sitra",
       "nimi": "Sitra – ajankohtaista",
@@ -164,12 +301,23 @@
       "rahoittajatyyppi": "Julkinen",
       "alue": "Koko Suomi",
       "fallback_link": "https://www.sitra.fi/aiheet/",
-      "include_keywords": ["haku", "rahoitus", "hakuaika", "avustus", "rahoitushaku", "hakemus"],
-      "exclude_keywords": ["nimitys", "rekrytoi", "muutosneuvottelut", "vuosikertomus"],
+      "include_keywords": [
+        "haku",
+        "rahoitus",
+        "hakuaika",
+        "avustus",
+        "rahoitushaku",
+        "hakemus"
+      ],
+      "exclude_keywords": [
+        "nimitys",
+        "rekrytoi",
+        "muutosneuvottelut",
+        "vuosikertomus"
+      ],
       "require_dates": true,
       "max_items": 50
     },
-
     {
       "id": "vn_ilmasto_energia",
       "nimi": "Valtioneuvosto – ilmasto- ja energiapoliittinen ministerityöryhmä",
@@ -183,11 +331,17 @@
       "alue": "Koko Suomi",
       "fallback_link": "https://ym.fi/avustukset",
       "aihe_suodatus": false,
-      "include_keywords": ["haku", "rahoitus", "avustus", "hakuaika", "tukiohjelma", "rahoitushaku"],
+      "include_keywords": [
+        "haku",
+        "rahoitus",
+        "avustus",
+        "hakuaika",
+        "tukiohjelma",
+        "rahoitushaku"
+      ],
       "require_dates": true,
       "max_items": 40
     },
-
     {
       "id": "vn_tiedotteet",
       "nimi": "Valtioneuvosto – ministeriöiden tiedotteet",
@@ -200,12 +354,24 @@
       "rahoittajatyyppi": "Julkinen",
       "alue": "Koko Suomi",
       "fallback_link": "https://ym.fi/avustukset",
-      "include_keywords": ["haku auk", "rahoitushaku", "avustushaku", "haettavana", "hakuaika", "avustusta voi hakea", "rahoitusta voi hakea"],
-      "exclude_keywords": ["nimitys", "nimitettiin", "vuosikertomus", "lausuntokierros"],
+      "include_keywords": [
+        "haku auk",
+        "rahoitushaku",
+        "avustushaku",
+        "haettavana",
+        "hakuaika",
+        "avustusta voi hakea",
+        "rahoitusta voi hakea"
+      ],
+      "exclude_keywords": [
+        "nimitys",
+        "nimitettiin",
+        "vuosikertomus",
+        "lausuntokierros"
+      ],
       "require_dates": true,
       "max_items": 60
     },
-
     {
       "id": "eu_funding_tenders",
       "nimi": "EU Funding & Tenders Portal – haut (LIFE, Horizon)",
@@ -217,10 +383,22 @@
       "api_key": "SEDIA",
       "text": "***",
       "page_size": 50,
-      "statuses": ["forthcoming", "open"],
-      "types": ["1", "2", "8"],
-      "languages": ["en"],
-      "sort": { "field": "sortStatus", "order": "ASC" },
+      "statuses": [
+        "forthcoming",
+        "open"
+      ],
+      "types": [
+        "1",
+        "2",
+        "8"
+      ],
+      "languages": [
+        "en"
+      ],
+      "sort": {
+        "field": "sortStatus",
+        "order": "ASC"
+      },
       "headers": {
         "User-Agent": "Mozilla/5.0 (compatible; hankerahoituskalenteri/1.2; +https://github.com/roopejmansikkasalo-cyber/hankerahoituskalenteri)",
         "Accept": "application/json, text/plain, */*"
@@ -232,7 +410,6 @@
       "require_dates": true,
       "max_items": 60
     },
-
     {
       "id": "cinea_life",
       "nimi": "CINEA – LIFE, ilmasto- ja ympäristöohjelmat",
@@ -247,19 +424,29 @@
       "alue": "EU + assosioituneet maat",
       "fallback_link": "https://cinea.ec.europa.eu/programmes/life_en",
       "aihe_suodatus": false,
-      "include_keywords": ["call", "haku", "application", "deadline", "funding", "apply", "proposals"],
-      "exclude_keywords": ["info session recording", "newsletter"],
+      "include_keywords": [
+        "call",
+        "haku",
+        "application",
+        "deadline",
+        "funding",
+        "apply",
+        "proposals"
+      ],
+      "exclude_keywords": [
+        "info session recording",
+        "newsletter"
+      ],
       "require_dates": true,
       "max_items": 60
     },
-
     {
       "id": "interreg_baltic",
       "nimi": "Interreg Baltic Sea Region – ajankohtaista",
       "tyyppi": "rss",
-      "enabled": true,
-      "verified": "2026-09-10",
-      "huom": "UUSI. Itämeren alueen ohjelma: koko sisältö on ympäristö- ja kestävyysaiheista, joten aihesuodatus on pois päältä. HUOM: sivusto palautti 403 botinsuodattimesta tavallisella User-Agentilla — tässä kokeillaan selaimen otsikoita. Jos 403 jatkuu, aseta enabled=false ja seuraa hakuja osoitteessa interreg-baltic.eu/calls.",
+      "enabled": false,
+      "verified": "EI TOIMI — HTTP 403 botinsuodattimesta 10.9.2026",
+      "huom": "POIS KÄYTÖSTÄ. Syöte on olemassa ja validi, mutta sivusto estää palvelinhaut (403) myös selaimen otsikoilla — este vaatii JavaScriptin suorittamista. Seuraa hakuja osoitteessa https://interreg-baltic.eu/calls/ tai ota käyttöön uudelleen jos sivusto poistaa eston.",
       "url": "https://interreg-baltic.eu/feed/",
       "headers": {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
@@ -273,12 +460,21 @@
       "alue": "Itämeren alue",
       "fallback_link": "https://interreg-baltic.eu/calls/",
       "aihe_suodatus": false,
-      "include_keywords": ["call", "haku", "application", "deadline", "funding", "apply"],
-      "exclude_keywords": ["newsletter", "webinar recording"],
+      "include_keywords": [
+        "call",
+        "haku",
+        "application",
+        "deadline",
+        "funding",
+        "apply"
+      ],
+      "exclude_keywords": [
+        "newsletter",
+        "webinar recording"
+      ],
       "require_dates": true,
       "max_items": 50
     },
-
     {
       "id": "interreg_aurora",
       "nimi": "Interreg Aurora – ajankohtaista",
@@ -292,11 +488,17 @@
       "ohjelma": "Interreg Aurora 2021–2027",
       "alue": "Pohjois-Suomi ja Pohjoiskalotti",
       "fallback_link": "https://www.interregaurora.eu/calls/",
-      "include_keywords": ["call", "haku", "application", "deadline", "funding", "apply"],
+      "include_keywords": [
+        "call",
+        "haku",
+        "application",
+        "deadline",
+        "funding",
+        "apply"
+      ],
       "require_dates": true,
       "max_items": 50
     },
-
     {
       "id": "interreg_central_baltic",
       "nimi": "Interreg Central Baltic – ajankohtaista",
@@ -310,11 +512,16 @@
       "ohjelma": "Interreg Central Baltic 2021–2027",
       "alue": "Keskinen Itämeri",
       "fallback_link": "https://centralbaltic.eu/calls/",
-      "include_keywords": ["call", "haku", "application", "deadline", "funding"],
+      "include_keywords": [
+        "call",
+        "haku",
+        "application",
+        "deadline",
+        "funding"
+      ],
       "require_dates": true,
       "max_items": 40
     },
-
     {
       "id": "nordforsk",
       "nimi": "NordForsk – ajankohtaista",
@@ -327,11 +534,17 @@
       "rahoittajatyyppi": "Pohjoismainen",
       "alue": "Pohjoismaat",
       "fallback_link": "https://www.nordforsk.org/calls",
-      "include_keywords": ["call", "haku", "application", "deadline", "funding", "proposals"],
+      "include_keywords": [
+        "call",
+        "haku",
+        "application",
+        "deadline",
+        "funding",
+        "proposals"
+      ],
       "require_dates": true,
       "max_items": 40
     },
-
     {
       "id": "research_fi_funding_calls",
       "nimi": "Research.fi – rahoitushaut (kaikki kotimaiset rahoittajat)",
@@ -347,8 +560,20 @@
       },
       "body": {
         "size": 200,
-        "query": { "range": { "callProgrammeDueDate": { "gte": "now/d" } } },
-        "sort": [{ "callProgrammeDueDate": { "order": "asc" } }]
+        "query": {
+          "range": {
+            "callProgrammeDueDate": {
+              "gte": "now/d"
+            }
+          }
+        },
+        "sort": [
+          {
+            "callProgrammeDueDate": {
+              "order": "asc"
+            }
+          }
+        ]
       },
       "items_path": "hits.hits",
       "field_map": {
@@ -364,7 +589,6 @@
       "require_dates": true,
       "max_items": 200
     },
-
     {
       "id": "business_finland_html",
       "nimi": "MALLI: Business Finland – rahoitushaut (HTML-raaputus)",
@@ -386,7 +610,6 @@
       "default_window_days": 45,
       "max_items": 30
     },
-
     {
       "id": "rakennerahastot_html",
       "nimi": "MALLI: Rakennerahastot.fi – hakuajat (HTML-raaputus)",
@@ -409,7 +632,6 @@
       "default_window_days": 45,
       "max_items": 40
     },
-
     {
       "id": "esimerkki_oma_rss",
       "nimi": "MALLI: oma RSS-syöte",
@@ -422,7 +644,10 @@
       "rahoittajatyyppi": "Julkinen",
       "alue": "Koko Suomi",
       "fallback_link": "https://esimerkki.fi/haut",
-      "include_keywords": ["haku", "rahoitus"],
+      "include_keywords": [
+        "haku",
+        "rahoitus"
+      ],
       "aihe_keywords": [],
       "exclude_keywords": [],
       "require_dates": true,
