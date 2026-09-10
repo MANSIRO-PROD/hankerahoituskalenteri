@@ -805,6 +805,14 @@ def normalize_record(raw: dict, source: dict, today: dt.date) -> dict | None:
     # Päivämäärät: adapterin antamat voittavat, muuten päätellään tekstistä
     start = _parse_iso(raw.get("haku_alkaa"))
     end = _parse_iso(raw.get("haku_paattyy"))
+
+    # Jotkin rajapinnat (mm. Research.fi) merkitsevät "ei kiinteää alkupäivää"
+    # arvolla 1900-01-01. Sellainen ei kuulu kalenteriin alkupäivänä.
+    if start and start.year < 2000:
+        start = None
+    if end and end.year < 2000:
+        end = None
+
     if not (start and end):
         guess_start, guess_end = find_date_range(haystack)
         start = start or guess_start
