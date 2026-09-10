@@ -1263,9 +1263,15 @@ def lapaisee_suodattimet(
     if include and not any(has_keyword(blob, k.lower()) for k in include):
         return False
 
+    # Aihesuodatus voi katsoa eri kenttiin kuin hakusanasuodatus. Laajoissa
+    # lähteissä pitkä kuvausteksti tuottaa vääriä osumia, joten "aihe_kentat"
+    # voi rajata tarkistuksen esim. otsikkoon ja rahoittajan nimeen.
+    aihe_kentat = source.get("aihe_kentat") or ["nimi", "kuvaus"]
+    aihe_blob = " ".join(str(raw.get(k, "")) for k in aihe_kentat).lower()
+
     aihe = source.get("aihe_keywords", oletus_aihe or [])
     if aihe and source.get("aihe_suodatus", True):
-        if not any(has_keyword(blob, k.lower()) for k in aihe):
+        if not any(has_keyword(aihe_blob, k.lower()) for k in aihe):
             return False
 
     exclude = source.get("exclude_keywords")

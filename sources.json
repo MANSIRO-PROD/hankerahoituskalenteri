@@ -284,7 +284,12 @@
         "rekrytointi",
         "vuosikertomus",
         "myönsi",
-        "rahoituspäätökset"
+        "rahoituspäätökset",
+        "valitsi",
+        "valittiin",
+        "jätettiin",
+        "päättyi",
+        "tuloksia"
       ],
       "require_dates": true,
       "max_items": 50
@@ -551,7 +556,7 @@
       "tyyppi": "json_api",
       "enabled": true,
       "verified": "2026-09-10",
-      "huom": "KORJATTU: palvelu on siirtynyt Rahti 1:stä Rahti 2:een ja vanha osoite (researchfi-api-production.rahtiapp.fi) palautti 503. Myös kenttänimet olivat vanhentuneet: rahoittaja on nyt foundation-listassa ja linkki kentässä applicationURL_fi. Kysely rajaa hakuihin, joiden määräaika on tulevaisuudessa. Tämä on luettelon kattavin yksittäinen lähde — mukana on satoja kotimaisia rahoittajia, ja aihesuodatus poimii niistä ympäristöaiheiset. Rahoittajatyyppi päätellään rahoittajan nimestä, koska lähteessä on sekä säätiöitä että julkisia toimijoita.",
+      "huom": "KORJATTU: palvelu on siirtynyt Rahti 1:stä Rahti 2:een ja vanha osoite (researchfi-api-production.rahtiapp.fi) palautti 503. Myös kenttänimet olivat vanhentuneet: rahoittaja on nyt foundation-listassa ja linkki kentässä applicationURL_fi. Kysely rajaa hakuihin, joiden määräaika on tulevaisuudessa. Tämä on luettelon kattavin yksittäinen lähde — mukana on satoja kotimaisia rahoittajia, ja aihesuodatus poimii niistä ympäristöaiheiset. Rahoittajatyyppi päätellään rahoittajan nimestä, koska lähteessä on sekä säätiöitä että julkisia toimijoita. Aihesuodatus katsoo vain hakemuksen otsikkoa ja rahoittajan nimeä (aihe_kentat), koska pitkät kuvaustekstit tuottivat vääriä osumia.",
       "url": "https://researchfi-api-production.2.rahtiapp.fi/portalapi/funding-call/_search",
       "method": "POST",
       "headers": {
@@ -586,7 +591,11 @@
       },
       "fallback_link": "https://research.fi/fi/results/funding-calls?status=open",
       "require_dates": true,
-      "max_items": 200
+      "max_items": 200,
+      "aihe_kentat": [
+        "nimi",
+        "rahoittaja"
+      ]
     },
     {
       "id": "business_finland_html",
