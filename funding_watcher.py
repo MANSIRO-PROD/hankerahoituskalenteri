@@ -1230,6 +1230,41 @@ def compute_status(call: dict, today: dt.date) -> str:
 
 
 # --------------------------------------------------------------------------
+# Suodatus
+# --------------------------------------------------------------------------
+
+def lapaisee_suodattimet(
+    raw: dict, source: dict, oletus_aihe: list[str] | None = None
+) -> bool:
+    """Kertoo, läpäiseekö yksi rivi lähteen avainsanasuodattimet.
+
+    Kolme ehtoa, kaikkien on toteuduttava:
+      1. include_keywords — rivin on osuttava johonkin näistä (hakuluonteisuus)
+      2. aihe_keywords / oletus_aihe_keywords — rivin on osuttava johonkin
+         näistä (aihepiiri, esim. ympäristö). Lähdekohtainen lista voittaa
+         globaalin; "aihe_suodatus": false ohittaa ehdon kokonaan niiden
+         rahoittajien kohdalla, joiden koko toiminta on jo aiheessa.
+      3. exclude_keywords — rivi ei saa osua yhteenkään näistä
+    """
+    blob = f"{raw.get('nimi', '')} {raw.get('kuvaus', '')}".lower()
+
+    include = source.get("include_keywords")
+    if include and not any(has_keyword(blob, k.lower()) for k in include):
+        return False
+
+    aihe = source.get("aihe_keywords", oletus_aihe or [])
+    if aihe and source.get("aihe_suodatus", True):
+        if not any(has_keyword(blob, k.lower()) for k in aihe):
+            return False
+
+    exclude = source.get("exclude_keywords")
+    if exclude and any(has_keyword(blob, k.lower()) for k in exclude):
+        return False
+
+    return True
+
+
+# --------------------------------------------------------------------------
 # Pääajo
 # --------------------------------------------------------------------------
 
@@ -1246,6 +1281,7 @@ def collect_from_sources(
               Käytetään käyttöliittymän edistymispalkkiin.
     """
     found: list[dict] = []
+    oletus_aihe: list[str] = config.get("oletus_aihe_keywords") or []
     sources = [
         s for s in config.get("sources", [])
         if s.get("enabled", True) and (not only or s.get("id") == only)
@@ -1286,14 +1322,7 @@ def collect_from_sources(
         log.info("   %d riviä syötteestä", len(raw_items))
         kept = 0
         for raw in raw_items:
-            blob = f"{raw.get('nimi', '')} {raw.get('kuvaus', '')}".lower()
-            if source.get("include_keywords") and not any(
-                has_keyword(blob, k.lower()) for k in source["include_keywords"]
-            ):
-                continue
-            if source.get("exclude_keywords") and any(
-                has_keyword(blob, k.lower()) for k in source["exclude_keywords"]
-            ):
+            if not lapaisee_suodattimet(raw, source, oletus_aihe):
                 continue
             normalized = normalize_record(raw, source, today)
             if normalized:
@@ -1433,7 +1462,12 @@ def run_test_sources(args: argparse.Namespace) -> int:
             print(f"  ✗  {label} VIRHE: {truncate(str(exc), 90)}")
             continue
         elapsed = time.time() - started
-        usable = sum(1 for r in raw_items if normalize_record(r, source, today))
+        oletus_aihe = config.get("oletus_aihe_keywords") or []
+        usable = sum(
+            1 for r in raw_items
+            if lapaisee_suodattimet(r, source, oletus_aihe)
+            and normalize_record(r, source, today)
+        )
         mark = "✓" if raw_items else "⚠"
         if raw_items:
             ok_count += 1
