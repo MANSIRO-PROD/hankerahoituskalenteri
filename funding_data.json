@@ -1,6 +1,6 @@
 {
   "versio": 1,
-  "paivitetty": "2026-09-10T15:46:27+00:00",
+  "paivitetty": "2026-09-10T15:53:29+00:00",
   "lahde_info": "Esimerkkidata. funding_watcher.py päivittää tämän tiedoston automaattisesti. Tarkista päivämäärät aina rahoittajan omalta sivulta ennen hakemista.",
   "hankkeet": [
     {
@@ -502,6 +502,384 @@
       ],
       "linkki": "https://valtioneuvosto.fi/-/1410903/ravinteiden-kierratyksen-valtakunnallinen-avustushaku-avautuu",
       "lahde": "vn_tiedotteet",
+      "loydetty": "2026-09-10"
+    },
+    {
+      "id": "suomalainen-tiedeakatemi-vilho-yrjo-ja-kalle-vaisalan-rahaston-ap-7cbfdc",
+      "nimi": "Vilho, Yrjö ja Kalle Väisälän rahaston apurahahaku",
+      "rahoittaja": "Suomalainen Tiedeakatemia",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "",
+      "haku_alkaa": "2026-08-14",
+      "haku_paattyy": "2026-09-14",
+      "summa": "Ei ilmoitettu",
+      "alue": "",
+      "kuvaus": "VILHO, YRJÖ JA KALLE VÄISÄLÄN RAHASTON APURAHAT\nHaku avoinna 14.8.–14.9.2026\nSuomalainen Tiedeakatemia julistaa haettavaksi Vilho, Yrjö ja Kalle Väisälän rahastosta apurahoja matemaattis-luonnontieteellisille tutkimusaloille. Rahasto tukee erityisesti matematiikan, fysiikan, meteorologian, geofysiikan ja astronomian aloilla tehtävää tutkimusta. Hakemuksia voidaan jättää myös seuraavilta alueilta, edellyttäen että tehtävässä tutkimuksessa on merkittävässä roolissa matemaattinen tai laskennallinen komponentti: kemia, biokemia; biologia, biotieteet, ympäristötiede; lääketiede, terveystieteet; lääketieteellinen tekniikka, biofysiikka; tietojenkäsittelytiede ja -tekniikka.\nApuraha tohtoriopintoihin mahdollistamaan vuoden mittaisen (29 000 euroa) ansiotyöstä vapaan työskentelyn. Apuraha myönnetään enintään vuodeksi kerrallaan ja sen saamisen edellytyksenä on jatko-opinto-oikeus. Rahoituspäätö…",
+      "kayttotarkoitus": [
+        "Työskentelyapurahat"
+      ],
+      "kohderyhmat": [
+        "Tutkijat ja tutkimusryhmät"
+      ],
+      "linkki": "https://acadsci.fi/apurahat-ja-palkinnot/haettavat-apurahat/vaisalan-rahasto-2/",
+      "lahde": "research_fi_funding_calls",
+      "loydetty": "2026-09-10"
+    },
+    {
+      "id": "koneen-saatio-metsan-puolella-ad5695",
+      "nimi": "Metsän puolella",
+      "rahoittaja": "Koneen Säätiö",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "",
+      "haku_alkaa": "1900-01-01",
+      "haku_paattyy": "2100-01-01",
+      "summa": "Ei ilmoitettu",
+      "alue": "",
+      "kuvaus": "Ole metsän puolella! Koneen Säätiö etsii monitieteisiä ja -alaisia hankkeita, jotka lisäävät ymmärrystä metsien monista merkityksistä sekä tuovat uusia ääniä ja lähestymiskulmia metsäkeskusteluun. Hakemukset arvioidaan tieteen ja taiteen asiantuntijoiden toimesta, ja Koneen Säätiön hallitus tekee lopulliset päätökset myönnettävästä rahoituksesta. Rahoitettavat hankkeet voivat liittyä esimerkiksi suomalaisten metsäsuhteeseen, metsämyytteihin, suomalaiseen metsäpuheeseen ja -sanastoon, metsävallankäyttöön, edunvalvontaan ja demokratiaan, tutkimuksen ja taiteen riippumattomuuteen ja puhumisen oikeuteen, jokaisenoikeuksiin ja omaisuudensuojaan, tulevaisuuden metsiin, metsätalouteen ja metsäaktivismiin tai vaikka metsän, maaperän, soiden ja vesistöjen yhteyteen ja sen merkitykseen luonnon monimuotoisuudelle ja ilmastolle. Hankkeiden toivotaan sisältävän monitieteistä tutkimusta, taidetta, jo…",
+      "kayttotarkoitus": [
+        "Laite- ja investointikulut",
+        "Ilmasto-, energia- ja vihreän siirtymän toimet",
+        "Taiteellinen työ ja kulttuurituotannot"
+      ],
+      "kohderyhmat": [
+        "Yhdistykset, järjestöt ja säätiöt"
+      ],
+      "linkki": "https://koneensaatio.apurahat.net/login.aspx?lcid=1035",
+      "lahde": "research_fi_funding_calls",
+      "loydetty": "2026-09-10"
+    },
+    {
+      "id": "instrumentariumin-tiedes-instrumentariumin-tiedesaation-apurahaha-c5d186",
+      "nimi": "Instrumentariumin tiedesäätiön apurahahaku 2027",
+      "rahoittaja": "Instrumentariumin tiedesäätiö",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "",
+      "haku_alkaa": "2026-08-01",
+      "haku_paattyy": "2026-09-15",
+      "summa": "Ei ilmoitettu",
+      "alue": "",
+      "kuvaus": "Instrumentariumin tiedesäätiö on varannut 2,0 miljoonaa euroa lääketieteen sekä teknisten ja luonnontieteiden laitteisiin ja menetelmiin liittyvän tutkimustyön tukemiseen. Lisäksi säätiö voi rahoittaa näiden alojen taloustieteellistä tutkimusta.",
+      "kayttotarkoitus": [
+        "Työskentelyapurahat"
+      ],
+      "kohderyhmat": [
+        "Yhdistykset, järjestöt ja säätiöt"
+      ],
+      "linkki": "https://research.fi/fi/results/funding-calls?status=open",
+      "lahde": "research_fi_funding_calls",
+      "loydetty": "2026-09-10"
+    },
+    {
+      "id": "kaute-saatio-vesitekniikan-tutkimuksen-rahoitushaku-89df40",
+      "nimi": "Vesitekniikan tutkimuksen rahoitushaku",
+      "rahoittaja": "KAUTE-säätiö",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "",
+      "haku_alkaa": "2026-08-17",
+      "haku_paattyy": "2026-09-18",
+      "summa": "Ei ilmoitettu",
+      "alue": "",
+      "kuvaus": "KAUTEn ja Erkki Paasikiven säätiön yhteinen vesitekniikan tutkimukseen keskittyvä apurahahaku järjestetään 17.8.-18.9.2026. Haun tarkoitus on taata pitkäjänteistä rahoitusta erityisesti nuorten tutkijoiden tutkimushankkeille.\nSäätiöiden yhteisessä apurahahaussa rahoitetaan vesitekniikan tutkimukseen ja kehitykseen liittyviä hankkeita. Rahoitusta myönnetään erityisesti puhtaan veden teknologian tutkimukseen ja kehittämiseen, ja sitä voi hakea 3, 6 tai 12 kuukauden tutkimusjaksolle. Apurahoja myönnetään ensisijaisesti väitöskirjatutkimuksiin sekä väitöskirjan jälkeisiin postdoc-tutkimuksiin.",
+      "kayttotarkoitus": [
+        "Työskentelyapurahat"
+      ],
+      "kohderyhmat": [
+        "Tutkijat ja tutkimusryhmät",
+        "Yhdistykset, järjestöt ja säätiöt"
+      ],
+      "linkki": "https://vesitekniikantutkimus.apurahat.net/login.aspx?lcid=1035",
+      "lahde": "research_fi_funding_calls",
+      "loydetty": "2026-09-10"
+    },
+    {
+      "id": "urheiluopistosaatio-tutkimusapuraha-d4d225",
+      "nimi": "Tutkimusapuraha",
+      "rahoittaja": "Urheiluopistosäätiö",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "",
+      "haku_alkaa": "2026-09-01",
+      "haku_paattyy": "2026-10-01",
+      "summa": "Ei ilmoitettu",
+      "alue": "",
+      "kuvaus": "Haettavat Urheiluopistosäätiön tutkimusapurahat vuodeksi 2027 \nUrheiluopistosäätiö on yleishyödyllinen säätiö, jonka tarkoituksena on tukea kotimaassa tapahtuvaa \nurheilu- ja liikuntakasvatusta. Tarkoituksensa toteuttamiseksi säätiö myöntää tutkimusapurahoja liikuntatieteellisen tutkimuksen edistämiseen. \nTutkimusapurahojen hakuaika on 1.- 30.9.2026. Hakemus tulee jättää sähköisesti apurahajärjestelmässä hakuajan päättymiseen mennessä. Tutkimusapurahan tarkemmat hakuohjeet löytyvät kotisivuiltamme www.urheiluopistosaatio.fi.\nTutkimusapurahaa myönnetään ensisijaisesti liikuntatieteelliseen sekä \nliikuntalääketieteelliseen väitöskirjatasoiseen tutkimustyöhön. Apurahaa voi saada myös tutkimukseen liittyvien julkaisukustannusten kattamiseen ja laitehankintoihin. Osa apurahasta voidaan käyttää yliopiston tm. laitoksen yleiskustannusosuuden kattamiseen. \nHaettavana on 1-2 kolmivuotista tutkim…",
+      "kayttotarkoitus": [
+        "Työskentelyapurahat",
+        "Laite- ja investointikulut",
+        "Julkaisu- ja avoimen tieteen kulut"
+      ],
+      "kohderyhmat": [
+        "Korkeakoulut ja tutkimuslaitokset",
+        "Tutkijat ja tutkimusryhmät",
+        "Yhdistykset, järjestöt ja säätiöt"
+      ],
+      "linkki": "https://www.urheiluopistosaatio.fi/",
+      "lahde": "research_fi_funding_calls",
+      "loydetty": "2026-09-10"
+    },
+    {
+      "id": "suomen-metsasaatio-metsasaation-isot-apurahat-73f897",
+      "nimi": "Metsäsäätiön isot apurahat",
+      "rahoittaja": "Suomen Metsäsäätiö",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "",
+      "haku_alkaa": "2026-09-01",
+      "haku_paattyy": "2026-10-08",
+      "summa": "Ei ilmoitettu",
+      "alue": "",
+      "kuvaus": "Suomen Metsäsäätiön isoista, yli 5000 euron, apurahoista päättää Metsäsäätiön hallitus. Tutustu Metsäsäätiön tavoitteisiin metsasaatio.fi.",
+      "kayttotarkoitus": [
+        "Työskentelyapurahat"
+      ],
+      "kohderyhmat": [
+        "Tarkista hakukelpoisuus rahoittajan hakusivulta"
+      ],
+      "linkki": "https://metsasaatio.apurahat.net/login.aspx?lcid=1035",
+      "lahde": "research_fi_funding_calls",
+      "loydetty": "2026-09-10"
+    },
+    {
+      "id": "kaute-saatio-kauten-vihrean-siirtyman-apurahahaku-tut-2d8cf6",
+      "nimi": "KAUTEn Vihreän siirtymän apurahahaku tutkimusryhmille",
+      "rahoittaja": "KAUTE-säätiö",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "",
+      "haku_alkaa": "2026-09-11",
+      "haku_paattyy": "2026-10-09",
+      "summa": "Ei ilmoitettu",
+      "alue": "",
+      "kuvaus": "Myönnämme apurahoja tutkimusryhmille, jotka kehittävät ratkaisuja ilmastonmuutoksen tai luontokadon aiheuttamiin haasteisiin. Rahoitus pyritään kohdistamaan tutkimusputken loppupäässä oleviin, kaupallistamisvalmiutta lähestyviin hankkeisiin (TRL 3-6). Arvioinnissa huomioidaan mm. hankkeen tutkimuksellinen tausta, oletettu vaikutus sekä liiketoimintapotentiaali.\nMyönnettävä apurahat voivat kattaa palkkakuluja, tutkimuskuluja, laitehankintoja tai muita hankkeen edistymisen kannalta perusteltuja kuluja. Rahoitettavien hankkeiden kesto on kuudesta kuukaudesta kahteen vuoteen ja apurahan suuruus 20 000-100 000 euroa/hanke. Hankkeella voi olla muuta samanaikaista rahoitusta.",
+      "kayttotarkoitus": [
+        "Henkilöstö- ja palkkakulut",
+        "Työskentelyapurahat",
+        "Laite- ja investointikulut",
+        "Ilmasto-, energia- ja vihreän siirtymän toimet"
+      ],
+      "kohderyhmat": [
+        "Tarkista hakukelpoisuus rahoittajan hakusivulta"
+      ],
+      "linkki": "https://kaute.apurahat.net/login.aspx?lcid=1035",
+      "lahde": "research_fi_funding_calls",
+      "loydetty": "2026-09-10"
+    },
+    {
+      "id": "suomen-luonnonvarain-tut-tutkimusapurahan-haku-650a59",
+      "nimi": "Tutkimusapurahan haku",
+      "rahoittaja": "Suomen Luonnonvarain Tutkimussäätiö sr",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "",
+      "haku_alkaa": "2026-09-01",
+      "haku_paattyy": "2026-10-11",
+      "summa": "Ei ilmoitettu",
+      "alue": "",
+      "kuvaus": "Suomen Luonnonvarain Tutkimussäätiö rahoittaa vastuullista, kaupallisesti hyödynnettävää ja resurssitehokasta luonnonvarataloutta edistävää innovaatioihin tähtäävää tutkimusta (tuotanto, hyödyntäminen, kulutuskestävä käyttö).\n• Biotalous\n• Mineraalitalous\nInnovaatiot voivat olla Suomen luonnonvaroihin liittyviä prosesseja, teknologioita, tuotteita, palveluita tai sosiaalisia innovaatioita. Innovaatioilla pitää kuitenkin olla taloudellista hyödyntämispotentiaalia kestävän kehityksen periaatteiden mukaisesti. Suomen luonnonvaroilla tarkoitetaan metsiä, mineraaleja, vettä ja niiden eliöstöä . Tavoitteena on luoda edellytyksiä elinkeinoelämän uudistumiselle vastuullisvastuullista, kaupallisesti hyödynnettävää ja resurssitehokasta luonnonvarataloutta edistävää innovaatioihin tähtäävää tutkimusta, kaupallisesti hyödynnettävää ja resurssitehokasta luonnonvarataloutta edistävää innovaatioihin t…",
+      "kayttotarkoitus": [
+        "Tuotekehitys, pilotit ja demonstraatiot"
+      ],
+      "kohderyhmat": [
+        "Tarkista hakukelpoisuus rahoittajan hakusivulta"
+      ],
+      "linkki": "https://slts.apurahat.net/login.aspx?lcid=1035",
+      "lahde": "research_fi_funding_calls",
+      "loydetty": "2026-09-10"
+    },
+    {
+      "id": "sigrid-juseliuksen-saati-sigrid-juselius-symposium-2028-dad5b3",
+      "nimi": "Sigrid Jusélius Symposium 2028",
+      "rahoittaja": "Sigrid Juséliuksen Säätiö",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "",
+      "haku_alkaa": "2026-09-15",
+      "haku_paattyy": "2026-10-15",
+      "summa": "Ei ilmoitettu",
+      "alue": "",
+      "kuvaus": "Sigrid Juséliuksen Säätiö julistaa haettavaksi rahoituksen lääketieteellisen symposiumin järjestämiseksi:\nSigrid Juséliuksen Säätiö rahoittaa kesäkuussa 2028 Hanasaaressa kansainvälisen lääketieteellisen symposiumin, jonka kesto on noin kolme päivää. Tieteellisestä ohjelmasta vastaava henkilö tai järjestelytoimikunta valitaan säätiölle jätettyjen hakemusten perusteella. Tieteellisestä puolesta vastaavan tehtävä on ohjelman laatiminen ja luennoitsijoiden sekä muiden osallistujien valinta.",
+      "kayttotarkoitus": [
+        "Tarkista tarkka käyttötarkoitus rahoittajan hakusivulta"
+      ],
+      "kohderyhmat": [
+        "Yhdistykset, järjestöt ja säätiöt"
+      ],
+      "linkki": "https://www.sigridjuselius.fi/apurahat/symposiumit/",
+      "lahde": "research_fi_funding_calls",
+      "loydetty": "2026-09-10"
+    },
+    {
+      "id": "erkki-j-hollon-saatio-apuraha-0baf44",
+      "nimi": "Apuraha",
+      "rahoittaja": "Erkki J. Hollon säätiö",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "",
+      "haku_alkaa": "2026-10-15",
+      "haku_paattyy": "2026-11-01",
+      "summa": "Ei ilmoitettu",
+      "alue": "",
+      "kuvaus": "Apurahoja jaetaan säätiön sääntöjen mukaisiin tarkoituksiin (eurooppalaisen kulttuuriperinteen edistäminen ympäristöoikeuden, oikeusfilosofian ja kielihistorian aloilla, eritoten Suomen, Saksan ja Italian välisen sivistyksellisen vuorovaikutuksen parantamiseksi). Lyhytaikaisten matka- ja kongressiavustusten ja tieteellisten tapahtumatukien lisäksi tutkimusapuraha voidaan myöntää enintään 6-kuukautiseen päätoimiseen tutkimustyöhön oppilaitoksessa hyväksytyn tutkimussuunnitelman mukaiseen työhön. Kustannusperusteinen apuraha tulee yksilöidä halvimman vaihtoehdon mukaan. Apurahoja ei myönnetä perusopintoihin eikä työharjoitteluihin, ei myöskään laitehankintoihin tai materiaalikustannuksiin.",
+      "kayttotarkoitus": [
+        "Työskentelyapurahat",
+        "Laite- ja investointikulut",
+        "Matka- ja liikkuvuuskulut",
+        "Taiteellinen työ ja kulttuurituotannot"
+      ],
+      "kohderyhmat": [
+        "Yhdistykset, järjestöt ja säätiöt",
+        "Oppilaitokset"
+      ],
+      "linkki": "https://foundationhollo.fi/",
+      "lahde": "research_fi_funding_calls",
+      "loydetty": "2026-09-10"
+    },
+    {
+      "id": "salaojituksen-tukisaatio-apurahat-ja-avustukset-52fded",
+      "nimi": "Apurahat ja avustukset",
+      "rahoittaja": "Salaojituksen Tukisäätiö sr",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "",
+      "haku_alkaa": "1900-01-01",
+      "haku_paattyy": "2100-01-01",
+      "summa": "Ei ilmoitettu",
+      "alue": "",
+      "kuvaus": "Salaojituksen Tukisäätiö tukee laajasti maatalousmaan salaojitukseen ja vesienhallintaan liittyvää tutkimusta. Tuen piiriin kuuluu maatalousmaan maaperään, vesi- ja ravinnetalouteen, vesitekniikkaan sekä ympäristökysymyksiin liittyvä tutkimus sekä vesienhallinnan taloudelliset tarkastelut. Säätiöltä voi hakea matka-apurahoja alaan liittyviin tapahtumiin.",
+      "kayttotarkoitus": [
+        "Työskentelyapurahat",
+        "Matka- ja liikkuvuuskulut"
+      ],
+      "kohderyhmat": [
+        "Yhdistykset, järjestöt ja säätiöt"
+      ],
+      "linkki": "https://www.tukisaatio.fi/apurahat/",
+      "lahde": "research_fi_funding_calls",
+      "loydetty": "2026-09-10"
+    },
+    {
+      "id": "maa-ja-vesitekniikan-tuk-maa-ja-vesitekniikan-tuki-ry-n-apurahat-a064fc",
+      "nimi": "Maa- ja vesitekniikan tuki ry:n apurahat",
+      "rahoittaja": "Maa- ja vesitekniikan tuki ry",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "",
+      "haku_alkaa": "1900-01-01",
+      "haku_paattyy": "2100-01-01",
+      "summa": "Ei ilmoitettu",
+      "alue": "",
+      "kuvaus": "Tuemme vesi- ja ympäristötekniikkaa uudistavaa tutkimusta ja aloitteita, jotka ovat sovellettavissa laajasti niin Suomessa kuin kansainvälisesti. Apurahaa voi saada esimerkiksi tutkimukseen, opetukseen, opinnäytetyön tekoon, opiskeluun ulkomailla tai matkaan.",
+      "kayttotarkoitus": [
+        "Työskentelyapurahat",
+        "Matka- ja liikkuvuuskulut"
+      ],
+      "kohderyhmat": [
+        "Tarkista hakukelpoisuus rahoittajan hakusivulta"
+      ],
+      "linkki": "https://mvtt.fi",
+      "lahde": "research_fi_funding_calls",
+      "loydetty": "2026-09-10"
+    },
+    {
+      "id": "varustamosaatio-sr-varustamosaation-apurahat-d7009e",
+      "nimi": "Varustamosäätiön apurahat",
+      "rahoittaja": "Varustamosäätiö sr",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "",
+      "haku_alkaa": "1900-01-01",
+      "haku_paattyy": "2100-01-01",
+      "summa": "Ei ilmoitettu",
+      "alue": "",
+      "kuvaus": "Varustamosäätiö jakaa apurahoja varustamotoiminnan ja merenkulun koulutus-, tutkimus- ja tiedotustoimintaan sekä varustamoelinkeinon toimintamahdollisuuksien edistämiseksi. Apurahaa voivat hakea yksityishenkilöt, työryhmät sekä yhteisöt.",
+      "kayttotarkoitus": [
+        "Työskentelyapurahat",
+        "Koulutus ja osaamisen kehittäminen"
+      ],
+      "kohderyhmat": [
+        "Taiteilijat ja työryhmät"
+      ],
+      "linkki": "https://varustamosaatio.fi/apurahat/hakulomake/",
+      "lahde": "research_fi_funding_calls",
+      "loydetty": "2026-09-10"
+    },
+    {
+      "id": "ami-saatio-ami-saation-hankeavustukset-56fc61",
+      "nimi": "Ami-säätiön hankeavustukset",
+      "rahoittaja": "Ami-säätiö",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "",
+      "haku_alkaa": "1900-01-01",
+      "haku_paattyy": "2100-01-01",
+      "summa": "Ei ilmoitettu",
+      "alue": "",
+      "kuvaus": "Hankeavustusta myönnetään juridisille yhteisöille tai näistä muodostuvalle konsortiolle hankkeisiin, jotka edistävät säätiön ohjelmatoiminnan painopistealueita (osaaminen ja kohtaannossa onnistuminen, monimuotoisuus työmarkkinoilla, työhyvinvointi ja työssä jaksaminen). Avustusta myönnetään tiedon tuotantoon, esimerkiksi tieteelliseen tutkimukseen tai muunlaiseen yleishyödylliseen tiedon tuotantoon.",
+      "kayttotarkoitus": [
+        "Tarkista tarkka käyttötarkoitus rahoittajan hakusivulta"
+      ],
+      "kohderyhmat": [
+        "Yhdistykset, järjestöt ja säätiöt",
+        "Konsortiot ja kumppanuushankkeet"
+      ],
+      "linkki": "https://ami.fi/apurahat-ja-avustukset/hankeavustukset/",
+      "lahde": "research_fi_funding_calls",
+      "loydetty": "2026-09-10"
+    },
+    {
+      "id": "sahkotekniikan-ja-energi-sahko-ja-energia-alan-tki-hankkeet-6e2537",
+      "nimi": "Sähkö- ja energia-alan TKI-hankkeet",
+      "rahoittaja": "Sähkötekniikan ja energiatehokkuuden edistämiskeskus STEK ry",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "",
+      "haku_alkaa": "1900-01-01",
+      "haku_paattyy": "2100-01-01",
+      "summa": "Ei ilmoitettu",
+      "alue": "",
+      "kuvaus": "Rahoituksen kohteena voi olla energiajärjestelmä (mukaanlukien sen käyttö) kokonaisuudessaan ja laajasti ymmärrettynä. Rahoituksessa painopiste on soveltamisessa ja innovatiivisuudessa, joskin uusien, tutkimuksellisten ja radikaalien avausten osalta aikajänne soveltamiseen voi olla pitkä.\nVaikka aihepiirin oletetaan liittyvän keskeisesti sähkö- ja energiatekniikkaan, rahoitusta ei rajata koskemaan vain tekniikan tutkimusta. Tutkimuksen liittyminen energiamurroksen ja sähkön käytön haasteisiin, olivatpa ne teknologisia tai sosio-ekonomisia, on oleellisempaa kuin oppiainerajaukset.",
+      "kayttotarkoitus": [
+        "Tuotekehitys, pilotit ja demonstraatiot",
+        "Ilmasto-, energia- ja vihreän siirtymän toimet"
+      ],
+      "kohderyhmat": [
+        "Tarkista hakukelpoisuus rahoittajan hakusivulta"
+      ],
+      "linkki": "https://stek.fi/rahoitus/mita-rahoitetaan/tutkimus-kehitys-ja-innovaatiohankkeet/",
+      "lahde": "research_fi_funding_calls",
+      "loydetty": "2026-09-10"
+    },
+    {
+      "id": "sahkotekniikan-ja-energi-sahko-ja-energia-alan-koulutuksen-ja-ope-163967",
+      "nimi": "Sähkö- ja energia-alan koulutuksen ja opetuksen kehitäminen",
+      "rahoittaja": "Sähkötekniikan ja energiatehokkuuden edistämiskeskus STEK ry",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "",
+      "haku_alkaa": "1900-01-01",
+      "haku_paattyy": "2100-01-01",
+      "summa": "Ei ilmoitettu",
+      "alue": "",
+      "kuvaus": "STEK:in tavoitteena on varmistaa alan tulevaisuuden osaaminen rahoittamalla hankkeita, joilla edistetään lasten, nuorten ja opiskelijoiden kiinnostusta ja kiinnittymistä sähkö- ja energia-alaan ja nostetaan osaamistasoa kaikissa ikäluokissa.",
+      "kayttotarkoitus": [
+        "Koulutus ja osaamisen kehittäminen",
+        "Ilmasto-, energia- ja vihreän siirtymän toimet"
+      ],
+      "kohderyhmat": [
+        "Tarkista hakukelpoisuus rahoittajan hakusivulta"
+      ],
+      "linkki": "https://stek.fi/rahoitus/mita-rahoitetaan/alan-koulutuksen-ja-opetuksen-kehittaminen/",
+      "lahde": "research_fi_funding_calls",
+      "loydetty": "2026-09-10"
+    },
+    {
+      "id": "tyosuojelurahasto-matkastipendi-1a4006",
+      "nimi": "Matkastipendi",
+      "rahoittaja": "Työsuojelurahasto",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "",
+      "haku_alkaa": "1900-01-01",
+      "haku_paattyy": "2100-01-01",
+      "summa": "Ei ilmoitettu",
+      "alue": "",
+      "kuvaus": "Jos olet esittelemässä suomalaista työelämän tutkimusta tai kehitystyötä ulkomailla järjestettävässä kansainvälisessä tieteellisessä konferenssissa, voit hakea matkakulujesi kattamiseen Työsuojelurahaston matkastipendiä. Esityksesi on pohjauduttava tutkimuksellisin menetelmin tuotettuun tietoon. Matkastipendillä voit kattaa enintään 80 prosenttia konferenssimatkasi matka- ja majoituskuluista sekä osallistumismaksuista. Stipendihakemus on jätettävä Työsuojelurahastolle ennen matkan alkua.",
+      "kayttotarkoitus": [
+        "Työskentelyapurahat",
+        "Matka- ja liikkuvuuskulut"
+      ],
+      "kohderyhmat": [
+        "Tarkista hakukelpoisuus rahoittajan hakusivulta"
+      ],
+      "linkki": "https://www.tsr.fi/rahoitus-yksityishenkiloille/matkastipendi/",
+      "lahde": "research_fi_funding_calls",
       "loydetty": "2026-09-10"
     }
   ]
