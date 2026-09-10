@@ -206,18 +206,50 @@
 
     {
       "id": "eu_funding_tenders",
-      "nimi": "EU Funding & Tenders Portal – ympäristöhaut (LIFE, Horizon)",
+      "nimi": "EU Funding & Tenders Portal – haut (LIFE, Horizon)",
       "tyyppi": "eu_sedia",
       "enabled": true,
       "verified": "ei varmistettu — palautti HTTP 500 10.9.2026",
-      "huom": "Virallinen SEDIA-hakurajapinta. Sopimus voi muuttua ilman ennakkoilmoitusta. Jos 500 jatkuu, aseta enabled=false ja seuraa portaalia käsin.",
+      "huom": "Virallinen SEDIA-hakurajapinta. GET-testi palautti 405, eli päätepiste on olemassa ja vaatii POSTin — vika on rungossa tai otsikoissa. Tämä on variantti A: selainmainen User-Agent, sort=sortStatus.",
       "url": "https://api.tech.ec.europa.eu/search-api/prod/rest/search",
       "api_key": "SEDIA",
-      "text": "environment OR climate OR biodiversity OR water OR circular",
+      "text": "***",
       "page_size": 50,
       "statuses": ["forthcoming", "open"],
       "types": ["1", "2", "8"],
       "languages": ["en"],
+      "sort": { "field": "sortStatus", "order": "ASC" },
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (compatible; hankerahoituskalenteri/1.2; +https://github.com/roopejmansikkasalo-cyber/hankerahoituskalenteri)",
+        "Accept": "application/json, text/plain, */*"
+      },
+      "rahoittaja": "Euroopan komissio",
+      "rahoittajatyyppi": "EU",
+      "ohjelma": "LIFE / Horizon Europe",
+      "alue": "EU + assosioituneet maat",
+      "require_dates": true,
+      "max_items": 60
+    },
+
+    {
+      "id": "eu_funding_tenders_b",
+      "nimi": "EU Funding & Tenders Portal – haut (variantti B)",
+      "tyyppi": "eu_sedia",
+      "enabled": true,
+      "verified": "testivariantti 10.9.2026",
+      "huom": "DIAGNOSTIIKKA: sama rajapinta kuin eu_funding_tenders, mutta sort=startDate. Kun tiedetään kumpi variantti vastaa, poista toinen käytöstä.",
+      "url": "https://api.tech.ec.europa.eu/search-api/prod/rest/search",
+      "api_key": "SEDIA",
+      "text": "***",
+      "page_size": 50,
+      "statuses": ["forthcoming", "open"],
+      "types": ["1"],
+      "languages": ["en"],
+      "sort": { "field": "startDate", "order": "DESC" },
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (compatible; hankerahoituskalenteri/1.2; +https://github.com/roopejmansikkasalo-cyber/hankerahoituskalenteri)",
+        "Accept": "application/json, text/plain, */*"
+      },
       "rahoittaja": "Euroopan komissio",
       "rahoittajatyyppi": "EU",
       "ohjelma": "LIFE / Horizon Europe",
@@ -234,6 +266,10 @@
       "verified": "2026-09-10",
       "huom": "UUSI. Itämeren alueen ohjelma: koko sisältö on ympäristö- ja kestävyysaiheista, joten aihesuodatus on pois päältä.",
       "url": "https://interreg-baltic.eu/feed/",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (compatible; hankerahoituskalenteri/1.2; +https://github.com/roopejmansikkasalo-cyber/hankerahoituskalenteri)",
+        "Accept": "application/rss+xml, application/xml, text/xml, */*"
+      },
       "rahoittaja": "Interreg Baltic Sea Region",
       "rahoittajatyyppi": "EU",
       "ohjelma": "Interreg Baltic Sea Region 2021–2027",
@@ -301,31 +337,35 @@
 
     {
       "id": "research_fi_funding_calls",
-      "nimi": "Tiedejatutkimus.fi – rahoitushaut",
+      "nimi": "Research.fi – rahoitushaut (kaikki kotimaiset rahoittajat)",
       "tyyppi": "json_api",
       "enabled": true,
-      "verified": "ei varmistettu — palautti HTTP 503 10.9.2026",
-      "huom": "Kokoaa monen kotimaisen rahoittajan haut yhteen rajapintaan päivämäärineen. Jos 503 jatkuu, tarkista ajantasainen päätepiste osoitteesta https://tiedejatutkimus.fi.",
-      "url": "https://researchfi-api-production.rahtiapp.fi/portalapi/funding-call/_search?size=100",
+      "verified": "2026-09-10",
+      "huom": "KORJATTU: palvelu on siirtynyt Rahti 1:stä Rahti 2:een ja vanha osoite (researchfi-api-production.rahtiapp.fi) palautti 503. Myös kenttänimet olivat vanhentuneet: rahoittaja on nyt foundation-listassa ja linkki kentässä applicationURL_fi. Kysely rajaa hakuihin, joiden määräaika on tulevaisuudessa. Tämä on luettelon kattavin yksittäinen lähde — mukana on satoja kotimaisia rahoittajia, ja aihesuodatus poimii niistä ympäristöaiheiset.",
+      "url": "https://researchfi-api-production.2.rahtiapp.fi/portalapi/funding-call/_search",
       "method": "POST",
-      "headers": { "Content-Type": "application/json" },
+      "headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
       "body": {
-        "size": 100,
-        "query": { "match_all": {} },
+        "size": 200,
+        "query": { "range": { "callProgrammeDueDate": { "gte": "now/d" } } },
         "sort": [{ "callProgrammeDueDate": { "order": "asc" } }]
       },
       "items_path": "hits.hits",
       "field_map": {
         "nimi": "_source.nameFi",
         "kuvaus": "_source.descriptionFi",
-        "rahoittaja": "_source.foundationNameFi",
-        "linkki": "_source.callProgrammeUrl",
+        "rahoittaja": "_source.foundation.nameFi",
+        "linkki": "_source.applicationURL_fi",
         "haku_alkaa": "_source.callProgrammeOpenDate",
         "haku_paattyy": "_source.callProgrammeDueDate"
       },
       "rahoittajatyyppi": "Julkinen",
+      "fallback_link": "https://research.fi/fi/results/funding-calls?status=open",
       "require_dates": true,
-      "max_items": 100
+      "max_items": 200
     },
 
     {

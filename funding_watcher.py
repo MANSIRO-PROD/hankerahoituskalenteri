@@ -697,9 +697,12 @@ def fetch_eu_sedia(source: dict) -> list[dict]:
     }
     url = source["url"] + ("&" if "?" in source["url"] else "?") + urllib.parse.urlencode(params)
 
-    payload = http_json(
-        url, method="POST", headers={"Content-Type": content_type}, data=body
-    )
+    # Lähdekohtaiset otsikot (esim. User-Agent) yhdistetään; Content-Type
+    # tulee multipart-koodauksesta eikä sitä voi korvata konfiguraatiosta.
+    hdrs = dict(source.get("headers") or {})
+    hdrs["Content-Type"] = content_type
+
+    payload = http_json(url, method="POST", headers=hdrs, data=body)
 
     results = payload.get("results") or dig(payload, "response.results") or []
     raw_items: list[dict] = []
