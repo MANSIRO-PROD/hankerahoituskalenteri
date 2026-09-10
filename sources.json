@@ -405,7 +405,7 @@
         "order": "ASC"
       },
       "headers": {
-        "User-Agent": "Mozilla/5.0 (compatible; hankerahoituskalenteri/1.2; +https://github.com/roopejmansikkasalo-cyber/hankerahoituskalenteri)",
+        "User-Agent": "Mozilla/5.0 (compatible; hankerahoituskalenteri/1.2; +https://github.com/mansiro-prod/hankerahoituskalenteri)",
         "Accept": "application/json, text/plain, */*"
       },
       "rahoittaja": "Euroopan komissio",
