@@ -1,0 +1,2447 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hankerahoituskalenteri</title>
+<meta name="description" content="Interaktiivinen kalenteri hankerahoitushauista: kalenteri- ja listanäkymä, 30 päivän laskurit, suodattimet rahoittajatyypin ja tilan mukaan.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<!-- Tailwind CSS (play CDN). Sivu on käyttökelpoinen myös ilman verkkoyhteyttä:
+     kaikki kriittinen tyylittely on alla olevassa <style>-lohkossa. -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+/* ═══════════════════════════════════════════════════════════════════
+   Token-järjestelmä. Vaalea paletti määritellään kokonaan :root-
+   lohkossa; tumma teema kirjoittaa samat tokenit uusiksi.
+   ═══════════════════════════════════════════════════════════════════ */
+:root {
+  --bg:            #EEF1F2;
+  --surface:       #FFFFFF;
+  --surface-2:     #E3E8EA;
+  --surface-3:     #F6F8F8;
+  --ink:           #14201F;
+  --ink-2:         #4E5F62;
+  --ink-3:         #7A8A8D;
+  --line:          #CFD8DA;
+  --line-strong:   #A9B7BA;
+
+  --accent:        #1B4965;
+  --accent-soft:   #DCE7EE;
+  --accent-ink:    #10344A;
+  --on-accent:     #FFFFFF;
+
+  --open:          #14713E;
+  --open-soft:     #DAEEE1;
+  --soon:          #9A5B06;
+  --soon-soft:     #F7E9D2;
+  --urgent:        #A93516;
+  --urgent-soft:   #F8E2DB;
+  --closed:        #6C7A7D;
+  --closed-soft:   #E2E7E8;
+
+  --t-julkinen:    #1B4965;
+  --t-saatiot:     #7C3F7A;
+  --t-eu:          #0E6E7A;
+
+  --shadow-sm:  0 1px 2px rgba(20, 32, 31, .06);
+  --shadow-md:  0 4px 16px -4px rgba(20, 32, 31, .14);
+  --shadow-lg:  0 24px 60px -18px rgba(20, 32, 31, .38);
+
+  --radius:     6px;
+  --maxw:       1180px;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:          #10191B;
+    --surface:     #172225;
+    --surface-2:   #1F2C30;
+    --surface-3:   #141E21;
+    --ink:         #E6EDEE;
+    --ink-2:       #A2B2B5;
+    --ink-3:       #7A8B8F;
+    --line:        #2A3A3E;
+    --line-strong: #3D5157;
+
+    --accent:      #7FB5D6;
+    --accent-soft: #1B333F;
+    --accent-ink:  #BBD9EA;
+  --on-accent:   #0F1A1C;
+    --on-accent:   #0F1A1C;
+
+    --open:        #5DD08C;
+    --open-soft:   #143324;
+    --soon:        #E8B057;
+    --soon-soft:   #38290F;
+    --urgent:      #F08769;
+    --urgent-soft: #3A1D14;
+    --closed:      #849498;
+    --closed-soft: #212D30;
+
+    --t-julkinen:  #7FB5D6;
+    --t-saatiot:   #C695C4;
+    --t-eu:        #5FBECA;
+
+    --shadow-sm:  0 1px 2px rgba(0,0,0,.3);
+    --shadow-md:  0 4px 16px -4px rgba(0,0,0,.5);
+    --shadow-lg:  0 24px 60px -18px rgba(0,0,0,.7);
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg:          #10191B;
+  --surface:     #172225;
+  --surface-2:   #1F2C30;
+  --surface-3:   #141E21;
+  --ink:         #E6EDEE;
+  --ink-2:       #A2B2B5;
+  --ink-3:       #7A8B8F;
+  --line:        #2A3A3E;
+  --line-strong: #3D5157;
+
+  --accent:      #7FB5D6;
+  --accent-soft: #1B333F;
+  --accent-ink:  #BBD9EA;
+
+  --open:        #5DD08C;
+  --open-soft:   #143324;
+  --soon:        #E8B057;
+  --soon-soft:   #38290F;
+  --urgent:      #F08769;
+  --urgent-soft: #3A1D14;
+  --closed:      #849498;
+  --closed-soft: #212D30;
+
+  --t-julkinen:  #7FB5D6;
+  --t-saatiot:   #C695C4;
+  --t-eu:        #5FBECA;
+
+  --shadow-sm:  0 1px 2px rgba(0,0,0,.3);
+  --shadow-md:  0 4px 16px -4px rgba(0,0,0,.5);
+  --shadow-lg:  0 24px 60px -18px rgba(0,0,0,.7);
+
+  color-scheme: dark;
+}
+
+/* ── Perusta ─────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .display {
+  font-family: Archivo, "Helvetica Neue", Arial, sans-serif;
+  text-wrap: balance;
+  margin: 0;
+}
+
+.mono, .num {
+  font-family: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+a { color: var(--accent); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+.shell {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* ── Masthead ────────────────────────────────────────────────────── */
+.masthead {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.masthead-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  padding-block: 22px 20px;
+}
+
+.wordmark {
+  font-size: clamp(23px, 3.4vw, 31px);
+  font-weight: 800;
+  letter-spacing: -.022em;
+  line-height: 1.05;
+}
+
+.wordmark span { color: var(--accent); }
+
+.tagline {
+  color: var(--ink-2);
+  font-size: 13.5px;
+  margin-top: 5px;
+  max-width: 54ch;
+}
+
+.next-up {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--soon);
+  border-radius: var(--radius);
+  background: var(--surface-3);
+  min-width: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.next-up[hidden] { display: none; }
+.next-up:hover { border-color: var(--line-strong); }
+
+.next-up .num {
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--soon);
+  white-space: nowrap;
+}
+
+.next-up .who {
+  font-size: 12.5px;
+  color: var(--ink-2);
+  line-height: 1.35;
+  min-width: 0;
+}
+
+.next-up .who b {
+  display: block;
+  color: var(--ink);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 30ch;
+}
+
+/* ── Työkalupalkki ───────────────────────────────────────────────── */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+@supports not (backdrop-filter: blur(4px)) {
+  .toolbar { background: var(--bg); }
+}
+
+.toolbar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 18px;
+  padding-block: 11px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.filter-group > .eyebrow { margin-right: 2px; }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border: 1px solid var(--line-strong);
+  border-radius: 100px;
+  background: var(--surface);
+  color: var(--ink-2);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .12s, color .12s, border-color .12s;
+  white-space: nowrap;
+}
+
+.chip:hover { border-color: var(--accent); color: var(--ink); }
+
+.chip[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.chip .dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+
+.chip.type-julkinen .dot { background: var(--t-julkinen); }
+.chip.type-saatiot  .dot { background: var(--t-saatiot); }
+.chip.type-eu       .dot { background: var(--t-eu); }
+.chip[aria-pressed="true"] .dot { background: currentColor; }
+
+.search-wrap { position: relative; flex: 1 1 190px; min-width: 160px; }
+
+.search {
+  width: 100%;
+  padding: 7px 11px 7px 31px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 13.5px;
+}
+
+.search::placeholder { color: var(--ink-3); }
+
+.search-wrap svg {
+  position: absolute;
+  left: 9px; top: 50%;
+  transform: translateY(-50%);
+  width: 14px; height: 14px;
+  color: var(--ink-3);
+  pointer-events: none;
+}
+
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.seg button {
+  padding: 6px 13px;
+  border: 0;
+  background: transparent;
+  color: var(--ink-2);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent-ink); }
+
+/* ── Live-tila (näkyy vain kun hankekalenteri.py tarjoilee sivun) ── */
+.live {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px 4px 11px;
+  border: 1px solid var(--line-strong);
+  border-radius: 100px;
+  background: var(--surface);
+  min-width: 0;
+}
+
+.live[hidden] { display: none; }
+
+.live-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--closed);
+  flex: none;
+}
+
+.live.ok      .live-dot { background: var(--open); }
+.live.haetaan .live-dot { background: var(--soon); animation: syke 1.1s ease-in-out infinite; }
+.live.virhe   .live-dot { background: var(--urgent); }
+.live.uutta   .live-dot { background: var(--accent); }
+
+@keyframes syke {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: .35; transform: scale(.72); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live.haetaan .live-dot { animation: none; opacity: .6; }
+}
+
+.live-text {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ink-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 26ch;
+}
+
+.live .icon-btn {
+  width: 26px; height: 26px;
+  border: 0;
+  background: transparent;
+}
+
+.live .icon-btn svg { width: 14px; height: 14px; }
+.live .icon-btn:disabled { opacity: .4; cursor: default; }
+.live .icon-btn:disabled svg { animation: pyori 1.1s linear infinite; }
+
+@keyframes pyori { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .live .icon-btn:disabled svg { animation: none; }
+}
+
+/* Tänään löytynyt haku */
+.uusi-merkki {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 7px;
+  border-radius: 100px;
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 32px; height: 32px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink-2);
+  cursor: pointer;
+  flex: none;
+}
+
+.icon-btn:hover { color: var(--ink); border-color: var(--accent); }
+.icon-btn svg { width: 15px; height: 15px; }
+
+/* ── 30 päivän laskurit ──────────────────────────────────────────── */
+.countdown-band { padding-block: 22px 6px; }
+
+.band-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 11px;
+}
+
+.band-head h2 {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -.005em;
+}
+
+.band-head .count {
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+.countdown-rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(238px, 1fr);
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-snap-type: x proximity;
+}
+
+.countdown-rail:not(:has(.cd-card)) { display: none; }
+
+.cd-card {
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--soon);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  transition: box-shadow .14s, transform .14s;
+}
+
+.cd-card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.cd-card.urgent { border-top-color: var(--urgent); }
+
+.cd-clock {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  color: var(--soon);
+}
+
+.cd-card.urgent .cd-clock { color: var(--urgent); }
+
+.cd-clock .d {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: .95;
+}
+
+.cd-clock .unit {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--ink-3);
+  margin-right: 7px;
+}
+
+.cd-clock .hms {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.cd-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cd-meta {
+  font-size: 12px;
+  color: var(--ink-2);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+}
+
+/* ── Yhteiset merkit ─────────────────────────────────────────────── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  white-space: nowrap;
+}
+
+.pill.open   { background: var(--open-soft);   color: var(--open); }
+.pill.soon   { background: var(--soon-soft);   color: var(--soon); }
+.pill.urgent { background: var(--urgent-soft); color: var(--urgent); }
+.pill.closed { background: var(--closed-soft); color: var(--closed); }
+
+.tdot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex: none;
+  display: inline-block;
+}
+
+.tdot.julkinen { background: var(--t-julkinen); }
+.tdot.saatiot  { background: var(--t-saatiot); }
+.tdot.eu       { background: var(--t-eu); }
+
+/* ── Kalenterinäkymä ─────────────────────────────────────────────── */
+.cal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.cal-title {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  text-transform: capitalize;
+}
+
+.cal-nav { display: flex; gap: 6px; align-items: center; }
+
+.cal {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.dow {
+  display: grid;
+  grid-template-columns: 46px repeat(7, 1fr);
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.dow div {
+  padding: 7px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.dow div:first-child { color: var(--ink-3); font-size: 10px; }
+.dow div.we { color: var(--ink-3); }
+
+.week {
+  display: grid;
+  grid-template-columns: 46px repeat(7, 1fr);
+  grid-auto-flow: row dense;
+  border-top: 1px solid var(--line);
+  min-height: 78px;
+}
+
+.week:first-child { border-top: 0; }
+
+.wknum {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  display: flex;
+  justify-content: center;
+  padding-top: 7px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-3);
+  background: var(--surface-3);
+  border-right: 1px solid var(--line);
+}
+
+.day {
+  grid-row: 1;
+  padding: 6px 7px 3px;
+  border-left: 1px solid var(--line);
+  min-height: 26px;
+}
+
+.week > .day:nth-child(2) { border-left: 0; }
+.day.we { background: var(--surface-3); }
+.day.other .dnum { color: var(--ink-3); opacity: .55; }
+
+.dnum {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-2);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+.day.today .dnum {
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: 100px;
+  padding: 1px 6px;
+  font-weight: 600;
+}
+
+.bar {
+  margin: 1px 3px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  border: 0;
+  border-left: 3px solid transparent;
+  text-align: left;
+  font-family: inherit;
+  min-width: 0;
+  display: block;
+  width: calc(100% - 6px);
+}
+
+.bar:hover { filter: brightness(.96); }
+@media (prefers-color-scheme: dark) { .bar:hover { filter: brightness(1.18); } }
+
+.bar.open   { background: var(--open-soft);   color: var(--open);   border-left-color: var(--open); }
+.bar.soon   { background: var(--soon-soft);   color: var(--soon);   border-left-color: var(--soon); }
+.bar.urgent { background: var(--urgent-soft); color: var(--urgent); border-left-color: var(--urgent); }
+.bar.closed { background: var(--closed-soft); color: var(--closed); border-left-color: var(--closed); }
+
+.bar .cap { opacity: .72; font-weight: 500; }
+
+/* Jatkuvat haut: hakuikkuna on niin pitkä, ettei palkki kerro mitään.
+   Nostetaan ne omaksi riviksi ruudukon yläpuolelle. */
+.rolling {
+  display: flex;
+  align-items: baseline;
+  gap: 10px 14px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  padding: 9px 12px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface-3);
+}
+
+.rolling[hidden] { display: none; }
+
+.rolling-items { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.rolling-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  max-width: 100%;
+}
+
+.rolling-chip:hover { border-color: var(--accent); }
+
+.rolling-chip .span {
+  color: var(--ink-3);
+  font-size: 11.5px;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+.cal-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: 11px;
+  font-size: 12px;
+  color: var(--ink-2);
+}
+
+.cal-legend span { display: inline-flex; align-items: center; gap: 6px; }
+
+.swatch {
+  width: 13px; height: 9px;
+  border-radius: 2px;
+  border-left: 3px solid;
+  display: inline-block;
+}
+
+/* ── Listanäkymä ─────────────────────────────────────────────────── */
+.list-section + .list-section { margin-top: 26px; }
+
+.list-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 2px;
+}
+
+.list-section h3 .n {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ink-3);
+  letter-spacing: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 128px 1fr auto;
+  gap: 4px 16px;
+  align-items: center;
+  width: 100%;
+  padding: 12px 12px 12px 13px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-left: 3px solid transparent;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background .12s;
+}
+
+.row:hover { background: var(--surface); }
+.row.open   { border-left-color: var(--open); }
+.row.soon   { border-left-color: var(--soon); }
+.row.urgent { border-left-color: var(--urgent); }
+.row.closed { border-left-color: var(--closed); }
+
+.row .dates {
+  font-size: 12.5px;
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+
+.row .dates b { display: block; color: var(--ink); font-weight: 600; }
+
+.row .main { min-width: 0; }
+
+.row .name {
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -.005em;
+}
+
+.row .sub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px 10px;
+  margin-top: 3px;
+  font-size: 12.5px;
+  color: var(--ink-2);
+}
+
+.row .right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-self: end;
+}
+
+.row .cd {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--soon);
+  white-space: nowrap;
+}
+
+.row.urgent .cd { color: var(--urgent); }
+
+.empty {
+  padding: 46px 20px;
+  text-align: center;
+  color: var(--ink-2);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface-3);
+}
+
+.empty b { display: block; color: var(--ink); font-size: 15px; margin-bottom: 4px; }
+
+/* ── Modaali ─────────────────────────────────────────────────────── */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(11, 20, 22, .55);
+  backdrop-filter: blur(3px);
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  overflow-y: auto;
+}
+
+.backdrop[hidden] { display: none; }
+
+.modal {
+  width: min(660px, 100%);
+  max-height: min(88vh, 900px);
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  box-shadow: var(--shadow-lg);
+  animation: pop .16s ease-out;
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(6px) scale(.99); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal { animation: none; }
+  .cd-card:hover { transform: none; }
+  * { scroll-behavior: auto !important; }
+}
+
+.modal-top {
+  position: relative;
+  padding: 20px 22px 17px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-3);
+  border-radius: 9px 9px 0 0;
+}
+
+.modal-top .kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 9px;
+}
+
+.modal-top h2 {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -.017em;
+  line-height: 1.2;
+  padding-right: 34px;
+}
+
+.modal-top .funder {
+  margin-top: 6px;
+  font-size: 13.5px;
+  color: var(--ink-2);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.modal-top .funder b { color: var(--ink); font-weight: 600; }
+
+.close {
+  position: absolute;
+  top: 14px; right: 14px;
+  width: 28px; height: 28px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink-2);
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.close:hover { color: var(--ink); border-color: var(--line-strong); }
+
+.modal-body { padding: 18px 22px 22px; }
+
+.date-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.date-cell {
+  background: var(--surface);
+  padding: 11px 13px;
+}
+
+.date-cell .lbl {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 3px;
+}
+
+.date-cell .val {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.date-cell .val.hi { color: var(--soon); }
+.date-cell .val.hi.urgent { color: var(--urgent); }
+.date-cell .val.hi.open { color: var(--open); }
+
+.date-cell .note { font-size: 11.5px; color: var(--ink-3); margin-top: 1px; }
+
+.block { margin-bottom: 17px; }
+
+.block > h3 {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 7px;
+}
+
+.block p { margin: 0; color: var(--ink-2); font-size: 14px; }
+
+.uses { margin: 0; padding: 0; list-style: none; display: grid; gap: 5px; }
+
+.uses li {
+  display: grid;
+  grid-template-columns: 15px 1fr;
+  gap: 4px;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.uses li::before {
+  content: "€";
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1.6;
+}
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.tag {
+  padding: 3px 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: 100px;
+  font-size: 12.5px;
+  color: var(--ink-2);
+  background: var(--surface-3);
+}
+
+.modal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover { filter: brightness(1.08); }
+.btn svg { width: 15px; height: 15px; }
+
+.btn.ghost {
+  background: transparent;
+  color: var(--ink-2);
+  border-color: var(--line-strong);
+}
+
+.btn.ghost:hover { color: var(--ink); border-color: var(--accent); filter: none; }
+
+/* ── Alatunniste & tilailmoitus ──────────────────────────────────── */
+.notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 14px;
+  padding: 10px 13px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface-3);
+  font-size: 12.5px;
+  color: var(--ink-2);
+}
+
+.notice[hidden] { display: none; }
+.notice b { color: var(--ink); }
+
+footer {
+  margin-top: 34px;
+  padding-block: 20px 30px;
+  border-top: 1px solid var(--line);
+  font-size: 12.5px;
+  color: var(--ink-3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  justify-content: space-between;
+}
+
+/* ── Kapea näyttö ────────────────────────────────────────────────── */
+@media (max-width: 760px) {
+  .dow, .week { grid-template-columns: 34px repeat(7, 1fr); }
+  .dow div { padding: 6px 4px; font-size: 10px; }
+  .day { padding: 4px 3px 2px; }
+  .bar { font-size: 10px; padding: 1px 4px; }
+  .bar .cap { display: none; }
+  .row { grid-template-columns: 1fr; gap: 6px; }
+  .row .right { justify-self: start; }
+  .next-up { width: 100%; }
+}
+
+@media (max-width: 520px) {
+  .cal-wrap { overflow-x: auto; }
+  .cal { min-width: 520px; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="shell masthead-inner">
+    <div>
+      <div class="eyebrow">Hankerahoituksen hakuajat · päivittyy automaattisesti</div>
+      <h1 class="wordmark">Hanke<span>rahoitus</span>kalenteri</h1>
+      <p class="tagline">Julkiset rahoittajat, säätiöt ja EU-ohjelmat yhdessä näkymässä. Laskuri jokaiselle haulle, joka aukeaa 30 päivän sisällä.</p>
+    </div>
+    <button class="next-up" id="nextUp" type="button" hidden>
+      <div class="num" id="nextUpNum">–</div>
+      <div class="who">
+        Seuraavaksi aukeaa
+        <b id="nextUpName">–</b>
+      </div>
+    </button>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="shell toolbar-inner">
+    <div class="filter-group" role="group" aria-label="Suodata rahoittajatyypin mukaan">
+      <span class="eyebrow">Rahoittaja</span>
+      <button class="chip type-julkinen" data-filter="tyyppi" data-value="Julkinen" aria-pressed="true"><i class="dot"></i>Julkinen</button>
+      <button class="chip type-saatiot" data-filter="tyyppi" data-value="Säätiöt" aria-pressed="true"><i class="dot"></i>Säätiöt</button>
+      <button class="chip type-eu" data-filter="tyyppi" data-value="EU" aria-pressed="true"><i class="dot"></i>EU</button>
+    </div>
+
+    <div class="filter-group" role="group" aria-label="Suodata tilan mukaan">
+      <span class="eyebrow">Tila</span>
+      <button class="chip" data-filter="tila" data-value="Aukeamassa" aria-pressed="true">Aukeamassa</button>
+      <button class="chip" data-filter="tila" data-value="Haku auki" aria-pressed="true">Haku auki</button>
+      <button class="chip" data-filter="tila" data-value="Päättynyt" aria-pressed="false">Päättynyt</button>
+    </div>
+
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input class="search" id="search" type="search" placeholder="Hae hanketta, rahoittajaa tai aluetta…" aria-label="Hae hakusanalla">
+    </div>
+
+    <div class="seg" role="group" aria-label="Näkymä">
+      <button id="viewCal" aria-pressed="true">Kalenteri</button>
+      <button id="viewList" aria-pressed="false">Lista</button>
+    </div>
+
+    <div class="live" id="live" hidden>
+      <i class="live-dot" id="liveDot"></i>
+      <span class="live-text" id="liveText" aria-live="polite">–</span>
+      <button class="icon-btn" id="refreshBtn" title="Hae tuoreimmat tiedot nyt" aria-label="Hae tuoreimmat tiedot nyt">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 11a8 8 0 1 0-.6 4"/><path d="M20 4v7h-7"/></svg>
+      </button>
+    </div>
+
+    <button class="icon-btn" id="themeBtn" title="Vaihda vaalean ja tumman välillä" aria-label="Vaihda teemaa">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    </button>
+  </div>
+</div>
+
+<main class="shell" id="main">
+
+  <section class="countdown-band" id="band" hidden>
+    <div class="band-head">
+      <h2>Aukeaa 30 päivän sisällä</h2>
+      <span class="count" id="bandCount"></span>
+    </div>
+    <div class="countdown-rail" id="rail"></div>
+  </section>
+
+  <section id="calView">
+    <div class="cal-head">
+      <h2 class="cal-title" id="calTitle">–</h2>
+      <div class="cal-nav">
+        <button class="icon-btn" id="prevMonth" aria-label="Edellinen kuukausi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
+        </button>
+        <button class="chip" id="todayBtn">Tänään</button>
+        <button class="icon-btn" id="nextMonth" aria-label="Seuraava kuukausi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="rolling" id="rolling" hidden>
+      <span class="eyebrow">Jatkuva haku</span>
+      <div class="rolling-items" id="rollingItems"></div>
+    </div>
+
+    <div class="cal-wrap">
+      <div class="cal">
+        <div class="dow">
+          <div>Vko</div><div>Ma</div><div>Ti</div><div>Ke</div><div>To</div><div>Pe</div><div class="we">La</div><div class="we">Su</div>
+        </div>
+        <div id="weeks"></div>
+      </div>
+    </div>
+
+    <div class="cal-legend">
+      <span><i class="swatch" style="background:var(--soon-soft);border-left-color:var(--soon)"></i> Aukeamassa</span>
+      <span><i class="swatch" style="background:var(--urgent-soft);border-left-color:var(--urgent)"></i> Aukeaa alle viikossa</span>
+      <span><i class="swatch" style="background:var(--open-soft);border-left-color:var(--open)"></i> Haku auki</span>
+      <span><i class="swatch" style="background:var(--closed-soft);border-left-color:var(--closed)"></i> Päättynyt</span>
+      <span>Palkin pituus = hakuaika. Klikkaa palkkia nähdäksesi tiedot.</span>
+    </div>
+  </section>
+
+  <section id="listView" hidden></section>
+
+  <div class="notice" id="notice" hidden>
+    <span aria-hidden="true">ⓘ</span>
+    <div id="noticeText"></div>
+  </div>
+
+  <footer>
+    <div>Lähde: <span class="mono" id="srcName">funding_data.json</span> · päivitetty <span class="mono" id="srcDate">–</span></div>
+    <div>Tarkista hakuajat aina rahoittajan omalta sivulta ennen hakemista.</div>
+  </footer>
+</main>
+
+<div class="backdrop" id="backdrop" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" id="modal"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     VARADATA. Sivu lukee ensisijaisesti funding_data.json -tiedoston
+     samasta kansiosta. Kun sivu avataan suoraan tiedostona (file://),
+     selain estää fetch-kutsun, ja tätä lohkoa käytetään sen sijaan.
+     funding_watcher.py --embed päivittää tämän lohkon automaattisesti.
+     ══════════════════════════════════════════════════════════════════ -->
+<script type="application/json" id="varadata">
+{
+ "versio": 1,
+ "paivitetty": "2026-09-10T09:00:00+03:00",
+ "lahde_info": "Esimerkkidata. funding_watcher.py päivittää tämän tiedoston automaattisesti. Tarkista päivämäärät aina rahoittajan omalta sivulta ennen hakemista.",
+ "hankkeet": [
+  {
+   "id": "aka-akatemiahanke-syyshaku-2026",
+   "nimi": "Akatemiahankkeiden syyshaku 2026",
+   "rahoittaja": "Suomen Akatemia",
+   "rahoittajatyyppi": "Julkinen",
+   "ohjelma": "Yleiset tutkimusmäärärahat",
+   "haku_alkaa": "2026-09-01",
+   "haku_paattyy": "2026-09-30",
+   "summa": "150 000 – 700 000 € / hanke",
+   "alue": "Koko Suomi",
+   "kuvaus": "Nelivuotinen rahoitus tieteellisesti kunnianhimoisiin tutkimushankkeisiin. Rahoitusta voi hakea yksittäinen tutkimusryhmä tai konsortio, jossa on 2–4 osahanketta.",
+   "kayttotarkoitus": [
+    "Tutkijoiden ja tutkimusavustajien palkkauskulut",
+    "Tutkimusaineistojen hankinta ja käsittely",
+    "Laitteet, matkat ja konferenssiosallistumiset",
+    "Julkaisukulut ja avoimen julkaisemisen maksut",
+    "Yleiskustannukset (overhead) suorituspaikalle"
+   ],
+   "kohderyhmat": [
+    "Yliopistot",
+    "Tutkimuslaitokset",
+    "Väitelleet tutkijat (väh. 4 v. tohtorintutkinnosta)"
+   ],
+   "linkki": "https://www.aka.fi/tutkimusrahoitus/",
+   "lahde": "seed"
+  },
+  {
+   "id": "aka-akatemiatutkija-2026",
+   "nimi": "Akatemiatutkijan tehtävän haku 2026",
+   "rahoittaja": "Suomen Akatemia",
+   "rahoittajatyyppi": "Julkinen",
+   "ohjelma": "Tutkijanuran rahoitus",
+   "haku_alkaa": "2026-08-15",
+   "haku_paattyy": "2026-09-02",
+   "summa": "n. 450 000 € / 5 vuotta",
+   "alue": "Koko Suomi",
+   "kuvaus": "Viisivuotinen tehtävä kokeneille tutkijoille, jotka rakentavat itsenäistä tutkimusuraa ja johtavat omaa ryhmäänsä.",
+   "kayttotarkoitus": [
+    "Tutkijan oma palkka 5 vuoden ajan",
+    "Tutkimuskulut ja pienimuotoinen ryhmän rakentaminen",
+    "Kansainvälinen liikkuvuus"
+   ],
+   "kohderyhmat": [
+    "Väitelleet tutkijat",
+    "Yliopistojen tutkimusryhmät"
+   ],
+   "linkki": "https://www.aka.fi/tutkimusrahoitus/",
+   "lahde": "seed"
+  },
+  {
+   "id": "bf-tempo-jatkuva-2026",
+   "nimi": "Tempo-rahoitus pk-yrityksille",
+   "rahoittaja": "Business Finland",
+   "rahoittajatyyppi": "Julkinen",
+   "ohjelma": "Kansainvälistymisen kiihdytysraha",
+   "haku_alkaa": "2026-01-07",
+   "haku_paattyy": "2026-12-18",
+   "summa": "enint. 50 000 € (75 % kustannuksista)",
+   "alue": "Koko Suomi",
+   "kuvaus": "Jatkuvasti auki oleva avustus nuorille pk-yrityksille kansainvälisen kasvun valmisteluun ja markkinaselvityksiin.",
+   "kayttotarkoitus": [
+    "Markkina- ja kysyntäselvitykset kohdemarkkinalla",
+    "Asiakastarpeen validointi ja pilotointi",
+    "Kansainvälistymissuunnitelman laadinta",
+    "Ostetut asiantuntijapalvelut ja matkakulut",
+    "Tiimin osaamisen vahvistaminen"
+   ],
+   "kohderyhmat": [
+    "Pk-yritykset",
+    "Startupit",
+    "Kasvuhakuiset mikroyritykset"
+   ],
+   "linkki": "https://www.businessfinland.fi/suomalaisille-asiakkaille/palvelut/rahoitus/",
+   "lahde": "seed"
+  },
+  {
+   "id": "bf-tutkimuksesta-liiketoimintaa-2026",
+   "nimi": "Tutkimuksesta uutta tietoa ja liiketoimintaa",
+   "rahoittaja": "Business Finland",
+   "rahoittajatyyppi": "Julkinen",
+   "ohjelma": "Co-Innovation / Co-Research",
+   "haku_alkaa": "2026-09-22",
+   "haku_paattyy": "2026-11-27",
+   "summa": "60 – 70 % hyväksytyistä kustannuksista",
+   "alue": "Koko Suomi",
+   "kuvaus": "Rahoitus tutkimusorganisaatioiden ja yritysten yhteisiin hankkeisiin, joissa uutta tutkimustietoa viedään kohti liiketoimintaa.",
+   "kayttotarkoitus": [
+    "Tutkimusorganisaation henkilöstökulut",
+    "Yritysyhteistyön valmistelu ja verkoston rakentaminen",
+    "Prototyypit, demonstraatiot ja pilotit",
+    "Tulosten levittäminen ja hyödyntämissuunnitelma"
+   ],
+   "kohderyhmat": [
+    "Yliopistot ja ammattikorkeakoulut",
+    "Tutkimuslaitokset",
+    "Yritykset konsortiokumppanina"
+   ],
+   "linkki": "https://www.businessfinland.fi/suomalaisille-asiakkaille/palvelut/rahoitus/",
+   "lahde": "seed"
+  },
+  {
+   "id": "ely-yrityksen-kehittamisavustus-2026",
+   "nimi": "Yrityksen kehittämisavustus",
+   "rahoittaja": "ELY-keskus",
+   "rahoittajatyyppi": "Julkinen",
+   "ohjelma": "Kansallinen yritystuki",
+   "haku_alkaa": "2026-01-01",
+   "haku_paattyy": "2026-12-31",
+   "summa": "10 – 50 % kustannuksista, tapauskohtainen",
+   "alue": "Koko Suomi (ELY-alueittain)",
+   "kuvaus": "Jatkuva haku pk-yritysten kehittämis- ja investointihankkeisiin, erityisesti kasvuun, kansainvälistymiseen ja vihreään siirtymään.",
+   "kayttotarkoitus": [
+    "Tuotekehitys ja uusien tuotteiden kaupallistaminen",
+    "Koneet ja laitteet (investointiosuus)",
+    "Ulkopuoliset asiantuntijapalvelut",
+    "Kansainvälistymisen valmistelu",
+    "Energiatehokkuutta parantavat investoinnit"
+   ],
+   "kohderyhmat": [
+    "Pk-yritykset",
+    "Mikroyritykset",
+    "Maaseudun yritykset"
+   ],
+   "linkki": "https://www.ely-keskus.fi/rahoitus-ja-avustukset",
+   "lahde": "seed"
+  },
+  {
+   "id": "koneensaatio-yleinen-apurahahaku-2026",
+   "nimi": "Yleinen apurahahaku 2026",
+   "rahoittaja": "Koneen Säätiö",
+   "rahoittajatyyppi": "Säätiöt",
+   "ohjelma": "Rohkea tekijä -apurahat",
+   "haku_alkaa": "2026-09-01",
+   "haku_paattyy": "2026-09-15",
+   "summa": "työskentelyapuraha n. 30 000 €/v, hankkeet vaihtelevat",
+   "alue": "Koko Suomi + kansainväliset hakijat",
+   "kuvaus": "Apurahoja rohkeisiin tieteen ja taiteen avauksiin, monitieteisiin hankkeisiin sekä tiedon ja taiteen väliseen työskentelyyn.",
+   "kayttotarkoitus": [
+    "Työskentelyapurahat tutkijoille ja taiteilijoille",
+    "Monitieteiset ja kokeelliset tutkimushankkeet",
+    "Taiteellinen työskentely ja tuotannot",
+    "Tieteen ja taiteen yleistajuistaminen",
+    "Työryhmien kulut ja residenssityöskentely"
+   ],
+   "kohderyhmat": [
+    "Tutkijat ja tutkimusryhmät",
+    "Taiteilijat ja työryhmät",
+    "Yhdistykset ja rekisteröidyt yhteisöt"
+   ],
+   "linkki": "https://koneensaatio.fi/apurahat/",
+   "lahde": "seed"
+  },
+  {
+   "id": "skr-keskusrahasto-lokakuu-2026",
+   "nimi": "Keskusrahaston apurahahaku (lokakuu 2026)",
+   "rahoittaja": "Suomen Kulttuurirahasto",
+   "rahoittajatyyppi": "Säätiöt",
+   "ohjelma": "Keskusrahasto",
+   "haku_alkaa": "2026-10-01",
+   "haku_paattyy": "2026-10-31",
+   "summa": "työskentelyapuraha 28 000 €/v; kulut erikseen",
+   "alue": "Koko Suomi",
+   "kuvaus": "Suomen suurimman yksityisen kulttuurirahoittajan vuosittainen päähaku tieteen, taiteen ja kulttuurin hankkeisiin.",
+   "kayttotarkoitus": [
+    "Kokovuotiset työskentelyapurahat",
+    "Väitöskirjatyö ja tutkijatohtorivaihe",
+    "Taiteellinen työ ja produktiot",
+    "Työryhmähankkeet ja tapahtumat",
+    "Kulut: matkat, materiaalit, tilavuokrat"
+   ],
+   "kohderyhmat": [
+    "Tutkijat ja jatko-opiskelijat",
+    "Taiteilijat",
+    "Työryhmät ja yhteisöt"
+   ],
+   "linkki": "https://skr.fi/apurahat",
+   "lahde": "seed"
+  },
+  {
+   "id": "jaes-yleinen-haku-2026",
+   "nimi": "Yleinen hakukierros marraskuu 2026",
+   "rahoittaja": "Jane ja Aatos Erkon säätiö",
+   "rahoittajatyyppi": "Säätiöt",
+   "ohjelma": "Suuret tiede- ja kulttuurihankkeet",
+   "haku_alkaa": "2026-11-01",
+   "haku_paattyy": "2026-11-30",
+   "summa": "tyypillisesti 100 000 – 2 000 000 €",
+   "alue": "Koko Suomi",
+   "kuvaus": "Merkittäviä avustuksia laajoihin lääketieteen, tekniikan ja kulttuurin hankkeisiin sekä lasten ja nuorten hyvinvointiin.",
+   "kayttotarkoitus": [
+    "Laajat tutkimusohjelmat ja infrastruktuuri",
+    "Tutkimusryhmien monivuotinen rahoitus",
+    "Kulttuurilaitosten merkittävät hankkeet",
+    "Lasten ja nuorten hyvinvointihankkeet"
+   ],
+   "kohderyhmat": [
+    "Yliopistot ja tutkimuslaitokset",
+    "Säätiöt ja yhdistykset",
+    "Kulttuurilaitokset"
+   ],
+   "linkki": "https://jaes.fi/apurahat/",
+   "lahde": "seed"
+  },
+  {
+   "id": "emil-aaltonen-2027",
+   "nimi": "Tutkimusapurahat 2027",
+   "rahoittaja": "Emil Aaltosen Säätiö",
+   "rahoittajatyyppi": "Säätiöt",
+   "ohjelma": "Tutkimusapurahat",
+   "haku_alkaa": "2027-02-01",
+   "haku_paattyy": "2027-02-28",
+   "summa": "työskentelyapuraha 30 000 €/v",
+   "alue": "Koko Suomi",
+   "kuvaus": "Apurahoja suomalaiseen tieteelliseen tutkimustyöhön, painopisteenä nuoret tutkijat ja tutkimusryhmät.",
+   "kayttotarkoitus": [
+    "Työskentelyapurahat väitöskirja- ja postdoc-vaiheeseen",
+    "Tutkimusryhmän kulut",
+    "Kansainvälinen tutkijavaihto"
+   ],
+   "kohderyhmat": [
+    "Jatko-opiskelijat",
+    "Tutkijatohtorit",
+    "Tutkimusryhmät"
+   ],
+   "linkki": "https://emilaaltonen.fi/apurahat/",
+   "lahde": "seed"
+  },
+  {
+   "id": "taike-kohdeapuraha-syksy-2026",
+   "nimi": "Taiteen kohdeapurahat, syksyn haku",
+   "rahoittaja": "Taiteen edistämiskeskus (Taike)",
+   "rahoittajatyyppi": "Julkinen",
+   "ohjelma": "Kohdeapurahat",
+   "haku_alkaa": "2026-09-08",
+   "haku_paattyy": "2026-09-30",
+   "summa": "3 000 – 15 000 €",
+   "alue": "Koko Suomi",
+   "kuvaus": "Kohdeapurahat tiettyyn taiteelliseen hankkeeseen, työskentelyjaksoon tai teoksen tuotantoon.",
+   "kayttotarkoitus": [
+    "Teoksen tai produktion tuotantokulut",
+    "Materiaalit, tilavuokrat ja tekniikka",
+    "Työryhmän palkkiot",
+    "Näyttely- ja esityskulut"
+   ],
+   "kohderyhmat": [
+    "Ammattitaiteilijat",
+    "Taiteilijatyöryhmät"
+   ],
+   "linkki": "https://www.taike.fi/fi/apurahat-ja-avustukset",
+   "lahde": "seed"
+  },
+  {
+   "id": "eakr-uusimaa-syksy-2026",
+   "nimi": "EAKR-haku: Uudistuva ja osaava Suomi, syksy 2026",
+   "rahoittaja": "Uudenmaan liitto",
+   "rahoittajatyyppi": "EU",
+   "ohjelma": "EAKR 2021–2027",
+   "haku_alkaa": "2026-09-20",
+   "haku_paattyy": "2026-10-31",
+   "summa": "tuki 60–80 % kustannuksista",
+   "alue": "Uusimaa",
+   "kuvaus": "Euroopan aluekehitysrahaston haku innovaatiotoimintaan, pk-yritysten kilpailukykyyn sekä hiilineutraaliuteen tähtääviin kehittämishankkeisiin.",
+   "kayttotarkoitus": [
+    "Kehittämishankkeiden henkilöstökulut",
+    "TKI-yhteistyö yritysten ja korkeakoulujen välillä",
+    "Pilotit, demonstraatiot ja testiympäristöt",
+    "Pienimuotoiset investoinnit",
+    "Hankeviestintä ja tulosten levittäminen"
+   ],
+   "kohderyhmat": [
+    "Korkeakoulut ja tutkimuslaitokset",
+    "Kunnat ja kuntayhtymät",
+    "Yhdistykset ja kehittämisyhtiöt",
+    "Yritykset (yhteishankkeissa)"
+   ],
+   "linkki": "https://rakennerahastot.fi/hakuajat",
+   "lahde": "seed"
+  },
+  {
+   "id": "esr-hame-syksy-2026",
+   "nimi": "ESR+ -haku: osaaminen ja työllisyys",
+   "rahoittaja": "Hämeen ELY-keskus",
+   "rahoittajatyyppi": "EU",
+   "ohjelma": "ESR+ 2021–2027",
+   "haku_alkaa": "2026-09-15",
+   "haku_paattyy": "2026-11-14",
+   "summa": "tuki jopa 80 % kustannuksista",
+   "alue": "Häme, Päijät-Häme",
+   "kuvaus": "Euroopan sosiaalirahasto plus rahoittaa työllisyyttä, osaamista ja osallisuutta edistäviä kehittämishankkeita.",
+   "kayttotarkoitus": [
+    "Työllistymistä edistävät palvelupolut",
+    "Jatkuvan oppimisen ja osaamisen kehittäminen",
+    "Heikossa työmarkkina-asemassa olevien tuki",
+    "Työhyvinvointi ja työn murrokseen vastaaminen",
+    "Hankehenkilöstön palkkakulut ja ostopalvelut"
+   ],
+   "kohderyhmat": [
+    "Oppilaitokset",
+    "Kunnat ja hyvinvointialueet",
+    "Järjestöt ja säätiöt",
+    "Työnantajayhteisöt"
+   ],
+   "linkki": "https://rakennerahastot.fi/hakuajat",
+   "lahde": "seed"
+  },
+  {
+   "id": "jtf-pohjois-savo-2026",
+   "nimi": "JTF-haku: oikeudenmukainen siirtymä",
+   "rahoittaja": "Pohjois-Savon liitto",
+   "rahoittajatyyppi": "EU",
+   "ohjelma": "JTF 2021–2027",
+   "haku_alkaa": "2026-10-05",
+   "haku_paattyy": "2026-11-20",
+   "summa": "tuki 50–80 % kustannuksista",
+   "alue": "Pohjois-Savo",
+   "kuvaus": "Oikeudenmukaisen siirtymän rahasto tukee turpeesta luopumisen aluetaloudellisten vaikutusten lieventämistä.",
+   "kayttotarkoitus": [
+    "Uuden liiketoiminnan ja työpaikkojen luominen",
+    "Osaamisen uudistaminen ja uudelleenkoulutus",
+    "Yritysten investoinnit ja tuotekehitys",
+    "Ympäristön ennallistaminen"
+   ],
+   "kohderyhmat": [
+    "Yritykset",
+    "Kunnat",
+    "Oppilaitokset",
+    "Kehittämisorganisaatiot"
+   ],
+   "linkki": "https://rakennerahastot.fi/hakuajat",
+   "lahde": "seed"
+  },
+  {
+   "id": "leader-jatkuva-2026",
+   "nimi": "Leader-rahoitus: yritys- ja hanketuet",
+   "rahoittaja": "Leader-ryhmät / Maaseuturahasto",
+   "rahoittajatyyppi": "EU",
+   "ohjelma": "CAP 2023–2027 maaseuturahasto",
+   "haku_alkaa": "2026-01-01",
+   "haku_paattyy": "2026-12-31",
+   "summa": "1 000 – 180 000 €, tuki 20–100 %",
+   "alue": "Maaseutualueet koko Suomessa",
+   "kuvaus": "Paikallisten Leader-ryhmien jatkuva haku maaseudun yritys- ja yhteisöhankkeisiin.",
+   "kayttotarkoitus": [
+    "Yritysten perustamis- ja investointituet",
+    "Kylä- ja yhdistystoiminnan kehittäminen",
+    "Harrastus- ja vapaa-ajan investoinnit",
+    "Nuorten Leader-hankkeet",
+    "Koulutus- ja tiedonvälitushankkeet"
+   ],
+   "kohderyhmat": [
+    "Yhdistykset ja kyläyhteisöt",
+    "Mikroyritykset",
+    "Kunnat ja oppilaitokset"
+   ],
+   "linkki": "https://www.leadersuomi.fi/",
+   "lahde": "seed"
+  },
+  {
+   "id": "he-cluster5-2026-two-stage",
+   "nimi": "Horizon Europe Cluster 5: Climate, Energy and Mobility",
+   "rahoittaja": "Euroopan komissio",
+   "rahoittajatyyppi": "EU",
+   "ohjelma": "Horizon Europe 2026–2027",
+   "haku_alkaa": "2026-09-25",
+   "haku_paattyy": "2027-01-21",
+   "summa": "2 – 15 M€ / hanke, tuki 100 % (RIA)",
+   "alue": "EU + assosioituneet maat",
+   "kuvaus": "Cluster 5:n tutkimus- ja innovaatiohaku puhtaaseen energiaan, liikenteen sähköistymiseen ja ilmastoratkaisuihin. Vaatii kansainvälisen konsortion.",
+   "kayttotarkoitus": [
+    "Tutkimus- ja innovaatiotoiminnan henkilöstökulut",
+    "Laitteet, materiaalit ja pilotit (TRL 3–7)",
+    "Konsortion koordinointi ja matkat",
+    "Alihankinta ja tulosten hyödyntäminen",
+    "Avoin julkaiseminen ja datanhallinta"
+   ],
+   "kohderyhmat": [
+    "Yliopistot ja tutkimuslaitokset",
+    "Yritykset (pk- ja suuryritykset)",
+    "Julkiset toimijat ja kaupungit",
+    "Väh. 3 organisaatiota 3 eri maasta"
+   ],
+   "linkki": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-search",
+   "lahde": "seed"
+  },
+  {
+   "id": "eic-accelerator-cutoff-2026-10",
+   "nimi": "EIC Accelerator, lokakuun cut-off",
+   "rahoittaja": "European Innovation Council",
+   "rahoittajatyyppi": "EU",
+   "ohjelma": "Horizon Europe / EIC",
+   "haku_alkaa": "2026-10-08",
+   "haku_paattyy": "2026-10-08",
+   "summa": "avustus enint. 2,5 M€ + oma pääomasijoitus enint. 15 M€",
+   "alue": "EU + assosioituneet maat",
+   "kuvaus": "Deep tech -startupien ja pk-yritysten rahoitus läpimurtoinnovaatioiden skaalaamiseen. Cut-off-päivä täydelle hakemukselle.",
+   "kayttotarkoitus": [
+    "Tuotekehitys TRL 5–8 ja sertifiointi",
+    "Markkinoille viennin valmistelu",
+    "Tuotannon skaalaus (equity-osuus)",
+    "Tiimin kasvattaminen"
+   ],
+   "kohderyhmat": [
+    "Deep tech -startupit",
+    "Pk-yritykset",
+    "Spin-off-yritykset"
+   ],
+   "linkki": "https://eic.ec.europa.eu/eic-funding-opportunities/eic-accelerator_en",
+   "lahde": "seed"
+  },
+  {
+   "id": "interreg-central-baltic-2026-c3",
+   "nimi": "Interreg Central Baltic, 3. hakukierros",
+   "rahoittaja": "Interreg Central Baltic Programme",
+   "rahoittajatyyppi": "EU",
+   "ohjelma": "Interreg 2021–2027",
+   "haku_alkaa": "2026-06-01",
+   "haku_paattyy": "2026-08-31",
+   "summa": "200 000 – 3 M€, tuki 80 %",
+   "alue": "Suomi, Ruotsi, Viro, Latvia",
+   "kuvaus": "Rajat ylittävät yhteistyöhankkeet Keski-Itämeren alueella: yrittäjyys, ympäristö, työllisyys ja palvelut.",
+   "kayttotarkoitus": [
+    "Kansainvälisen hankeyhteistyön henkilöstökulut",
+    "Yhteiset pilotit ja investoinnit",
+    "Matkat ja tapaamiset kumppanimaissa",
+    "Viestintä ja tulosten juurruttaminen"
+   ],
+   "kohderyhmat": [
+    "Kunnat ja alueviranomaiset",
+    "Korkeakoulut",
+    "Järjestöt",
+    "Kehittämisyhtiöt"
+   ],
+   "linkki": "https://centralbaltic.eu/",
+   "lahde": "seed"
+  }
+ ]
+}
+</script>
+
+<script>
+(() => {
+  "use strict";
+
+  /* ── Vakiot ─────────────────────────────────────────────────────── */
+  const KUUKAUDET = ["tammikuu","helmikuu","maaliskuu","huhtikuu","toukokuu","kesäkuu",
+                     "heinäkuu","elokuu","syyskuu","lokakuu","marraskuu","joulukuu"];
+  const TILAT = ["Aukeamassa", "Haku auki", "Päättynyt"];
+  const PAIVA_MS = 86400000;
+  const LS_KEY = "hankerahoituskalenteri.asetukset.v1";
+  const upotettu = !!(window.self !== window.top);   // artefaktikehyksessä?
+
+  /* ── Tila ───────────────────────────────────────────────────────── */
+  let hankkeet = [];
+  let meta = {};
+  let kuukausi = new Date();
+  kuukausi.setDate(1);
+
+  const suodattimet = {
+    tyyppi: new Set(["Julkinen", "Säätiöt", "EU"]),
+    tila: new Set(["Aukeamassa", "Haku auki"]),
+    haku: "",
+    nakyma: "kalenteri",
+  };
+
+  /* ── Apufunktiot ────────────────────────────────────────────────── */
+  const $  = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+  const pvm = (iso) => {
+    if (!iso) return null;
+    const [y, m, d] = String(iso).slice(0, 10).split("-").map(Number);
+    if (!y || !m || !d) return null;
+    const dd = new Date(y, m - 1, d);
+    return Number.isNaN(dd.getTime()) ? null : dd;
+  };
+
+  const tanaan = () => { const t = new Date(); t.setHours(0, 0, 0, 0); return t; };
+  const fiPvm = (d) => d ? `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()}` : "–";
+  const fiPvmLyhyt = (d) => d ? `${d.getDate()}.${d.getMonth() + 1}.` : "–";
+  const paivia = (a, b) => Math.round((b - a) / PAIVA_MS);
+
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g,
+    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  /** ISO 8601 -viikkonumero (viikko alkaa maanantaista). */
+  const viikkoNro = (d) => {
+    const t = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    t.setDate(t.getDate() + 3 - ((t.getDay() + 6) % 7));
+    const week1 = new Date(t.getFullYear(), 0, 4);
+    return 1 + Math.round(((t - week1) / PAIVA_MS - 3 + ((week1.getDay() + 6) % 7)) / 7);
+  };
+
+  const tila = (h) => {
+    const t = tanaan();
+    if (!h.alkaa || !h.paattyy) return "Aukeamassa";
+    if (t < h.alkaa) return "Aukeamassa";
+    if (t <= h.paattyy) return "Haku auki";
+    return "Päättynyt";
+  };
+
+  /** Väriluokka: kiireellinen (<7 pv) erottuu aukeamassa-tilasta. */
+  const luokka = (h) => {
+    const s = tila(h);
+    if (s === "Haku auki") return "open";
+    if (s === "Päättynyt") return "closed";
+    return paivia(tanaan(), h.alkaa) <= 7 ? "urgent" : "soon";
+  };
+
+  const tyyppiLuokka = (t) =>
+    t === "Säätiöt" ? "saatiot" : t === "EU" ? "eu" : "julkinen";
+
+  /** Watcherin tänään löytämä haku — merkitään uudeksi. */
+  const isoTanaan = () => {
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  };
+  const onUusi = (h) => h.loydetty === isoTanaan();
+
+  const tallenna = () => {
+    try {
+      localStorage.setItem(LS_KEY, JSON.stringify({
+        tyyppi: [...suodattimet.tyyppi],
+        tila: [...suodattimet.tila],
+        nakyma: suodattimet.nakyma,
+        teema: document.documentElement.getAttribute("data-theme") || "",
+      }));
+    } catch { /* yksityinen selaustila — ei haittaa */ }
+  };
+
+  const palauta = () => {
+    try {
+      const s = JSON.parse(localStorage.getItem(LS_KEY) || "null");
+      if (!s) return;
+      if (Array.isArray(s.tyyppi)) suodattimet.tyyppi = new Set(s.tyyppi);
+      if (Array.isArray(s.tila)) suodattimet.tila = new Set(s.tila);
+      if (s.nakyma) suodattimet.nakyma = s.nakyma;
+      if (s.teema) document.documentElement.setAttribute("data-theme", s.teema);
+    } catch { /* ohitetaan */ }
+  };
+
+  /* ── Datan lataus ───────────────────────────────────────────────── */
+  function normalisoi(raaka) {
+    return (raaka || [])
+      .map((h, i) => ({
+        ...h,
+        id: h.id || `hanke-${i}`,
+        alkaa: pvm(h.haku_alkaa),
+        paattyy: pvm(h.haku_paattyy) || pvm(h.haku_alkaa),
+        rahoittajatyyppi: ["Julkinen", "Säätiöt", "EU"].includes(h.rahoittajatyyppi)
+          ? h.rahoittajatyyppi : "Julkinen",
+        kayttotarkoitus: Array.isArray(h.kayttotarkoitus) ? h.kayttotarkoitus
+          : (h.kayttotarkoitus ? [h.kayttotarkoitus] : []),
+        kohderyhmat: Array.isArray(h.kohderyhmat) ? h.kohderyhmat
+          : (h.kohderyhmat ? [h.kohderyhmat] : []),
+      }))
+      .filter((h) => h.alkaa && h.paattyy)
+      .sort((a, b) => a.alkaa - b.alkaa);
+  }
+
+  function varadata() {
+    const el = $("#varadata");
+    if (!el) return null;
+    const teksti = el.textContent.replace(/\/\*__FUNDING_DATA__\*\//g, "").trim();
+    if (!teksti) return null;
+    try { return JSON.parse(teksti); } catch { return null; }
+  }
+
+  async function lataa() {
+    let data = null, lahde = "";
+
+    try {
+      const vastaus = await fetch("funding_data.json", { cache: "no-store" });
+      if (vastaus.ok) { data = await vastaus.json(); lahde = "funding_data.json"; }
+    } catch { /* file:// tai puuttuva tiedosto → varadata */ }
+
+    if (!data) {
+      data = varadata();
+      lahde = "sivulle upotettu varadata";
+    }
+
+    if (!data) {
+      $("#main").insertAdjacentHTML("afterbegin",
+        `<div class="empty" style="margin-top:26px"><b>Dataa ei löytynyt</b>
+         Varmista, että <span class="mono">funding_data.json</span> on samassa kansiossa
+         kuin <span class="mono">index.html</span>, ja avaa sivu paikallisen palvelimen kautta:
+         <span class="mono">python3 -m http.server 8000</span></div>`);
+      return;
+    }
+
+    hankkeet = normalisoi(data.hankkeet || data.projects || []);
+    meta = data;
+
+    $("#srcName").textContent = lahde;
+    $("#srcDate").textContent = (data.paivitetty || "").slice(0, 10) || "–";
+
+    if (lahde !== "funding_data.json") {
+      $("#noticeText").innerHTML = upotettu
+        ? "<b>Tämä on jaettu tilannekuva.</b> Sivulle on upotettu " +
+          "<span class=\"mono\">funding_data.json</span>-tiedoston sisältö julkaisuhetkellä. " +
+          "Automaattisesti päivittyvä versio on paikallinen " +
+          "<span class=\"mono\">index.html</span>, jota watcher ylläpitää."
+        : "<b>Käytössä on sivulle upotettu varadata.</b> Selain estää tiedoston lukemisen, " +
+          "kun sivu avataan suoraan levyltä. Käynnistä kansiossa " +
+          "<span class=\"mono\">python3 -m http.server 8000</span> ja avaa " +
+          "<span class=\"mono\">http://localhost:8000</span>, niin sivu lukee aina " +
+          "watcherin päivittämän <span class=\"mono\">funding_data.json</span>-tiedoston.";
+      $("#notice").hidden = false;
+    }
+
+    piirra();
+    tikitys();
+    kaynnistaLive();
+  }
+
+  /** Lataa funding_data.json uudelleen taustahaun jälkeen. */
+  async function paivitaData() {
+    try {
+      const vastaus = await fetch("funding_data.json", { cache: "no-store" });
+      if (!vastaus.ok) return false;
+      const data = await vastaus.json();
+      hankkeet = normalisoi(data.hankkeet || data.projects || []);
+      meta = data;
+      $("#srcDate").textContent = (data.paivitetty || "").slice(0, 10) || "–";
+      piirra();
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  /* ── Live-tila: toimii vain hankekalenteri.py:n tarjoamana ─────── */
+  const live = { tuettu: false, ajastin: null };
+
+  const asetaLive = (luokka, teksti) => {
+    const el = $("#live");
+    el.className = "live" + (luokka ? " " + luokka : "");
+    $("#liveText").textContent = teksti;
+    $("#liveText").title = teksti;
+  };
+
+  function naytaTila(t) {
+    const nappi = $("#refreshBtn");
+    if (t.tila === "haetaan") {
+      nappi.disabled = true;
+      asetaLive("haetaan", t.yhteensa
+        ? `Haetaan… ${t.valmis}/${t.yhteensa} lähdettä`
+        : "Haetaan…");
+      return true;                                  // jatka pollausta
+    }
+
+    nappi.disabled = false;
+    if (t.tila === "virhe") {
+      asetaLive("virhe", t.viesti || "Haku epäonnistui");
+    } else if (t.uusia > 0) {
+      asetaLive("uutta", `${t.uusia} uutta hakua${
+        t.kanavat?.length ? " · ilmoitettu" : ""}`);
+    } else if (t.viimeksi) {
+      asetaLive("ok", `Tarkistettu ${kelloTeksti(t.viimeksi)}${
+        t.epaonnistuneet ? ` · ${t.epaonnistuneet} lähdettä ei vastannut` : ""}`);
+    } else {
+      asetaLive("", t.viesti || "Ei vielä haettu");
+    }
+    return false;
+  }
+
+  const kelloTeksti = (iso) => {
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return "";
+    const min = Math.round((Date.now() - d) / 60000);
+    if (min < 1) return "juuri nyt";
+    if (min < 60) return `${min} min sitten`;
+    return `klo ${String(d.getHours()).padStart(2, "0")}.${String(d.getMinutes()).padStart(2, "0")}`;
+  };
+
+  function pollaa() {
+    clearInterval(live.ajastin);
+    live.ajastin = setInterval(async () => {
+      try {
+        const t = await (await fetch("api/status", { cache: "no-store" })).json();
+        if (!naytaTila(t)) {
+          clearInterval(live.ajastin);
+          live.ajastin = null;
+          if (t.uusia > 0 || t.paivitettyja > 0) await paivitaData();
+        }
+      } catch {
+        clearInterval(live.ajastin);
+        live.ajastin = null;
+        asetaLive("virhe", "Yhteys ohjelmaan katkesi");
+      }
+    }, 1200);
+  }
+
+  async function kaynnistaLive() {
+    try {
+      const vastaus = await fetch("api/status", { cache: "no-store" });
+      if (!vastaus.ok) return;                      // tavallinen palvelin
+      const t = await vastaus.json();
+      live.tuettu = true;
+      $("#live").hidden = false;
+      if (naytaTila(t)) pollaa();
+    } catch {
+      /* file:// tai python -m http.server — live-osa jää piiloon */
+    }
+  }
+
+  $("#refreshBtn").addEventListener("click", async () => {
+    $("#refreshBtn").disabled = true;
+    asetaLive("haetaan", "Käynnistetään haku…");
+    try {
+      await fetch("api/refresh", { method: "POST" });
+      pollaa();
+    } catch {
+      $("#refreshBtn").disabled = false;
+      asetaLive("virhe", "Haun käynnistys epäonnistui");
+    }
+  });
+
+  // Kun ikkuna palaa etualalle, tarkistetaan tila kerran.
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden && live.tuettu && !live.ajastin) kaynnistaLive();
+  });
+
+  /* ── Suodatus ───────────────────────────────────────────────────── */
+  function suodatetut() {
+    const q = suodattimet.haku.trim().toLowerCase();
+    return hankkeet.filter((h) => {
+      if (!suodattimet.tyyppi.has(h.rahoittajatyyppi)) return false;
+      if (!suodattimet.tila.has(tila(h))) return false;
+      if (!q) return true;
+      return [h.nimi, h.rahoittaja, h.alue, h.ohjelma, h.kuvaus,
+              ...(h.kohderyhmat || []), ...(h.kayttotarkoitus || [])]
+        .join(" ").toLowerCase().includes(q);
+    });
+  }
+
+  /* ── 30 päivän laskurit ─────────────────────────────────────────── */
+  function laskurikelpoiset() {
+    const t = tanaan();
+    return suodatetut()
+      .filter((h) => {
+        const d = paivia(t, h.alkaa);
+        return d >= 0 && d <= 30;
+      })
+      .sort((a, b) => a.alkaa - b.alkaa);
+  }
+
+  function piirraLaskurit() {
+    const lista = laskurikelpoiset();
+    const rail = $("#rail");
+    $("#band").hidden = lista.length === 0;
+    $("#bandCount").textContent =
+      lista.length ? `${lista.length} ${lista.length === 1 ? "haku" : "hakua"}` : "";
+
+    rail.innerHTML = lista.map((h) => {
+      const kiire = paivia(tanaan(), h.alkaa) <= 7;
+      return `
+      <button class="cd-card${kiire ? " urgent" : ""}" data-id="${esc(h.id)}">
+        <div class="cd-clock mono" data-countdown="${h.alkaa.getTime()}">
+          <span class="d">–</span><span class="unit">pv</span><span class="hms">--:--:--</span>
+        </div>
+        <div class="cd-name">${esc(h.nimi)}</div>
+        <div class="cd-meta">
+          <i class="tdot ${tyyppiLuokka(h.rahoittajatyyppi)}"></i>
+          <span>${esc(h.rahoittaja)}</span>
+        </div>
+      </button>`;
+    }).join("");
+  }
+
+  /** Päivittää kaikki laskurit sekunnin välein. */
+  function tikitys() {
+    const paivita = () => {
+      const nyt = Date.now();
+      $$("[data-countdown]").forEach((el) => {
+        let jaljella = Number(el.dataset.countdown) - nyt;
+        if (jaljella < 0) jaljella = 0;
+        const d = Math.floor(jaljella / PAIVA_MS);
+        const h = Math.floor(jaljella / 3600000) % 24;
+        const m = Math.floor(jaljella / 60000) % 60;
+        const s = Math.floor(jaljella / 1000) % 60;
+        const p2 = (n) => String(n).padStart(2, "0");
+        const dEl = el.querySelector(".d");
+        const hEl = el.querySelector(".hms");
+        if (dEl) dEl.textContent = String(d);
+        if (hEl) hEl.textContent = `${p2(h)}:${p2(m)}:${p2(s)}`;
+      });
+    };
+    paivita();
+    clearInterval(window.__cdTimer);
+    window.__cdTimer = setInterval(paivita, 1000);
+  }
+
+  /* ── Seuraavaksi aukeava ────────────────────────────────────────── */
+  function piirraSeuraava() {
+    const t = tanaan();
+    const seuraava = hankkeet
+      .filter((h) => h.alkaa >= t)
+      .sort((a, b) => a.alkaa - b.alkaa)[0];
+
+    if (!seuraava) { $("#nextUp").hidden = true; return; }
+    $("#nextUp").hidden = false;
+    const d = paivia(t, seuraava.alkaa);
+    $("#nextUpNum").textContent = d === 0 ? "tänään" : `${d} pv`;
+    $("#nextUpName").textContent = seuraava.nimi;
+    $("#nextUp").onclick = () => avaa(seuraava.id);
+    $("#nextUp").style.cursor = "pointer";
+  }
+
+  /* ── Kalenterinäkymä ────────────────────────────────────────────── */
+  /** Yli 150 päivän hakuaika = käytännössä jatkuva haku. */
+  const JATKUVA_RAJA = 150;
+  const onJatkuva = (h) => paivia(h.alkaa, h.paattyy) >= JATKUVA_RAJA;
+
+  function piirraKalenteri() {
+    const kaikki = suodatetut();
+    const v = kuukausi.getFullYear(), k = kuukausi.getMonth();
+    $("#calTitle").textContent = `${KUUKAUDET[k]} ${v}`;
+
+    // Jatkuvat haut nostetaan ruudukon yläpuolelle: vuoden mittainen palkki
+    // toistuisi joka viikkorivillä eikä kertoisi hakuajasta mitään.
+    const kkAlku = new Date(v, k, 1);
+    const kkLoppu = new Date(v, k + 1, 0);
+    const jatkuvat = kaikki.filter(
+      (h) => onJatkuva(h) && h.alkaa <= kkLoppu && h.paattyy >= kkAlku
+    );
+    const lista = kaikki.filter((h) => !onJatkuva(h));
+
+    $("#rolling").hidden = jatkuvat.length === 0;
+    $("#rollingItems").innerHTML = jatkuvat.map((h) => `
+      <button class="rolling-chip" data-id="${esc(h.id)}"
+              title="${esc(h.rahoittaja)} · ${fiPvm(h.alkaa)}–${fiPvm(h.paattyy)}">
+        <i class="tdot ${tyyppiLuokka(h.rahoittajatyyppi)}"></i>
+        <span>${esc(h.nimi)}</span>
+        <span class="span">${fiPvmLyhyt(h.alkaa)}–${fiPvm(h.paattyy)}</span>
+      </button>`).join("");
+
+    // Ruudukko alkaa maanantaista
+    const ensimmainen = new Date(v, k, 1);
+    const siirto = (ensimmainen.getDay() + 6) % 7;
+    const alku = new Date(v, k, 1 - siirto);
+
+    const viimeinen = new Date(v, k + 1, 0);
+    const loppuSiirto = (viimeinen.getDay() + 6) % 7;
+    const loppu = new Date(v, k + 1, 0 + (6 - loppuSiirto));
+
+    const viikkoja = Math.round((loppu - alku) / (7 * PAIVA_MS)) + 1;
+    const t = tanaan();
+    let html = "";
+
+    for (let w = 0; w < viikkoja; w++) {
+      const viikonAlku = new Date(alku.getFullYear(), alku.getMonth(), alku.getDate() + w * 7);
+      const viikonLoppu = new Date(viikonAlku.getFullYear(), viikonAlku.getMonth(), viikonAlku.getDate() + 6);
+
+      let paivat = "";
+      for (let i = 0; i < 7; i++) {
+        const p = new Date(viikonAlku.getFullYear(), viikonAlku.getMonth(), viikonAlku.getDate() + i);
+        const luokat = ["day"];
+        if (i >= 5) luokat.push("we");
+        if (p.getMonth() !== k) luokat.push("other");
+        if (p.getTime() === t.getTime()) luokat.push("today");
+        paivat += `<div class="${luokat.join(" ")}"><span class="dnum">${p.getDate()}</span></div>`;
+      }
+
+      // Tälle viikolle osuvat hakuajat, pisin ensin → siisti pinoutuminen
+      const osuvat = lista
+        .filter((h) => h.alkaa <= viikonLoppu && h.paattyy >= viikonAlku)
+        .sort((a, b) => (b.paattyy - b.alkaa) - (a.paattyy - a.alkaa) || a.alkaa - b.alkaa);
+
+      let palkit = "";
+      for (const h of osuvat) {
+        const s = Math.max(0, paivia(viikonAlku, h.alkaa));
+        const e = Math.min(6, paivia(viikonAlku, h.paattyy));
+        const span = Math.max(1, e - s + 1);
+        const alkaaTassa = h.alkaa >= viikonAlku && h.alkaa <= viikonLoppu;
+        const paattyyTassa = h.paattyy >= viikonAlku && h.paattyy <= viikonLoppu;
+        const otsikko = span === 1 ? h.nimi
+          : `${alkaaTassa ? "▸ " : "…"}${h.nimi}`;
+        const kesto = alkaaTassa && span > 2
+          ? `<span class="cap"> · ${fiPvmLyhyt(h.alkaa)}–${fiPvmLyhyt(h.paattyy)}</span>` : "";
+        palkit += `<button class="bar ${luokka(h)}" data-id="${esc(h.id)}"
+            style="grid-column:${s + 2} / span ${span}"
+            title="${esc(h.nimi)} · ${fiPvm(h.alkaa)}–${fiPvm(h.paattyy)}">${esc(otsikko)}${kesto}${
+              paattyyTassa && span > 1 ? '<span class="cap"> ◂</span>' : ""}</button>`;
+      }
+
+      html += `<div class="week"><div class="wknum mono">${viikkoNro(viikonAlku)}</div>${paivat}${palkit}</div>`;
+    }
+
+    $("#weeks").innerHTML = html;
+  }
+
+  /* ── Listanäkymä ────────────────────────────────────────────────── */
+  function piirraLista() {
+    const lista = suodatetut();
+    if (!lista.length) {
+      $("#listView").innerHTML =
+        `<div class="empty" style="margin-top:22px"><b>Ei osumia</b>
+         Kokeile poistaa suodattimia tai tyhjentää hakukenttä.</div>`;
+      return;
+    }
+
+    const ryhmat = { "Aukeamassa": [], "Haku auki": [], "Päättynyt": [] };
+    lista.forEach((h) => ryhmat[tila(h)].push(h));
+
+    const jarjestys = ["Haku auki", "Aukeamassa", "Päättynyt"];
+    $("#listView").innerHTML = jarjestys.map((nimi) => {
+      const rivit = ryhmat[nimi];
+      if (!rivit.length) return "";
+      rivit.sort((a, b) => nimi === "Päättynyt" ? b.paattyy - a.paattyy : a.alkaa - b.alkaa);
+
+      return `<div class="list-section">
+        <h3>${nimi} <span class="n">${rivit.length}</span></h3>
+        ${rivit.map((h) => rivi(h, nimi)).join("")}
+      </div>`;
+    }).join("");
+  }
+
+  function rivi(h, ryhma) {
+    const t = tanaan();
+    const l = luokka(h);
+    const d = paivia(t, h.alkaa);
+    const dLoppu = paivia(t, h.paattyy);
+
+    let oikea = "";
+    if (ryhma === "Aukeamassa") {
+      oikea = d <= 30
+        ? `<span class="cd mono" data-countdown-days="${h.alkaa.getTime()}">${d} pv hakuun</span>`
+        : `<span class="cd mono" style="color:var(--ink-3)">${d} pv hakuun</span>`;
+    } else if (ryhma === "Haku auki") {
+      oikea = `<span class="cd mono" style="color:${dLoppu <= 7 ? "var(--urgent)" : "var(--open)"}">${
+        dLoppu === 0 ? "päättyy tänään" : `${dLoppu} pv jäljellä`}</span>`;
+    }
+
+    return `<button class="row ${l}" data-id="${esc(h.id)}">
+      <div class="dates mono">
+        <b>${fiPvm(h.alkaa)}</b>
+        <span>→ ${fiPvm(h.paattyy)}</span>
+      </div>
+      <div class="main">
+        <div class="name">${esc(h.nimi)}${
+          onUusi(h) ? ' <span class="uusi-merkki">uusi</span>' : ""}</div>
+        <div class="sub">
+          <span style="display:inline-flex;align-items:center;gap:5px">
+            <i class="tdot ${tyyppiLuokka(h.rahoittajatyyppi)}"></i>${esc(h.rahoittaja)}
+          </span>
+          ${onJatkuva(h) ? `<span>· jatkuva haku</span>` : ""}
+          ${h.alue ? `<span>· ${esc(h.alue)}</span>` : ""}
+          ${h.summa ? `<span>· ${esc(h.summa)}</span>` : ""}
+        </div>
+      </div>
+      <div class="right">
+        ${oikea}
+        <span class="pill ${l}">${ryhma === "Aukeamassa" && l === "urgent" ? "Aukeaa pian" : ryhma}</span>
+      </div>
+    </button>`;
+  }
+
+  /* ── Modaali ────────────────────────────────────────────────────── */
+  let palautaFokus = null;
+
+  function avaa(id) {
+    const h = hankkeet.find((x) => x.id === id);
+    if (!h) return;
+    palautaFokus = document.activeElement;
+
+    const t = tanaan();
+    const s = tila(h), l = luokka(h);
+    const d = paivia(t, h.alkaa);
+    const dLoppu = paivia(t, h.paattyy);
+
+    const alkuNote = s === "Aukeamassa"
+      ? (d === 0 ? "aukeaa tänään" : `${d} päivän kuluttua`)
+      : `aukesi ${Math.abs(d)} päivää sitten`;
+    const loppuNote = s === "Päättynyt"
+      ? `päättyi ${Math.abs(dLoppu)} päivää sitten`
+      : (dLoppu === 0 ? "päättyy tänään" : `${dLoppu} päivää jäljellä`);
+
+    $("#modal").innerHTML = `
+      <div class="modal-top">
+        <button class="close" id="closeBtn" aria-label="Sulje">✕</button>
+        <div class="kicker">
+          <span class="pill ${l}">${l === "urgent" ? "Aukeaa alle viikossa" : s}</span>
+          ${onUusi(h) ? '<span class="uusi-merkki">löytyi tänään</span>' : ""}
+          ${h.ohjelma ? `<span class="eyebrow">${esc(h.ohjelma)}</span>` : ""}
+        </div>
+        <h2 id="mTitle">${esc(h.nimi)}</h2>
+        <div class="funder">
+          <i class="tdot ${tyyppiLuokka(h.rahoittajatyyppi)}"></i>
+          <b>${esc(h.rahoittaja)}</b>
+          <span>· ${esc(h.rahoittajatyyppi)}</span>
+          ${h.alue ? `<span>· ${esc(h.alue)}</span>` : ""}
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="date-grid">
+          <div class="date-cell">
+            <div class="lbl">Haku alkaa</div>
+            <div class="val mono ${s === "Aukeamassa" ? `hi ${l}` : ""}">${fiPvm(h.alkaa)}</div>
+            <div class="note">${alkuNote}</div>
+          </div>
+          <div class="date-cell">
+            <div class="lbl">Haku päättyy</div>
+            <div class="val mono ${s === "Haku auki" ? "hi open" : ""}">${fiPvm(h.paattyy)}</div>
+            <div class="note">${loppuNote}</div>
+          </div>
+          <div class="date-cell">
+            <div class="lbl">Rahoituksen määrä</div>
+            <div class="val" style="font-size:13.5px">${esc(h.summa || "Ei ilmoitettu")}</div>
+          </div>
+        </div>
+
+        ${h.kuvaus ? `<div class="block"><h3>Kuvaus</h3><p>${esc(h.kuvaus)}</p></div>` : ""}
+
+        <div class="block">
+          <h3>Mihin rahaa voi saada</h3>
+          ${h.kayttotarkoitus?.length
+            ? `<ul class="uses">${h.kayttotarkoitus.map((k) => `<li><span>${esc(k)}</span></li>`).join("")}</ul>`
+            : `<p>Käyttötarkoitusta ei ole kirjattu. Katso tarkemmat ehdot hakusivulta.</p>`}
+        </div>
+
+        <div class="block">
+          <h3>Kenelle rahoitus on tarkoitettu</h3>
+          ${h.kohderyhmat?.length
+            ? `<div class="tags">${h.kohderyhmat.map((k) => `<span class="tag">${esc(k)}</span>`).join("")}</div>`
+            : `<p>Kohderyhmää ei ole kirjattu.</p>`}
+        </div>
+
+        <div class="modal-actions">
+          ${h.linkki ? `<a class="btn" href="${esc(h.linkki)}" target="_blank" rel="noopener noreferrer">
+            Avaa hakusivu
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>
+            </svg></a>` : ""}
+          ${upotettu ? "" : `<button class="btn ghost" id="icsBtn">Lisää kalenteriin (.ics)</button>`}
+        </div>
+      </div>`;
+
+    $("#backdrop").hidden = false;
+    document.body.style.overflow = "hidden";
+    $("#closeBtn").focus();
+    $("#closeBtn").onclick = sulje;
+    const ics = $("#icsBtn");
+    if (ics) ics.onclick = () => lataaIcs(h);
+  }
+
+  function sulje() {
+    $("#backdrop").hidden = true;
+    document.body.style.overflow = "";
+    if (palautaFokus && palautaFokus.focus) palautaFokus.focus();
+  }
+
+  /** Luo yhden hakuajan kattavan .ics-tapahtuman (koko päivän tapahtuma). */
+  function lataaIcs(h) {
+    const fmt = (d) => `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, "0")}${String(d.getDate()).padStart(2, "0")}`;
+    const loppuEks = new Date(h.paattyy.getFullYear(), h.paattyy.getMonth(), h.paattyy.getDate() + 1);
+    const kuvaus = [
+      `Rahoittaja: ${h.rahoittaja} (${h.rahoittajatyyppi})`,
+      h.summa ? `Rahoituksen määrä: ${h.summa}` : "",
+      "",
+      "Mihin rahaa voi saada:",
+      ...(h.kayttotarkoitus || []).map((k) => `- ${k}`),
+      "",
+      `Kohderyhmät: ${(h.kohderyhmat || []).join(", ")}`,
+      "",
+      h.linkki ? `Hakusivu: ${h.linkki}` : "",
+    ].join("\n").replace(/[\\;,]/g, (c) => "\\" + c).replace(/\n/g, "\\n");
+
+    const ics = [
+      "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Hankerahoituskalenteri//FI",
+      "CALSCALE:GREGORIAN", "BEGIN:VEVENT",
+      `UID:${h.id}@hankerahoituskalenteri`,
+      `DTSTAMP:${fmt(new Date())}T000000Z`,
+      `DTSTART;VALUE=DATE:${fmt(h.alkaa)}`,
+      `DTEND;VALUE=DATE:${fmt(loppuEks)}`,
+      `SUMMARY:Hakuaika: ${h.nimi.replace(/[\\;,]/g, (c) => "\\" + c)}`,
+      `DESCRIPTION:${kuvaus}`,
+      h.linkki ? `URL:${h.linkki}` : "",
+      "BEGIN:VALARM", "TRIGGER:-P7D", "ACTION:DISPLAY",
+      `DESCRIPTION:Haku aukeaa viikon kuluttua: ${h.nimi.replace(/[\\;,]/g, (c) => "\\" + c)}`,
+      "END:VALARM", "END:VEVENT", "END:VCALENDAR",
+    ].filter(Boolean).join("\r\n");
+
+    const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `${h.id}.ics`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }
+
+  /* ── Piirto ─────────────────────────────────────────────────────── */
+  function piirra() {
+    const kal = suodattimet.nakyma === "kalenteri";
+    $("#calView").hidden = !kal;
+    $("#listView").hidden = kal;
+    $("#viewCal").setAttribute("aria-pressed", String(kal));
+    $("#viewList").setAttribute("aria-pressed", String(!kal));
+
+    piirraSeuraava();
+    piirraLaskurit();
+    if (kal) piirraKalenteri(); else piirraLista();
+    tikitys();
+  }
+
+  /* ── Tapahtumat ─────────────────────────────────────────────────── */
+  $$(".chip[data-filter]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const joukko = suodattimet[btn.dataset.filter];
+      const arvo = btn.dataset.value;
+      if (joukko.has(arvo)) joukko.delete(arvo); else joukko.add(arvo);
+      btn.setAttribute("aria-pressed", String(joukko.has(arvo)));
+      tallenna();
+      piirra();
+    });
+  });
+
+  let hakuAjastin;
+  $("#search").addEventListener("input", (e) => {
+    clearTimeout(hakuAjastin);
+    hakuAjastin = setTimeout(() => {
+      suodattimet.haku = e.target.value;
+      piirra();
+    }, 140);
+  });
+
+  $("#viewCal").addEventListener("click", () => {
+    suodattimet.nakyma = "kalenteri"; tallenna(); piirra();
+  });
+  $("#viewList").addEventListener("click", () => {
+    suodattimet.nakyma = "lista"; tallenna(); piirra();
+  });
+
+  $("#prevMonth").addEventListener("click", () => {
+    kuukausi = new Date(kuukausi.getFullYear(), kuukausi.getMonth() - 1, 1); piirraKalenteri();
+  });
+  $("#nextMonth").addEventListener("click", () => {
+    kuukausi = new Date(kuukausi.getFullYear(), kuukausi.getMonth() + 1, 1); piirraKalenteri();
+  });
+  $("#todayBtn").addEventListener("click", () => {
+    const n = new Date(); kuukausi = new Date(n.getFullYear(), n.getMonth(), 1); piirraKalenteri();
+  });
+
+  $("#themeBtn").addEventListener("click", () => {
+    const juuri = document.documentElement;
+    const nyt = juuri.getAttribute("data-theme");
+    const tumma = nyt ? nyt === "dark"
+      : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    juuri.setAttribute("data-theme", tumma ? "light" : "dark");
+    tallenna();
+  });
+
+  // Yksi delegoitu klikkikäsittelijä kaikille avaaville elementeille
+  document.addEventListener("click", (e) => {
+    const el = e.target.closest("[data-id]");
+    if (el) { avaa(el.dataset.id); return; }
+    if (e.target === $("#backdrop")) sulje();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !$("#backdrop").hidden) sulje();
+    if (e.key === "/" && document.activeElement !== $("#search")) {
+      e.preventDefault(); $("#search").focus();
+    }
+  });
+
+  /* ── Käynnistys ─────────────────────────────────────────────────── */
+  palauta();
+  $$(".chip[data-filter]").forEach((btn) => {
+    btn.setAttribute("aria-pressed",
+      String(suodattimet[btn.dataset.filter].has(btn.dataset.value)));
+  });
+  lataa();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,442 @@
+{
+  "versio": 1,
+  "paivitetty": "2026-09-10T09:00:00+03:00",
+  "lahde_info": "Esimerkkidata. funding_watcher.py päivittää tämän tiedoston automaattisesti. Tarkista päivämäärät aina rahoittajan omalta sivulta ennen hakemista.",
+  "hankkeet": [
+    {
+      "id": "aka-akatemiahanke-syyshaku-2026",
+      "nimi": "Akatemiahankkeiden syyshaku 2026",
+      "rahoittaja": "Suomen Akatemia",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "Yleiset tutkimusmäärärahat",
+      "haku_alkaa": "2026-09-01",
+      "haku_paattyy": "2026-09-30",
+      "summa": "150 000 – 700 000 € / hanke",
+      "alue": "Koko Suomi",
+      "kuvaus": "Nelivuotinen rahoitus tieteellisesti kunnianhimoisiin tutkimushankkeisiin. Rahoitusta voi hakea yksittäinen tutkimusryhmä tai konsortio, jossa on 2–4 osahanketta.",
+      "kayttotarkoitus": [
+        "Tutkijoiden ja tutkimusavustajien palkkauskulut",
+        "Tutkimusaineistojen hankinta ja käsittely",
+        "Laitteet, matkat ja konferenssiosallistumiset",
+        "Julkaisukulut ja avoimen julkaisemisen maksut",
+        "Yleiskustannukset (overhead) suorituspaikalle"
+      ],
+      "kohderyhmat": [
+        "Yliopistot",
+        "Tutkimuslaitokset",
+        "Väitelleet tutkijat (väh. 4 v. tohtorintutkinnosta)"
+      ],
+      "linkki": "https://www.aka.fi/tutkimusrahoitus/",
+      "lahde": "seed"
+    },
+    {
+      "id": "aka-akatemiatutkija-2026",
+      "nimi": "Akatemiatutkijan tehtävän haku 2026",
+      "rahoittaja": "Suomen Akatemia",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "Tutkijanuran rahoitus",
+      "haku_alkaa": "2026-08-15",
+      "haku_paattyy": "2026-09-02",
+      "summa": "n. 450 000 € / 5 vuotta",
+      "alue": "Koko Suomi",
+      "kuvaus": "Viisivuotinen tehtävä kokeneille tutkijoille, jotka rakentavat itsenäistä tutkimusuraa ja johtavat omaa ryhmäänsä.",
+      "kayttotarkoitus": [
+        "Tutkijan oma palkka 5 vuoden ajan",
+        "Tutkimuskulut ja pienimuotoinen ryhmän rakentaminen",
+        "Kansainvälinen liikkuvuus"
+      ],
+      "kohderyhmat": [
+        "Väitelleet tutkijat",
+        "Yliopistojen tutkimusryhmät"
+      ],
+      "linkki": "https://www.aka.fi/tutkimusrahoitus/",
+      "lahde": "seed"
+    },
+    {
+      "id": "bf-tempo-jatkuva-2026",
+      "nimi": "Tempo-rahoitus pk-yrityksille",
+      "rahoittaja": "Business Finland",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "Kansainvälistymisen kiihdytysraha",
+      "haku_alkaa": "2026-01-07",
+      "haku_paattyy": "2026-12-18",
+      "summa": "enint. 50 000 € (75 % kustannuksista)",
+      "alue": "Koko Suomi",
+      "kuvaus": "Jatkuvasti auki oleva avustus nuorille pk-yrityksille kansainvälisen kasvun valmisteluun ja markkinaselvityksiin.",
+      "kayttotarkoitus": [
+        "Markkina- ja kysyntäselvitykset kohdemarkkinalla",
+        "Asiakastarpeen validointi ja pilotointi",
+        "Kansainvälistymissuunnitelman laadinta",
+        "Ostetut asiantuntijapalvelut ja matkakulut",
+        "Tiimin osaamisen vahvistaminen"
+      ],
+      "kohderyhmat": [
+        "Pk-yritykset",
+        "Startupit",
+        "Kasvuhakuiset mikroyritykset"
+      ],
+      "linkki": "https://www.businessfinland.fi/suomalaisille-asiakkaille/palvelut/rahoitus/",
+      "lahde": "seed"
+    },
+    {
+      "id": "bf-tutkimuksesta-liiketoimintaa-2026",
+      "nimi": "Tutkimuksesta uutta tietoa ja liiketoimintaa",
+      "rahoittaja": "Business Finland",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "Co-Innovation / Co-Research",
+      "haku_alkaa": "2026-09-22",
+      "haku_paattyy": "2026-11-27",
+      "summa": "60 – 70 % hyväksytyistä kustannuksista",
+      "alue": "Koko Suomi",
+      "kuvaus": "Rahoitus tutkimusorganisaatioiden ja yritysten yhteisiin hankkeisiin, joissa uutta tutkimustietoa viedään kohti liiketoimintaa.",
+      "kayttotarkoitus": [
+        "Tutkimusorganisaation henkilöstökulut",
+        "Yritysyhteistyön valmistelu ja verkoston rakentaminen",
+        "Prototyypit, demonstraatiot ja pilotit",
+        "Tulosten levittäminen ja hyödyntämissuunnitelma"
+      ],
+      "kohderyhmat": [
+        "Yliopistot ja ammattikorkeakoulut",
+        "Tutkimuslaitokset",
+        "Yritykset konsortiokumppanina"
+      ],
+      "linkki": "https://www.businessfinland.fi/suomalaisille-asiakkaille/palvelut/rahoitus/",
+      "lahde": "seed"
+    },
+    {
+      "id": "ely-yrityksen-kehittamisavustus-2026",
+      "nimi": "Yrityksen kehittämisavustus",
+      "rahoittaja": "ELY-keskus",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "Kansallinen yritystuki",
+      "haku_alkaa": "2026-01-01",
+      "haku_paattyy": "2026-12-31",
+      "summa": "10 – 50 % kustannuksista, tapauskohtainen",
+      "alue": "Koko Suomi (ELY-alueittain)",
+      "kuvaus": "Jatkuva haku pk-yritysten kehittämis- ja investointihankkeisiin, erityisesti kasvuun, kansainvälistymiseen ja vihreään siirtymään.",
+      "kayttotarkoitus": [
+        "Tuotekehitys ja uusien tuotteiden kaupallistaminen",
+        "Koneet ja laitteet (investointiosuus)",
+        "Ulkopuoliset asiantuntijapalvelut",
+        "Kansainvälistymisen valmistelu",
+        "Energiatehokkuutta parantavat investoinnit"
+      ],
+      "kohderyhmat": [
+        "Pk-yritykset",
+        "Mikroyritykset",
+        "Maaseudun yritykset"
+      ],
+      "linkki": "https://www.ely-keskus.fi/rahoitus-ja-avustukset",
+      "lahde": "seed"
+    },
+    {
+      "id": "koneensaatio-yleinen-apurahahaku-2026",
+      "nimi": "Yleinen apurahahaku 2026",
+      "rahoittaja": "Koneen Säätiö",
+      "rahoittajatyyppi": "Säätiöt",
+      "ohjelma": "Rohkea tekijä -apurahat",
+      "haku_alkaa": "2026-09-01",
+      "haku_paattyy": "2026-09-15",
+      "summa": "työskentelyapuraha n. 30 000 €/v, hankkeet vaihtelevat",
+      "alue": "Koko Suomi + kansainväliset hakijat",
+      "kuvaus": "Apurahoja rohkeisiin tieteen ja taiteen avauksiin, monitieteisiin hankkeisiin sekä tiedon ja taiteen väliseen työskentelyyn.",
+      "kayttotarkoitus": [
+        "Työskentelyapurahat tutkijoille ja taiteilijoille",
+        "Monitieteiset ja kokeelliset tutkimushankkeet",
+        "Taiteellinen työskentely ja tuotannot",
+        "Tieteen ja taiteen yleistajuistaminen",
+        "Työryhmien kulut ja residenssityöskentely"
+      ],
+      "kohderyhmat": [
+        "Tutkijat ja tutkimusryhmät",
+        "Taiteilijat ja työryhmät",
+        "Yhdistykset ja rekisteröidyt yhteisöt"
+      ],
+      "linkki": "https://koneensaatio.fi/apurahat/",
+      "lahde": "seed"
+    },
+    {
+      "id": "skr-keskusrahasto-lokakuu-2026",
+      "nimi": "Keskusrahaston apurahahaku (lokakuu 2026)",
+      "rahoittaja": "Suomen Kulttuurirahasto",
+      "rahoittajatyyppi": "Säätiöt",
+      "ohjelma": "Keskusrahasto",
+      "haku_alkaa": "2026-10-01",
+      "haku_paattyy": "2026-10-31",
+      "summa": "työskentelyapuraha 28 000 €/v; kulut erikseen",
+      "alue": "Koko Suomi",
+      "kuvaus": "Suomen suurimman yksityisen kulttuurirahoittajan vuosittainen päähaku tieteen, taiteen ja kulttuurin hankkeisiin.",
+      "kayttotarkoitus": [
+        "Kokovuotiset työskentelyapurahat",
+        "Väitöskirjatyö ja tutkijatohtorivaihe",
+        "Taiteellinen työ ja produktiot",
+        "Työryhmähankkeet ja tapahtumat",
+        "Kulut: matkat, materiaalit, tilavuokrat"
+      ],
+      "kohderyhmat": [
+        "Tutkijat ja jatko-opiskelijat",
+        "Taiteilijat",
+        "Työryhmät ja yhteisöt"
+      ],
+      "linkki": "https://skr.fi/apurahat",
+      "lahde": "seed"
+    },
+    {
+      "id": "jaes-yleinen-haku-2026",
+      "nimi": "Yleinen hakukierros marraskuu 2026",
+      "rahoittaja": "Jane ja Aatos Erkon säätiö",
+      "rahoittajatyyppi": "Säätiöt",
+      "ohjelma": "Suuret tiede- ja kulttuurihankkeet",
+      "haku_alkaa": "2026-11-01",
+      "haku_paattyy": "2026-11-30",
+      "summa": "tyypillisesti 100 000 – 2 000 000 €",
+      "alue": "Koko Suomi",
+      "kuvaus": "Merkittäviä avustuksia laajoihin lääketieteen, tekniikan ja kulttuurin hankkeisiin sekä lasten ja nuorten hyvinvointiin.",
+      "kayttotarkoitus": [
+        "Laajat tutkimusohjelmat ja infrastruktuuri",
+        "Tutkimusryhmien monivuotinen rahoitus",
+        "Kulttuurilaitosten merkittävät hankkeet",
+        "Lasten ja nuorten hyvinvointihankkeet"
+      ],
+      "kohderyhmat": [
+        "Yliopistot ja tutkimuslaitokset",
+        "Säätiöt ja yhdistykset",
+        "Kulttuurilaitokset"
+      ],
+      "linkki": "https://jaes.fi/apurahat/",
+      "lahde": "seed"
+    },
+    {
+      "id": "emil-aaltonen-2027",
+      "nimi": "Tutkimusapurahat 2027",
+      "rahoittaja": "Emil Aaltosen Säätiö",
+      "rahoittajatyyppi": "Säätiöt",
+      "ohjelma": "Tutkimusapurahat",
+      "haku_alkaa": "2027-02-01",
+      "haku_paattyy": "2027-02-28",
+      "summa": "työskentelyapuraha 30 000 €/v",
+      "alue": "Koko Suomi",
+      "kuvaus": "Apurahoja suomalaiseen tieteelliseen tutkimustyöhön, painopisteenä nuoret tutkijat ja tutkimusryhmät.",
+      "kayttotarkoitus": [
+        "Työskentelyapurahat väitöskirja- ja postdoc-vaiheeseen",
+        "Tutkimusryhmän kulut",
+        "Kansainvälinen tutkijavaihto"
+      ],
+      "kohderyhmat": [
+        "Jatko-opiskelijat",
+        "Tutkijatohtorit",
+        "Tutkimusryhmät"
+      ],
+      "linkki": "https://emilaaltonen.fi/apurahat/",
+      "lahde": "seed"
+    },
+    {
+      "id": "taike-kohdeapuraha-syksy-2026",
+      "nimi": "Taiteen kohdeapurahat, syksyn haku",
+      "rahoittaja": "Taiteen edistämiskeskus (Taike)",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "Kohdeapurahat",
+      "haku_alkaa": "2026-09-08",
+      "haku_paattyy": "2026-09-30",
+      "summa": "3 000 – 15 000 €",
+      "alue": "Koko Suomi",
+      "kuvaus": "Kohdeapurahat tiettyyn taiteelliseen hankkeeseen, työskentelyjaksoon tai teoksen tuotantoon.",
+      "kayttotarkoitus": [
+        "Teoksen tai produktion tuotantokulut",
+        "Materiaalit, tilavuokrat ja tekniikka",
+        "Työryhmän palkkiot",
+        "Näyttely- ja esityskulut"
+      ],
+      "kohderyhmat": [
+        "Ammattitaiteilijat",
+        "Taiteilijatyöryhmät"
+      ],
+      "linkki": "https://www.taike.fi/fi/apurahat-ja-avustukset",
+      "lahde": "seed"
+    },
+    {
+      "id": "eakr-uusimaa-syksy-2026",
+      "nimi": "EAKR-haku: Uudistuva ja osaava Suomi, syksy 2026",
+      "rahoittaja": "Uudenmaan liitto",
+      "rahoittajatyyppi": "EU",
+      "ohjelma": "EAKR 2021–2027",
+      "haku_alkaa": "2026-09-20",
+      "haku_paattyy": "2026-10-31",
+      "summa": "tuki 60–80 % kustannuksista",
+      "alue": "Uusimaa",
+      "kuvaus": "Euroopan aluekehitysrahaston haku innovaatiotoimintaan, pk-yritysten kilpailukykyyn sekä hiilineutraaliuteen tähtääviin kehittämishankkeisiin.",
+      "kayttotarkoitus": [
+        "Kehittämishankkeiden henkilöstökulut",
+        "TKI-yhteistyö yritysten ja korkeakoulujen välillä",
+        "Pilotit, demonstraatiot ja testiympäristöt",
+        "Pienimuotoiset investoinnit",
+        "Hankeviestintä ja tulosten levittäminen"
+      ],
+      "kohderyhmat": [
+        "Korkeakoulut ja tutkimuslaitokset",
+        "Kunnat ja kuntayhtymät",
+        "Yhdistykset ja kehittämisyhtiöt",
+        "Yritykset (yhteishankkeissa)"
+      ],
+      "linkki": "https://rakennerahastot.fi/hakuajat",
+      "lahde": "seed"
+    },
+    {
+      "id": "esr-hame-syksy-2026",
+      "nimi": "ESR+ -haku: osaaminen ja työllisyys",
+      "rahoittaja": "Hämeen ELY-keskus",
+      "rahoittajatyyppi": "EU",
+      "ohjelma": "ESR+ 2021–2027",
+      "haku_alkaa": "2026-09-15",
+      "haku_paattyy": "2026-11-14",
+      "summa": "tuki jopa 80 % kustannuksista",
+      "alue": "Häme, Päijät-Häme",
+      "kuvaus": "Euroopan sosiaalirahasto plus rahoittaa työllisyyttä, osaamista ja osallisuutta edistäviä kehittämishankkeita.",
+      "kayttotarkoitus": [
+        "Työllistymistä edistävät palvelupolut",
+        "Jatkuvan oppimisen ja osaamisen kehittäminen",
+        "Heikossa työmarkkina-asemassa olevien tuki",
+        "Työhyvinvointi ja työn murrokseen vastaaminen",
+        "Hankehenkilöstön palkkakulut ja ostopalvelut"
+      ],
+      "kohderyhmat": [
+        "Oppilaitokset",
+        "Kunnat ja hyvinvointialueet",
+        "Järjestöt ja säätiöt",
+        "Työnantajayhteisöt"
+      ],
+      "linkki": "https://rakennerahastot.fi/hakuajat",
+      "lahde": "seed"
+    },
+    {
+      "id": "jtf-pohjois-savo-2026",
+      "nimi": "JTF-haku: oikeudenmukainen siirtymä",
+      "rahoittaja": "Pohjois-Savon liitto",
+      "rahoittajatyyppi": "EU",
+      "ohjelma": "JTF 2021–2027",
+      "haku_alkaa": "2026-10-05",
+      "haku_paattyy": "2026-11-20",
+      "summa": "tuki 50–80 % kustannuksista",
+      "alue": "Pohjois-Savo",
+      "kuvaus": "Oikeudenmukaisen siirtymän rahasto tukee turpeesta luopumisen aluetaloudellisten vaikutusten lieventämistä.",
+      "kayttotarkoitus": [
+        "Uuden liiketoiminnan ja työpaikkojen luominen",
+        "Osaamisen uudistaminen ja uudelleenkoulutus",
+        "Yritysten investoinnit ja tuotekehitys",
+        "Ympäristön ennallistaminen"
+      ],
+      "kohderyhmat": [
+        "Yritykset",
+        "Kunnat",
+        "Oppilaitokset",
+        "Kehittämisorganisaatiot"
+      ],
+      "linkki": "https://rakennerahastot.fi/hakuajat",
+      "lahde": "seed"
+    },
+    {
+      "id": "leader-jatkuva-2026",
+      "nimi": "Leader-rahoitus: yritys- ja hanketuet",
+      "rahoittaja": "Leader-ryhmät / Maaseuturahasto",
+      "rahoittajatyyppi": "EU",
+      "ohjelma": "CAP 2023–2027 maaseuturahasto",
+      "haku_alkaa": "2026-01-01",
+      "haku_paattyy": "2026-12-31",
+      "summa": "1 000 – 180 000 €, tuki 20–100 %",
+      "alue": "Maaseutualueet koko Suomessa",
+      "kuvaus": "Paikallisten Leader-ryhmien jatkuva haku maaseudun yritys- ja yhteisöhankkeisiin.",
+      "kayttotarkoitus": [
+        "Yritysten perustamis- ja investointituet",
+        "Kylä- ja yhdistystoiminnan kehittäminen",
+        "Harrastus- ja vapaa-ajan investoinnit",
+        "Nuorten Leader-hankkeet",
+        "Koulutus- ja tiedonvälitushankkeet"
+      ],
+      "kohderyhmat": [
+        "Yhdistykset ja kyläyhteisöt",
+        "Mikroyritykset",
+        "Kunnat ja oppilaitokset"
+      ],
+      "linkki": "https://www.leadersuomi.fi/",
+      "lahde": "seed"
+    },
+    {
+      "id": "he-cluster5-2026-two-stage",
+      "nimi": "Horizon Europe Cluster 5: Climate, Energy and Mobility",
+      "rahoittaja": "Euroopan komissio",
+      "rahoittajatyyppi": "EU",
+      "ohjelma": "Horizon Europe 2026–2027",
+      "haku_alkaa": "2026-09-25",
+      "haku_paattyy": "2027-01-21",
+      "summa": "2 – 15 M€ / hanke, tuki 100 % (RIA)",
+      "alue": "EU + assosioituneet maat",
+      "kuvaus": "Cluster 5:n tutkimus- ja innovaatiohaku puhtaaseen energiaan, liikenteen sähköistymiseen ja ilmastoratkaisuihin. Vaatii kansainvälisen konsortion.",
+      "kayttotarkoitus": [
+        "Tutkimus- ja innovaatiotoiminnan henkilöstökulut",
+        "Laitteet, materiaalit ja pilotit (TRL 3–7)",
+        "Konsortion koordinointi ja matkat",
+        "Alihankinta ja tulosten hyödyntäminen",
+        "Avoin julkaiseminen ja datanhallinta"
+      ],
+      "kohderyhmat": [
+        "Yliopistot ja tutkimuslaitokset",
+        "Yritykset (pk- ja suuryritykset)",
+        "Julkiset toimijat ja kaupungit",
+        "Väh. 3 organisaatiota 3 eri maasta"
+      ],
+      "linkki": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-search",
+      "lahde": "seed"
+    },
+    {
+      "id": "eic-accelerator-cutoff-2026-10",
+      "nimi": "EIC Accelerator, lokakuun cut-off",
+      "rahoittaja": "European Innovation Council",
+      "rahoittajatyyppi": "EU",
+      "ohjelma": "Horizon Europe / EIC",
+      "haku_alkaa": "2026-10-08",
+      "haku_paattyy": "2026-10-08",
+      "summa": "avustus enint. 2,5 M€ + oma pääomasijoitus enint. 15 M€",
+      "alue": "EU + assosioituneet maat",
+      "kuvaus": "Deep tech -startupien ja pk-yritysten rahoitus läpimurtoinnovaatioiden skaalaamiseen. Cut-off-päivä täydelle hakemukselle.",
+      "kayttotarkoitus": [
+        "Tuotekehitys TRL 5–8 ja sertifiointi",
+        "Markkinoille viennin valmistelu",
+        "Tuotannon skaalaus (equity-osuus)",
+        "Tiimin kasvattaminen"
+      ],
+      "kohderyhmat": [
+        "Deep tech -startupit",
+        "Pk-yritykset",
+        "Spin-off-yritykset"
+      ],
+      "linkki": "https://eic.ec.europa.eu/eic-funding-opportunities/eic-accelerator_en",
+      "lahde": "seed"
+    },
+    {
+      "id": "interreg-central-baltic-2026-c3",
+      "nimi": "Interreg Central Baltic, 3. hakukierros",
+      "rahoittaja": "Interreg Central Baltic Programme",
+      "rahoittajatyyppi": "EU",
+      "ohjelma": "Interreg 2021–2027",
+      "haku_alkaa": "2026-06-01",
+      "haku_paattyy": "2026-08-31",
+      "summa": "200 000 – 3 M€, tuki 80 %",
+      "alue": "Suomi, Ruotsi, Viro, Latvia",
+      "kuvaus": "Rajat ylittävät yhteistyöhankkeet Keski-Itämeren alueella: yrittäjyys, ympäristö, työllisyys ja palvelut.",
+      "kayttotarkoitus": [
+        "Kansainvälisen hankeyhteistyön henkilöstökulut",
+        "Yhteiset pilotit ja investoinnit",
+        "Matkat ja tapaamiset kumppanimaissa",
+        "Viestintä ja tulosten juurruttaminen"
+      ],
+      "kohderyhmat": [
+        "Kunnat ja alueviranomaiset",
+        "Korkeakoulut",
+        "Järjestöt",
+        "Kehittämisyhtiöt"
+      ],
+      "linkki": "https://centralbaltic.eu/",
+      "lahde": "seed"
+    }
+  ]
+}

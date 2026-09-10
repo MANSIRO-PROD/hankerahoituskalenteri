@@ -1,0 +1,89 @@
+name: Rahoitushakujen seuranta
+
+# Ajetaan joka arkiaamu klo 06:15 Suomen aikaa.
+# GitHub Actions käyttää UTC-aikaa: 06:15 EET (talvi, UTC+2) = 04:15 UTC.
+# Kesäaikaan (UTC+3) ajo osuu klo 07:15 Suomen aikaa — jos haluat vakioajan,
+# lisää toinen cron-rivi tai suodata askel päivämäärän mukaan.
+on:
+  schedule:
+    - cron: "15 4 * * 1-5"
+  workflow_dispatch:          # sallii käsin käynnistyksen Actions-välilehdeltä
+
+permissions:
+  contents: write             # tarvitaan funding_data.json:in commitointiin
+
+concurrency:
+  group: funding-watcher
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Nouda repositorio
+        uses: actions/checkout@v4
+
+      - name: Asenna Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Watcher toimii vakiokirjastolla. Tämä askel tarvitaan vain,
+      # jos sources.json sisältää "html"-tyyppisiä lähteitä.
+      - name: Asenna valinnaiset riippuvuudet
+        run: pip install -r requirements.txt
+        continue-on-error: true
+
+      - name: Tarkista rahoituslähteet
+        id: watch
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          TELEGRAM_BOT_TOKEN:  ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID:    ${{ secrets.TELEGRAM_CHAT_ID }}
+          SLACK_WEBHOOK_URL:   ${{ secrets.SLACK_WEBHOOK_URL }}
+          SMTP_HOST:           ${{ secrets.SMTP_HOST }}
+          SMTP_PORT:           ${{ secrets.SMTP_PORT }}
+          SMTP_USER:           ${{ secrets.SMTP_USER }}
+          SMTP_PASS:           ${{ secrets.SMTP_PASS }}
+          SMTP_FROM:           ${{ secrets.SMTP_FROM }}
+          SMTP_TO:             ${{ secrets.SMTP_TO }}
+        run: python3 funding_watcher.py --embed --verbose
+
+      - name: Commitoi löydetyt uudet haut
+        if: steps.watch.outputs.changed == 'true'
+        run: |
+          git config user.name  "funding-watcher"
+          git config user.email "actions@github.com"
+          git add funding_data.json index.html
+          if git diff --cached --quiet; then
+            echo "Ei commitoitavaa."
+          else
+            git commit -m "Uudet rahoitushaut: ${{ steps.watch.outputs.new_count }} kpl ($(date +%F))"
+            git push
+          fi
+
+  # Julkaisee kalenterin GitHub Pagesiin osoitteessa
+  # https://<käyttäjä>.github.io/<repo>/
+  # Ota Pages käyttöön: Settings → Pages → Source: GitHub Actions.
+  julkaise:
+    needs: watch
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+      - id: deployment
+        uses: actions/deploy-pages@v4

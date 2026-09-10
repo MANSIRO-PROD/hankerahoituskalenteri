@@ -1,0 +1,199 @@
+{
+  "_ohje": [
+    "Lähdekonfiguraatio funding_watcher.py:lle. Lisää uusi lähde lisäämällä olio 'sources'-listaan.",
+    "Tyypit: 'rss' (RSS/Atom), 'json_api' (yleinen JSON-rajapinta), 'eu_sedia' (EU Funding & Tenders), 'html' (CSS-valitsimet, vaatii beautifulsoup4).",
+    "TÄRKEÄÄ: julkishallinnon syöte-URLit muuttuvat. Aja 'python3 funding_watcher.py --test-sources -v' ja korjaa tai poista käytöstä ne, jotka eivät vastaa.",
+    "Kenttä 'verified': false tarkoittaa, ettei päätepistettä ole varmistettu tässä paketissa — testaa se itse ennen tuotantokäyttöä.",
+    "Yhden lähteen epäonnistuminen ei kaada ajoa: se lokitetaan varoituksena ja muut lähteet käsitellään normaalisti."
+  ],
+
+  "sources": [
+    {
+      "id": "eu_funding_tenders",
+      "nimi": "EU Funding & Tenders Portal – avoimet ja tulevat haut",
+      "tyyppi": "eu_sedia",
+      "enabled": true,
+      "verified": false,
+      "huom": "Virallinen SEDIA-hakurajapinta. Sopimus voi muuttua ilman ennakkoilmoitusta — testaa --test-sources.",
+      "url": "https://api.tech.ec.europa.eu/search-api/prod/rest/search",
+      "api_key": "SEDIA",
+      "text": "***",
+      "page_size": 50,
+      "statuses": ["forthcoming", "open"],
+      "types": ["1", "2", "8"],
+      "languages": ["en"],
+      "rahoittaja": "Euroopan komissio",
+      "rahoittajatyyppi": "EU",
+      "ohjelma": "Horizon Europe / EU-ohjelmat",
+      "alue": "EU + assosioituneet maat",
+      "require_dates": true,
+      "max_items": 60
+    },
+
+    {
+      "id": "research_fi_funding_calls",
+      "nimi": "Tiedejatutkimus.fi – rahoitushaut",
+      "tyyppi": "json_api",
+      "enabled": true,
+      "verified": false,
+      "huom": "Research.fi:n portaalirajapinta. Tarkista ajantasainen päätepiste osoitteesta https://tiedejatutkimus.fi ja korjaa 'url' + 'field_map' tarvittaessa.",
+      "url": "https://researchfi-api-production.rahtiapp.fi/portalapi/funding-call/_search?size=100",
+      "method": "POST",
+      "headers": { "Content-Type": "application/json" },
+      "body": {
+        "size": 100,
+        "query": { "match_all": {} },
+        "sort": [{ "callProgrammeDueDate": { "order": "asc" } }]
+      },
+      "items_path": "hits.hits",
+      "field_map": {
+        "nimi": "_source.nameFi",
+        "kuvaus": "_source.descriptionFi",
+        "rahoittaja": "_source.foundationNameFi",
+        "linkki": "_source.callProgrammeUrl",
+        "haku_alkaa": "_source.callProgrammeOpenDate",
+        "haku_paattyy": "_source.callProgrammeDueDate"
+      },
+      "rahoittajatyyppi": "Julkinen",
+      "require_dates": true,
+      "max_items": 100
+    },
+
+    {
+      "id": "rakennerahastot_ajankohtaista",
+      "nimi": "Rakennerahastot.fi – ajankohtaista (EAKR / ESR+ / JTF)",
+      "tyyppi": "rss",
+      "enabled": true,
+      "verified": false,
+      "huom": "Jos tämä ei vastaa, etsi oikea syöte sivulta https://rakennerahastot.fi/ajankohtaista tai vaihda tyypiksi 'html'.",
+      "url": "https://rakennerahastot.fi/ajankohtaista/-/asset_publisher/rss",
+      "rahoittajatyyppi": "EU",
+      "ohjelma": "Uudistuva ja osaava Suomi 2021–2027",
+      "fallback_link": "https://rakennerahastot.fi/hakuajat",
+      "include_keywords": ["haku", "rahoitus", "hakuaika", "hakukierros", "avautuu", "auki"],
+      "require_dates": true,
+      "max_items": 60
+    },
+
+    {
+      "id": "suomen_akatemia_uutiset",
+      "nimi": "Suomen Akatemia – tiedotteet ja uutiset",
+      "tyyppi": "rss",
+      "enabled": true,
+      "verified": false,
+      "huom": "Kokeile vaihtoehtoisia polkuja: /rss.xml, /feed, /fi/rss. Testaa --test-sources.",
+      "url": "https://www.aka.fi/rss.xml",
+      "rahoittaja": "Suomen Akatemia",
+      "rahoittajatyyppi": "Julkinen",
+      "fallback_link": "https://www.aka.fi/tutkimusrahoitus/",
+      "include_keywords": ["haku", "rahoitus", "hakuaika", "hakemus", "apuraha"],
+      "exclude_keywords": ["nimitys", "rekrytointi", "vuosikertomus"],
+      "require_dates": true,
+      "max_items": 50
+    },
+
+    {
+      "id": "business_finland_uutiset",
+      "nimi": "Business Finland – ajankohtaista",
+      "tyyppi": "rss",
+      "enabled": true,
+      "verified": false,
+      "huom": "Jos syötettä ei ole, vaihda tyypiksi 'html' ja aseta selectors (vaatii beautifulsoup4).",
+      "url": "https://www.businessfinland.fi/rss/uutiset",
+      "rahoittaja": "Business Finland",
+      "rahoittajatyyppi": "Julkinen",
+      "fallback_link": "https://www.businessfinland.fi/suomalaisille-asiakkaille/palvelut/rahoitus/",
+      "include_keywords": ["rahoitushaku", "haku", "rahoitus", "hakuaika"],
+      "require_dates": true,
+      "max_items": 50
+    },
+
+    {
+      "id": "koneen_saatio",
+      "nimi": "Koneen Säätiö – ajankohtaista",
+      "tyyppi": "rss",
+      "enabled": true,
+      "verified": false,
+      "huom": "WordPress-sivustojen syöte on tyypillisesti /feed/.",
+      "url": "https://koneensaatio.fi/feed/",
+      "rahoittaja": "Koneen Säätiö",
+      "rahoittajatyyppi": "Säätiöt",
+      "fallback_link": "https://koneensaatio.fi/apurahat/",
+      "include_keywords": ["haku", "apuraha", "hakuaika", "rahoitus"],
+      "require_dates": true,
+      "max_items": 40
+    },
+
+    {
+      "id": "suomen_kulttuurirahasto",
+      "nimi": "Suomen Kulttuurirahasto – ajankohtaista",
+      "tyyppi": "rss",
+      "enabled": true,
+      "verified": false,
+      "url": "https://skr.fi/feed/",
+      "rahoittaja": "Suomen Kulttuurirahasto",
+      "rahoittajatyyppi": "Säätiöt",
+      "fallback_link": "https://skr.fi/apurahat",
+      "include_keywords": ["haku", "apuraha", "hakuaika"],
+      "require_dates": true,
+      "max_items": 40
+    },
+
+    {
+      "id": "taike_apurahat",
+      "nimi": "Taiteen edistämiskeskus – apurahat ja avustukset",
+      "tyyppi": "rss",
+      "enabled": true,
+      "verified": false,
+      "url": "https://www.taike.fi/fi/rss",
+      "rahoittaja": "Taiteen edistämiskeskus (Taike)",
+      "rahoittajatyyppi": "Julkinen",
+      "fallback_link": "https://www.taike.fi/fi/apurahat-ja-avustukset",
+      "include_keywords": ["haku", "apuraha", "avustus", "hakuaika"],
+      "require_dates": true,
+      "max_items": 40
+    },
+
+    {
+      "id": "esimerkki_html_raaputus",
+      "nimi": "MALLI: HTML-sivun raaputus CSS-valitsimilla",
+      "tyyppi": "html",
+      "enabled": false,
+      "verified": false,
+      "huom": "Malliesimerkki. Vaatii 'pip install beautifulsoup4'. Ota käyttöön ja säädä selectors selaimen kehittäjätyökaluilla.",
+      "url": "https://example.org/rahoitushaut",
+      "selectors": {
+        "item": "article.call-item",
+        "nimi": "h3, h2, .title",
+        "kuvaus": ".summary, p",
+        "linkki": "a"
+      },
+      "rahoittaja": "Esimerkkirahoittaja",
+      "rahoittajatyyppi": "Julkinen",
+      "require_dates": false,
+      "default_window_days": 45,
+      "max_items": 30
+    },
+
+    {
+      "id": "esimerkki_oma_rss",
+      "nimi": "MALLI: oma RSS-syöte",
+      "tyyppi": "rss",
+      "enabled": false,
+      "verified": false,
+      "huom": "Kopioi tämä pohjaksi omille lähteillesi. Vain 'id', 'tyyppi' ja 'url' ovat pakollisia.",
+      "url": "https://esimerkki.fi/feed/",
+      "rahoittaja": "Oma rahoittaja",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "",
+      "alue": "Koko Suomi",
+      "fallback_link": "https://esimerkki.fi/haut",
+      "include_keywords": ["haku", "rahoitus"],
+      "exclude_keywords": [],
+      "require_dates": true,
+      "skip_if_closed_days": 0,
+      "default_window_days": 30,
+      "max_items": 40
+    }
+  ]
+}

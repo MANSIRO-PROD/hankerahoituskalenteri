@@ -1,0 +1,14 @@
+# Salaisuudet — EI koskaan versionhallintaan
+.env
+
+# Watcherin ajonaikaiset tiedostot
+.watcher_state.json
+*.bak
+*.tmp
+watcher.log
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/

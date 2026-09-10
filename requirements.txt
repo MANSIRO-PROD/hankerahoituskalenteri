@@ -1,0 +1,10 @@
+# funding_watcher.py toimii ILMAN näitä — koko perustoiminnallisuus
+# (RSS/Atom, JSON-rajapinnat, EU-portaali, Discord/Telegram/Slack/SMTP)
+# on toteutettu Pythonin vakiokirjastolla.
+#
+# Asenna nämä vain, jos otat käyttöön "html"-tyyppisiä lähteitä
+# (CSS-valitsimilla tapahtuva sivun raaputus):
+#
+#   pip install -r requirements.txt
+
+beautifulsoup4>=4.12
