@@ -1,6 +1,6 @@
 {
   "versio": 1,
-  "paivitetty": "2026-09-10T16:22:22+00:00",
+  "paivitetty": "2026-09-11T08:56:54+00:00",
   "lahde_info": "Esimerkkidata. funding_watcher.py päivittää tämän tiedoston automaattisesti. Tarkista päivämäärät aina rahoittajan omalta sivulta ennen hakemista.",
   "hankkeet": [
     {
@@ -185,7 +185,7 @@
       "rahoittaja": "Koneen Säätiö",
       "rahoittajatyyppi": "Säätiöt",
       "ohjelma": "",
-      "haku_alkaa": "2026-09-10",
+      "haku_alkaa": "2026-09-11",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -296,7 +296,7 @@
       "rahoittaja": "Maa- ja vesitekniikan tuki ry",
       "rahoittajatyyppi": "Säätiöt",
       "ohjelma": "",
-      "haku_alkaa": "2026-09-10",
+      "haku_alkaa": "2026-09-11",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -318,7 +318,7 @@
       "rahoittaja": "Sähkötekniikan ja energiatehokkuuden edistämiskeskus STEK ry",
       "rahoittajatyyppi": "Julkinen",
       "ohjelma": "",
-      "haku_alkaa": "2026-09-10",
+      "haku_alkaa": "2026-09-11",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -340,7 +340,7 @@
       "rahoittaja": "Sähkötekniikan ja energiatehokkuuden edistämiskeskus STEK ry",
       "rahoittajatyyppi": "Julkinen",
       "ohjelma": "",
-      "haku_alkaa": "2026-09-10",
+      "haku_alkaa": "2026-09-11",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
