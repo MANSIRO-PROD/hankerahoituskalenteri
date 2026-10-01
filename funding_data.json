@@ -1,6 +1,6 @@
 {
   "versio": 1,
-  "paivitetty": "2026-09-30T10:31:26+00:00",
+  "paivitetty": "2026-10-01T10:59:15+00:00",
   "lahde_info": "Esimerkkidata. funding_watcher.py päivittää tämän tiedoston automaattisesti. Tarkista päivämäärät aina rahoittajan omalta sivulta ennen hakemista.",
   "hankkeet": [
     {
@@ -185,7 +185,7 @@
       "rahoittaja": "Koneen Säätiö",
       "rahoittajatyyppi": "Säätiöt",
       "ohjelma": "",
-      "haku_alkaa": "2026-09-30",
+      "haku_alkaa": "2026-10-01",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -296,7 +296,7 @@
       "rahoittaja": "Maa- ja vesitekniikan tuki ry",
       "rahoittajatyyppi": "Säätiöt",
       "ohjelma": "",
-      "haku_alkaa": "2026-09-30",
+      "haku_alkaa": "2026-10-01",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -318,7 +318,7 @@
       "rahoittaja": "Sähkötekniikan ja energiatehokkuuden edistämiskeskus STEK ry",
       "rahoittajatyyppi": "Julkinen",
       "ohjelma": "",
-      "haku_alkaa": "2026-09-30",
+      "haku_alkaa": "2026-10-01",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -340,7 +340,7 @@
       "rahoittaja": "Sähkötekniikan ja energiatehokkuuden edistämiskeskus STEK ry",
       "rahoittajatyyppi": "Julkinen",
       "ohjelma": "",
-      "haku_alkaa": "2026-09-30",
+      "haku_alkaa": "2026-10-01",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -355,6 +355,49 @@
       "linkki": "https://stek.fi/rahoitus/mita-rahoitetaan/alan-koulutuksen-ja-opetuksen-kehittaminen/",
       "lahde": "research_fi_funding_calls",
       "loydetty": "2026-09-10"
+    },
+    {
+      "id": "suomen-akatemia-suomen-akatemian-active-ohjelman-haku-av-ff4497",
+      "nimi": "Suomen Akatemian ACTIVE-ohjelman haku avautuu 21.10.",
+      "rahoittaja": "Suomen Akatemia",
+      "rahoittajatyyppi": "Julkinen",
+      "ohjelma": "",
+      "haku_alkaa": "2026-10-21",
+      "haku_paattyy": "2026-11-18",
+      "summa": "Ei ilmoitettu",
+      "alue": "Koko Suomi",
+      "kuvaus": "Suomen Akatemian liikuntatutkimuksen ACTIVE-akatemiaohjelman haku avautuu 21.10.2026  ja päättyy  18.11.2026  klo 23.59. Suomen Akatemian hakuneuvonta päättyy haun päättymispäivänä klo 16.15 Suomen aikaa.\nLiikuntatutkimus tarjoaa tutkittua tietoa, jonka avulla lisätään ymmärrystä ja haetaan ratkaisuja liikkumiseen, liikuntaan ja urheiluun liittyviin yhteiskunnallisiin ja kansanterveydellisiin haasteisiin. Ohjelman keskeisenä tavoitteena on vaikuttavuuden, vastuullisuuden ja kestävän kehityksen edistäminen liikuntatutkimuksessa, joka kohdistuu eri väestöryhmiin ja eri liikunta- ja urheilumuotoihin niin harrastaja- kuin kilpatasollakin. Lisäksi tavoitteena on osaamisen ja monitahoisen yhteistyön vahvistaminen liikuntatutkimuksessa.",
+      "kayttotarkoitus": [
+        "Koulutus ja osaamisen kehittäminen"
+      ],
+      "kohderyhmat": [
+        "Tarkista hakukelpoisuus rahoittajan hakusivulta"
+      ],
+      "linkki": "https://www.aka.fi/tietoa-suomen-akatemiasta/ajankohtaista/tiedotteet-ja-uutiset/2026/suomen-akatemian-active-ohjelman-haku-avautuu-21.10/",
+      "lahde": "suomen_akatemia",
+      "loydetty": "2026-10-01"
+    },
+    {
+      "id": "euroopan-komissio-cinea-commission-grants-cb-res-status-to-three-64cb70",
+      "nimi": "Commission grants CB RES status to three additional cross-border renewable energy projects",
+      "rahoittaja": "Euroopan komissio (CINEA)",
+      "rahoittajatyyppi": "EU",
+      "ohjelma": "LIFE / Horizon Europe",
+      "haku_alkaa": "2026-10-01",
+      "haku_paattyy": "2026-10-31",
+      "summa": "Ei ilmoitettu",
+      "alue": "EU + assosioituneet maat",
+      "kuvaus": "The European Commission has approved three new cross-border renewable energy projects under the fifth call for CB RES status: WIND, DEPLOY and ZEGA-LINNK. Following this update, and after the withdrawal of PONTIS from the list, the number of projects holding CB RES status now stands at 15.",
+      "kayttotarkoitus": [
+        "Työskentelyapurahat",
+        "Ilmasto-, energia- ja vihreän siirtymän toimet"
+      ],
+      "kohderyhmat": [
+        "Tarkista hakukelpoisuus rahoittajan hakusivulta"
+      ],
+      "linkki": "https://cinea.ec.europa.eu/news-events/news/commission-grants-cb-res-status-three-additional-cross-border-renewable-energy-projects-2026-10-01_en",
+      "lahde": "cinea_life",
+      "loydetty": "2026-10-01"
     }
   ]
 }
