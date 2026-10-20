@@ -1,6 +1,6 @@
 {
   "versio": 1,
-  "paivitetty": "2026-10-19T09:57:12+00:00",
+  "paivitetty": "2026-10-20T09:27:45+00:00",
   "lahde_info": "Esimerkkidata. funding_watcher.py päivittää tämän tiedoston automaattisesti. Tarkista päivämäärät aina rahoittajan omalta sivulta ennen hakemista.",
   "hankkeet": [
     {
@@ -185,7 +185,7 @@
       "rahoittaja": "Koneen Säätiö",
       "rahoittajatyyppi": "Säätiöt",
       "ohjelma": "",
-      "haku_alkaa": "2026-10-19",
+      "haku_alkaa": "2026-10-20",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -296,7 +296,7 @@
       "rahoittaja": "Maa- ja vesitekniikan tuki ry",
       "rahoittajatyyppi": "Säätiöt",
       "ohjelma": "",
-      "haku_alkaa": "2026-10-19",
+      "haku_alkaa": "2026-10-20",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -318,7 +318,7 @@
       "rahoittaja": "Sähkötekniikan ja energiatehokkuuden edistämiskeskus STEK ry",
       "rahoittajatyyppi": "Julkinen",
       "ohjelma": "",
-      "haku_alkaa": "2026-10-19",
+      "haku_alkaa": "2026-10-20",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -340,7 +340,7 @@
       "rahoittaja": "Sähkötekniikan ja energiatehokkuuden edistämiskeskus STEK ry",
       "rahoittajatyyppi": "Julkinen",
       "ohjelma": "",
-      "haku_alkaa": "2026-10-19",
+      "haku_alkaa": "2026-10-20",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -440,6 +440,27 @@
       "linkki": "https://www.aka.fi/tutkimusrahoitus/hae-rahoitusta/haut/",
       "lahde": "research_fi_funding_calls",
       "loydetty": "2026-10-15"
+    },
+    {
+      "id": "euroopan-komissio-cinea-cinea-connects-with-ocean-energy-stakeho-b781c7",
+      "nimi": "CINEA connects with ocean energy stakeholders at ICOE OEE 2026",
+      "rahoittaja": "Euroopan komissio (CINEA)",
+      "rahoittajatyyppi": "EU",
+      "ohjelma": "LIFE / Horizon Europe",
+      "haku_alkaa": "2026-10-20",
+      "haku_paattyy": "2026-10-20",
+      "summa": "Ei ilmoitettu",
+      "alue": "EU + assosioituneet maat",
+      "kuvaus": "More than 500 ocean energy professionals gathered in The Hague from 5 to 7 October for ICOE OEE 2026. CINEA took part with a stand in the exhibition area and in a funding opportunities session, answering questions on the Innovation Fund and Horizon Europe.",
+      "kayttotarkoitus": [
+        "Ilmasto-, energia- ja vihreän siirtymän toimet"
+      ],
+      "kohderyhmat": [
+        "Tarkista hakukelpoisuus rahoittajan hakusivulta"
+      ],
+      "linkki": "https://cinea.ec.europa.eu/news-events/news/cinea-connects-ocean-energy-stakeholders-icoe-oee-2026-2026-10-20_en",
+      "lahde": "cinea_life",
+      "loydetty": "2026-10-20"
     }
   ]
 }
