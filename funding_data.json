@@ -1,6 +1,6 @@
 {
   "versio": 1,
-  "paivitetty": "2026-11-06T12:09:18+00:00",
+  "paivitetty": "2026-11-09T12:55:35+00:00",
   "lahde_info": "Esimerkkidata. funding_watcher.py päivittää tämän tiedoston automaattisesti. Tarkista päivämäärät aina rahoittajan omalta sivulta ennen hakemista.",
   "hankkeet": [
     {
@@ -185,7 +185,7 @@
       "rahoittaja": "Koneen Säätiö",
       "rahoittajatyyppi": "Säätiöt",
       "ohjelma": "",
-      "haku_alkaa": "2026-11-06",
+      "haku_alkaa": "2026-11-09",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -296,7 +296,7 @@
       "rahoittaja": "Maa- ja vesitekniikan tuki ry",
       "rahoittajatyyppi": "Säätiöt",
       "ohjelma": "",
-      "haku_alkaa": "2026-11-06",
+      "haku_alkaa": "2026-11-09",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -318,7 +318,7 @@
       "rahoittaja": "Sähkötekniikan ja energiatehokkuuden edistämiskeskus STEK ry",
       "rahoittajatyyppi": "Julkinen",
       "ohjelma": "",
-      "haku_alkaa": "2026-11-06",
+      "haku_alkaa": "2026-11-09",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -340,7 +340,7 @@
       "rahoittaja": "Sähkötekniikan ja energiatehokkuuden edistämiskeskus STEK ry",
       "rahoittajatyyppi": "Julkinen",
       "ohjelma": "",
-      "haku_alkaa": "2026-11-06",
+      "haku_alkaa": "2026-11-09",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -525,6 +525,28 @@
       "linkki": "https://www.lapsijaluonto.fi/hae-avustusta",
       "lahde": "research_fi_funding_calls",
       "loydetty": "2026-11-03"
+    },
+    {
+      "id": "suomen-luonnonsuojelun-s-suomen-luonnonsuojelun-saation-apurahat-5658e5",
+      "nimi": "Suomen Luonnonsuojelun Säätiön apurahat 2027",
+      "rahoittaja": "Suomen Luonnonsuojelun Säätiö",
+      "rahoittajatyyppi": "Säätiöt",
+      "ohjelma": "",
+      "haku_alkaa": "2026-12-01",
+      "haku_paattyy": "2027-01-31",
+      "summa": "Ei ilmoitettu",
+      "alue": "",
+      "kuvaus": "Suomen Luonnonsuojelun Säätiö jakaa apurahoja luonnonsuojelua edistävään tieteeseen, tutkimukseen ja toimintaan. Säätiö myöntää apurahoja tutkimushankkeisiin ja opinnäytetöihin (väitöskirjat, lisensiaatintutkimukset, pro gradut) ja muuhun toimintaan kuten esimerkiksi koulutuksiin, selvityksiin ja kartoituksiin, konkreettiseen luonnonsuojelutyöhön, kirjalliseen työskentelyyn ja kampanjoihin. Taiteellista työskentelyä voidaan rahoittaa, jos hankkeella on vahva konkretia luonnonsuojelussa.\nHankkeita rahoitetaan säätiön viidestä erityisrahastosta:\n- Itämeri-rahastosta jaetaan apurahoja Itämeren valuma-alueen ekosysteemien suojeluun liittyvään tieteelliseen tutkimukseen ja koulutukseen sekä kansalaisjärjestöjen Itämeri-yhteistyöhön.\n- Luonnonsuojelurahastosta jaetaan apurahoja uhanalaisten lajien ja ekosysteemien suojeluun.\n- Metsärahastosta jaetaan apurahoja metsäluonnon monimuotoisuuden ja…",
+      "kayttotarkoitus": [
+        "Työskentelyapurahat"
+      ],
+      "kohderyhmat": [
+        "Tutkijat ja tutkimusryhmät",
+        "Yhdistykset, järjestöt ja säätiöt"
+      ],
+      "linkki": "https://luonnonsuojelunsaatio.fi/apurahat/",
+      "lahde": "research_fi_funding_calls",
+      "loydetty": "2026-11-09"
     }
   ]
 }
