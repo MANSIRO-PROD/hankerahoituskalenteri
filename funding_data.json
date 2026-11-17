@@ -1,6 +1,6 @@
 {
   "versio": 1,
-  "paivitetty": "2026-11-16T12:48:35+00:00",
+  "paivitetty": "2026-11-17T13:29:51+00:00",
   "lahde_info": "Esimerkkidata. funding_watcher.py päivittää tämän tiedoston automaattisesti. Tarkista päivämäärät aina rahoittajan omalta sivulta ennen hakemista.",
   "hankkeet": [
     {
@@ -185,7 +185,7 @@
       "rahoittaja": "Koneen Säätiö",
       "rahoittajatyyppi": "Säätiöt",
       "ohjelma": "",
-      "haku_alkaa": "2026-11-16",
+      "haku_alkaa": "2026-11-17",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -296,7 +296,7 @@
       "rahoittaja": "Maa- ja vesitekniikan tuki ry",
       "rahoittajatyyppi": "Säätiöt",
       "ohjelma": "",
-      "haku_alkaa": "2026-11-16",
+      "haku_alkaa": "2026-11-17",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -318,7 +318,7 @@
       "rahoittaja": "Sähkötekniikan ja energiatehokkuuden edistämiskeskus STEK ry",
       "rahoittajatyyppi": "Julkinen",
       "ohjelma": "",
-      "haku_alkaa": "2026-11-16",
+      "haku_alkaa": "2026-11-17",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -340,7 +340,7 @@
       "rahoittaja": "Sähkötekniikan ja energiatehokkuuden edistämiskeskus STEK ry",
       "rahoittajatyyppi": "Julkinen",
       "ohjelma": "",
-      "haku_alkaa": "2026-11-16",
+      "haku_alkaa": "2026-11-17",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -568,6 +568,48 @@
       "linkki": "https://cinea.ec.europa.eu/news-events/news/emfaf-call-proposals-scientific-advice-fisheries-has-just-opened-2026-11-12_en",
       "lahde": "cinea_life",
       "loydetty": "2026-11-12"
+    },
+    {
+      "id": "euroopan-komissio-cinea-registrations-open-for-the-innovation-fu-86f384",
+      "nimi": "Registrations open for the Innovation Fund 2026 Info Days",
+      "rahoittaja": "Euroopan komissio (CINEA)",
+      "rahoittajatyyppi": "EU",
+      "ohjelma": "LIFE / Horizon Europe",
+      "haku_alkaa": "2026-11-17",
+      "haku_paattyy": "2026-11-17",
+      "summa": "Ei ilmoitettu",
+      "alue": "EU + assosioituneet maat",
+      "kuvaus": "Four online info days to help potential applicants prepare their applications. Prospective applicants can register for the relevant sessions.",
+      "kayttotarkoitus": [
+        "Tarkista tarkka käyttötarkoitus rahoittajan hakusivulta"
+      ],
+      "kohderyhmat": [
+        "Tarkista hakukelpoisuus rahoittajan hakusivulta"
+      ],
+      "linkki": "https://cinea.ec.europa.eu/news-events/news/registrations-open-innovation-fund-2026-info-days-2026-11-17_en",
+      "lahde": "cinea_life",
+      "loydetty": "2026-11-17"
+    },
+    {
+      "id": "euroopan-komissio-cinea-cef-energy-backs-united-heat-as-germany-f4a2c2",
+      "nimi": "CEF Energy backs United Heat as Germany and Poland build a cross-border renewable heating system",
+      "rahoittaja": "Euroopan komissio (CINEA)",
+      "rahoittajatyyppi": "EU",
+      "ohjelma": "LIFE / Horizon Europe",
+      "haku_alkaa": "2026-11-17",
+      "haku_paattyy": "2026-11-17",
+      "summa": "Ei ilmoitettu",
+      "alue": "EU + assosioituneet maat",
+      "kuvaus": "EU funding is helping turn cross-border cooperation into a model for renewable district heating, as the German city of Görlitz and its Polish neighbour Zgorzelec advance the United Heat project.",
+      "kayttotarkoitus": [
+        "Ilmasto-, energia- ja vihreän siirtymän toimet"
+      ],
+      "kohderyhmat": [
+        "Tarkista hakukelpoisuus rahoittajan hakusivulta"
+      ],
+      "linkki": "https://cinea.ec.europa.eu/news-events/news/cef-energy-backs-united-heat-germany-and-poland-build-cross-border-renewable-heating-system-2026-11-17_en",
+      "lahde": "cinea_life",
+      "loydetty": "2026-11-17"
     }
   ]
 }
