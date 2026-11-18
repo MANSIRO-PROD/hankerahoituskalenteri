@@ -1,6 +1,6 @@
 {
   "versio": 1,
-  "paivitetty": "2026-11-17T13:29:51+00:00",
+  "paivitetty": "2026-11-18T13:06:40+00:00",
   "lahde_info": "Esimerkkidata. funding_watcher.py päivittää tämän tiedoston automaattisesti. Tarkista päivämäärät aina rahoittajan omalta sivulta ennen hakemista.",
   "hankkeet": [
     {
@@ -185,7 +185,7 @@
       "rahoittaja": "Koneen Säätiö",
       "rahoittajatyyppi": "Säätiöt",
       "ohjelma": "",
-      "haku_alkaa": "2026-11-17",
+      "haku_alkaa": "2026-11-18",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -296,7 +296,7 @@
       "rahoittaja": "Maa- ja vesitekniikan tuki ry",
       "rahoittajatyyppi": "Säätiöt",
       "ohjelma": "",
-      "haku_alkaa": "2026-11-17",
+      "haku_alkaa": "2026-11-18",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -318,7 +318,7 @@
       "rahoittaja": "Sähkötekniikan ja energiatehokkuuden edistämiskeskus STEK ry",
       "rahoittajatyyppi": "Julkinen",
       "ohjelma": "",
-      "haku_alkaa": "2026-11-17",
+      "haku_alkaa": "2026-11-18",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -340,7 +340,7 @@
       "rahoittaja": "Sähkötekniikan ja energiatehokkuuden edistämiskeskus STEK ry",
       "rahoittajatyyppi": "Julkinen",
       "ohjelma": "",
-      "haku_alkaa": "2026-11-17",
+      "haku_alkaa": "2026-11-18",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -610,6 +610,27 @@
       "linkki": "https://cinea.ec.europa.eu/news-events/news/cef-energy-backs-united-heat-germany-and-poland-build-cross-border-renewable-heating-system-2026-11-17_en",
       "lahde": "cinea_life",
       "loydetty": "2026-11-17"
+    },
+    {
+      "id": "maj-ja-tor-nesslingin-sa-yleisen-rahoitushaun-tulokset-nesslingin-4050d4",
+      "nimi": "Yleisen rahoitushaun tulokset: Nesslingin säätiö myönsi 3,2 miljoonaa euroa 32 kestävyysmurrosta edistävälle hankkeelle",
+      "rahoittaja": "Maj ja Tor Nesslingin säätiö",
+      "rahoittajatyyppi": "Säätiöt",
+      "ohjelma": "",
+      "haku_alkaa": "2026-11-18",
+      "haku_paattyy": "2026-11-18",
+      "summa": "Ei ilmoitettu",
+      "alue": "Koko Suomi",
+      "kuvaus": "Nesslingin säätiön yleisessä rahoitushaussa etsittiin tänä syksynä aktiivisia tutkijoita ja toimijoita, joiden hankkeet vauhdittavat luonnon järjestelmien ehdoilla tapahtuvaa kestävyysmurrosta. Kestävyysmurros edellyttää muutoksia kaikilla ihmiselämän alueilla, ja tämä laajuus näkyi tämän vuoden rahoitushakuun saapuneissa hakemuksissa erityisen hyvin. Tutkimushankkeissa eri tieteenalat pureutuvat kestävyysmurroksen ratkaisuihin Suurin osa Nesslingin säätiön rahoittamista hankkeista oli tutkimushankkeita. Tässä rahoitushaussa tukea sai 14 […]",
+      "kayttotarkoitus": [
+        "Tarkista tarkka käyttötarkoitus rahoittajan hakusivulta"
+      ],
+      "kohderyhmat": [
+        "Yhdistykset, järjestöt ja säätiöt"
+      ],
+      "linkki": "https://nessling.fi/yleisen-rahoitushaun-tulokset-nesslingin-saatio-myonsi-32-miljoonaa-euroa-32-kestavyysmurrosta-edistavalle-hankkeelle/",
+      "lahde": "nessling",
+      "loydetty": "2026-11-18"
     }
   ]
 }
