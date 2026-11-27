@@ -1,6 +1,6 @@
 {
   "versio": 1,
-  "paivitetty": "2026-11-26T13:56:29+00:00",
+  "paivitetty": "2026-11-27T13:55:04+00:00",
   "lahde_info": "Esimerkkidata. funding_watcher.py päivittää tämän tiedoston automaattisesti. Tarkista päivämäärät aina rahoittajan omalta sivulta ennen hakemista.",
   "hankkeet": [
     {
@@ -185,7 +185,7 @@
       "rahoittaja": "Koneen Säätiö",
       "rahoittajatyyppi": "Säätiöt",
       "ohjelma": "",
-      "haku_alkaa": "2026-11-26",
+      "haku_alkaa": "2026-11-27",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -296,7 +296,7 @@
       "rahoittaja": "Maa- ja vesitekniikan tuki ry",
       "rahoittajatyyppi": "Säätiöt",
       "ohjelma": "",
-      "haku_alkaa": "2026-11-26",
+      "haku_alkaa": "2026-11-27",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -318,7 +318,7 @@
       "rahoittaja": "Sähkötekniikan ja energiatehokkuuden edistämiskeskus STEK ry",
       "rahoittajatyyppi": "Julkinen",
       "ohjelma": "",
-      "haku_alkaa": "2026-11-26",
+      "haku_alkaa": "2026-11-27",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -340,7 +340,7 @@
       "rahoittaja": "Sähkötekniikan ja energiatehokkuuden edistämiskeskus STEK ry",
       "rahoittajatyyppi": "Julkinen",
       "ohjelma": "",
-      "haku_alkaa": "2026-11-26",
+      "haku_alkaa": "2026-11-27",
       "haku_paattyy": "2100-01-01",
       "summa": "Ei ilmoitettu",
       "alue": "",
@@ -675,6 +675,27 @@
       "linkki": "https://www.interregaurora.eu/results/three-interreg-aurora-projects-collaborate-on-edna-for-northern-biodiversity-monitoring/",
       "lahde": "interreg_aurora",
       "loydetty": "2026-11-20"
+    },
+    {
+      "id": "euroopan-komissio-cinea-your-eu-your-projects-in-cyprus-advancin-b9d9b7",
+      "nimi": "Your EU – Your projects in Cyprus: advancing greener transport",
+      "rahoittaja": "Euroopan komissio (CINEA)",
+      "rahoittajatyyppi": "EU",
+      "ohjelma": "LIFE / Horizon Europe",
+      "haku_alkaa": "2026-11-27",
+      "haku_paattyy": "2026-11-27",
+      "summa": "Ei ilmoitettu",
+      "alue": "EU + assosioituneet maat",
+      "kuvaus": "EU funding is helping Cyprus test and implement practical solutions on land and at sea, from cleaner urban mobility in Limassol to greener port infrastructure and new planning tools for low-emission shipping across the Mediterranean.",
+      "kayttotarkoitus": [
+        "Matka- ja liikkuvuuskulut"
+      ],
+      "kohderyhmat": [
+        "Tarkista hakukelpoisuus rahoittajan hakusivulta"
+      ],
+      "linkki": "https://cinea.ec.europa.eu/news-events/news/your-eu-your-projects-cyprus-advancing-greener-transport-2026-11-27_en",
+      "lahde": "cinea_life",
+      "loydetty": "2026-11-27"
     }
   ]
 }
